@@ -25,7 +25,7 @@
   transition: transform 0.8s;
   box-shadow: 0px 0px 1.5em 0.2em rgba(0,0,0,0.31);
 }
-.h5p-bingo-button:hover {
+.h5p-bingo-button:not(.h5p-button-blocked):hover {
   cursor: pointer;
   background-color: #efefef;
 }
@@ -63,11 +63,6 @@
 }
 
 .h5p-button-blocked {
-}
-
-.h5p-button-blocked:hover {
-  background: white;
-  cursor:auto;
 }
 
 .h5p-button-transparent {
