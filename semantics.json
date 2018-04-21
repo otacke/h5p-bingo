@@ -1,0 +1,36 @@
+[
+  {
+    "label": "Words/Phrases",
+    "importance": "high",
+    "name": "words",
+    "type": "text",
+    "widget": "textarea",
+    "optional": true,
+    "description": "Use one line for each word or phrase."
+  },
+  {
+    "label": "Size",
+    "importance": "high",
+    "name": "size",
+    "type": "number",
+    "default": 5,
+    "min": 3,
+    "max": 7
+  },
+  {
+    "label": "Sound",
+    "importance": "low",
+    "name": "sound",
+    "type": "audio",
+    "optional": true
+  },
+  {
+    "label": "Joker",
+    "description": "Will place an unturnable joker in the center.",
+    "importance": "low",
+    "name": "joker",
+    "type": "boolean",
+    "default": false,
+    "optional": true
+  }
+]

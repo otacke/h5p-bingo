@@ -1,0 +1,76 @@
+.h5p-bingo {
+  display: flex;
+  flex-direction: row;
+  font-size: 1em;
+  background: #f22626;
+  padding: 0.5em;
+}
+
+.h5p-bingo-column {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.h5p-bingo-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0.1em solid white;
+  border-radius: 0.5em;
+  position: relative;
+  text-align: center;
+  margin: 0.3em;
+  margin-right:0.1em;
+  background: white;
+  transition: transform 0.8s;
+  box-shadow: 0px 0px 1.5em 0.2em rgba(0,0,0,0.31);
+}
+.h5p-bingo-button:hover {
+  cursor: pointer;
+  background-color: #efefef;
+}
+.h5p-bingo-button:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+.h5p-bingo-button-label {
+  opacity: 1;
+  transition: opacity 0.1s ease 0.2s, display 0.1s ease 0.2s;
+}
+.h5p-bingo-button-symbol {
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+  background: url('../images/starbadge.svg') center/80% no-repeat;
+  position: absolute;
+  transition: opacity 0.1s ease 0.2s, display 0.1s ease 0.2s;
+}
+
+.h5p-button-activated {
+  -webkit-transform: rotateY(-180deg);
+  -moz-transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
+  -ms-transform: scale(0,1.1);
+}
+
+.h5p-button-spinning {
+  -webkit-transform: rotateY(-720deg);
+  -moz-transform: rotateY(-720deg);
+  transform: rotateY(-720deg);
+  -ms-transform: scale(0,1.1);
+}
+
+.h5p-button-blocked {
+}
+
+.h5p-button-blocked:hover {
+  background: white;
+  cursor:auto;
+}
+
+.h5p-button-transparent {
+  opacity: 0;
+}

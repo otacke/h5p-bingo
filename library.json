@@ -1,0 +1,22 @@
+{
+  "title": "Bingo",
+  "description": "Game for boring conferences and meetings",
+  "majorVersion": 1,
+  "minorVersion": 0,
+  "patchVersion": 0,
+  "runnable": 1,
+  "author": "otacke",
+  "license": "MIT",
+  "machineName": "H5P.Bingo",
+  "embedTypes": [
+    "iframe"
+  ],
+  "preloadedJs": [
+    {
+      "path": "dist/dist.js"
+    }
+  ],
+  "preloadedCss": [],
+  "preloadedDependencies": [],
+  "editorDependencies": []
+}

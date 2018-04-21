@@ -1,0 +1,36 @@
+{
+  "name": "h5p-bingo",
+  "version": "1.0.0",
+  "description": "Game for boring conferences or meetings ;-)",
+  "private": true,
+  "scripts": {
+    "test": "ava",
+    "build": "cross-env NODE_ENV='production' webpack -p",
+    "watch": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/otacke/h5p-bingo.git"
+  },
+  "keywords": [
+    "h5p",
+    "game",
+    "bingo"
+  ],
+  "author": "otacke",
+  "license": "MIT",
+  "devDependencies": {
+    "ava": "^0.19.1",
+    "babel-cli": "^6.23.0",
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
+    "babel-plugin-transform-object-assign": "^6.22.0",
+    "babel-preset-latest": "^6.22.0",
+    "cross-env": "^4.0.0",
+    "css-loader": "^0.26.2",
+    "style-loader": "^0.13.2",
+    "url-loader": "^1.0.1",
+    "webpack": "^2.2.1"
+  },
+  "dependencies": {}
+}
