@@ -64,7 +64,7 @@ class Button extends H5P.EventDispatcher {
     this.button.classList.add('h5p-button-spinning');
     setTimeout(function () {
       that.button.classList.remove('h5p-button-spinning');
-    }, 400);
+    }, 300);
   }
 }
 
