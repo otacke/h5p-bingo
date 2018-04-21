@@ -18,13 +18,6 @@
     "max": 7
   },
   {
-    "label": "Sound",
-    "importance": "low",
-    "name": "sound",
-    "type": "audio",
-    "optional": true
-  },
-  {
     "label": "Joker",
     "description": "Will place an unturnable joker in the center.",
     "importance": "low",

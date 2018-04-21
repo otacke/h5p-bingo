@@ -1,6 +1,6 @@
 {
   "name": "h5p-bingo",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Game for boring conferences or meetings ;-)",
   "private": true,
   "scripts": {
@@ -17,7 +17,7 @@
     "game",
     "bingo"
   ],
-  "author": "otacke",
+  "author": "Oliver Tacke",
   "license": "MIT",
   "devDependencies": {
     "ava": "^0.19.1",

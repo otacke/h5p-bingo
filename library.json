@@ -5,18 +5,17 @@
   "minorVersion": 1,
   "patchVersion": 0,
   "runnable": 1,
-  "author": "otacke",
+  "embedTypes": ["iframe"],
+  "author": "Oliver Tacke",
   "license": "MIT",
   "machineName": "H5P.Bingo",
-  "embedTypes": [
-    "iframe"
-  ],
+  "coreApi": {
+    "majorVersion": 1,
+    "minorVersion": 13
+  },
   "preloadedJs": [
     {
       "path": "dist/dist.js"
     }
-  ],
-  "preloadedCss": [],
-  "preloadedDependencies": [],
-  "editorDependencies": []
+  ]
 }
