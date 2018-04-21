@@ -1,3 +1,6 @@
+/* jslint esversion: 6 */
+/* globals: H5P */
+
 class Button extends H5P.EventDispatcher {
   /**
    * @constructor
@@ -20,9 +23,16 @@ class Button extends H5P.EventDispatcher {
     this.button.appendChild(this.buttonLabel);
     this.button.appendChild(this.buttonSymbol);
     this.button.addEventListener('click', () => {
-      this.toggle();
-      this.trigger('click', this.id);
+      if (!this.isBlocked()) {
+        this.toggle();
+        this.trigger('click', this.id);
+      }
     });
+  }
+
+  toggleBlocked(blocked) {
+    blocked = (!this.isBlocked() || blocked) ? true : false;
+    this.button.classList.toggle('h5p-button-blocked', blocked);
   }
 
   toggle (visible) {
@@ -46,6 +56,15 @@ class Button extends H5P.EventDispatcher {
 
   isBlocked () {
     return this.button.classList.contains('h5p-button-blocked');
+  }
+
+  animate () {
+    const that = this;
+
+    this.button.classList.add('h5p-button-spinning');
+    setTimeout(function () {
+      that.button.classList.remove('h5p-button-spinning');
+    }, 400);
   }
 }
 

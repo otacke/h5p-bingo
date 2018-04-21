@@ -1,3 +1,6 @@
+/* jslint esversion: 6 */
+/* globals: H5P */
+
 import Button from "../scripts/button";
 
 export default class Bingo extends H5P.EventDispatcher {
@@ -40,7 +43,83 @@ export default class Bingo extends H5P.EventDispatcher {
       return buttons;
     };
 
+    this.animatePatterns = function (patterns) {
+      patterns.forEach(pattern => {
+        this.animatePattern(pattern);
+      });
+    };
+
+    /**
+     * Animate a pattern.
+     *
+     * @param {object[]} pattern - Pattern to be animated.
+     */
+    this.animatePattern = function (pattern) {
+      if (pattern.length > 0) {
+
+        this.buttons[pattern[0]].animate();
+        setTimeout(() => {
+          this.animatePattern(pattern.slice(1));
+        }, 100);
+      }
+    };
+
+    /**
+     * Build all winning patterns for a Bingo sheet.
+     *
+     * @param {number} size - Sheet size.
+     * @return {object[]} Arrays containing patterns.
+     */
+    this.buildWinningPatterns = function (size) {
+      const patterns = [];
+      const diagonal1 = [];
+      const diagonal2 = [];
+      for (let i = 0; i < size; i++) {
+        const col = [];
+        const row = [];
+        for (let j = 0; j < size; j++) {
+          col.push(i * size + j);
+          row.push(j * size + i);
+        }
+        patterns.push(col);
+        patterns.push(row);
+
+        diagonal1.push(i * (size + 1));
+        diagonal2.push((i + 1) * (size - 1));
+      }
+      patterns.push(diagonal1);
+      patterns.push(diagonal2);
+      return patterns;
+    };
+
+    /**
+     * Check if game has been won.
+     */
     this.checkWon = function () {
+      const winners = this.getWinners(this.winningPatterns);
+
+      if (winners.length !== 0) {
+        this.buttons.forEach(button => {
+          button.toggleBlocked(true);
+        });
+        this.animatePatterns(winners);
+      }
+    };
+
+    /**
+     * Check patterns for matching the win condition.
+     *
+     * @param {object[]} patterns - Arrays containing the fields.
+     * @return {object[]} All patterns matching the win condition.
+     */
+    this.getWinners = function (patterns) {
+      const winners = [];
+      patterns.forEach(pattern => {
+        if (pattern.every(field => this.buttons[field].isActivated())) {
+          winners.push(pattern);
+        }
+      });
+      return winners;
     };
 
     /**
@@ -52,7 +131,7 @@ export default class Bingo extends H5P.EventDispatcher {
       let words;
       if (!this.params.words) {
         words = [];
-        for (let i = 1; i <= 15 * this.params.size; i++) {
+        for (let i = 1; i <= 3 * this.params.size * this.params.size; i++) {
           words.push(i);
         }
       }
@@ -72,9 +151,7 @@ export default class Bingo extends H5P.EventDispatcher {
           if (this.params.joker && (this.params.size % 2 === 1) && (i === Math.floor(this.params.size/2)) && (j === Math.floor(this.params.size/2))) {
             const button = this.buttons[i * this.params.size + j];
             button.toggle(true);
-            button.getDOMElement().removeChild(button.getDOMElement().firstChild);
-            button.getDOMElement().classList.add('h5p-button-activated');
-            button.getDOMElement().classList.add('h5p-button-blocked');
+            button.toggleBlocked(true);
           }
         }
         this.board.appendChild(row);
@@ -86,5 +163,8 @@ export default class Bingo extends H5P.EventDispatcher {
 
       this.trigger('resize');
     };
+
+    this.winningPatterns = this.buildWinningPatterns(this.params.size);
+
   }
 }
