@@ -178,10 +178,6 @@ export default class Bingo extends H5P.EventDispatcher {
 
   }
 
-  init() {
-
-  }
-
   /**
    * Check if some kind of answer was given -- not applicable.
    *
@@ -260,6 +256,11 @@ export default class Bingo extends H5P.EventDispatcher {
     return xAPIEvent;
   }
 
+  /**
+   * Detect winning/completion state
+   *
+   * @return {boolean} True, if Bingo.
+   */
   hasBingo () {
     return this.bingo;
   }
