@@ -14,6 +14,15 @@ export default class Bingo extends H5P.EventDispatcher {
   constructor (params, contentId, extras = {}) {
     super();
     this.params = params;
+
+    /*
+     * this.params.behaviour.enableSolutionsButton and this.params.behaviour.enableRetry are used by
+     * contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-8} and
+     * {@link https://h5p.org/documentation/developers/contracts#guides-header-9}
+     */
+    this.params.behaviour.enableSolutionsButton = false;
+    this.params.behaviour.enableRetry = true;
+
     this.params.joker = this.params.joker || false;
     this.params.size = params.size || 5;
 
@@ -103,6 +112,7 @@ export default class Bingo extends H5P.EventDispatcher {
           button.toggleBlocked(true);
         });
         this.animatePatterns(winners);
+        this.bingo = true;
       }
     };
 
@@ -166,5 +176,91 @@ export default class Bingo extends H5P.EventDispatcher {
 
     this.winningPatterns = this.buildWinningPatterns(this.params.size);
 
+  }
+
+  init() {
+
+  }
+
+  /**
+   * Check if some kind of answer was given -- not applicable.
+   *
+   * @return {boolean} True, if answer was given.
+   * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-1}
+   */
+  getAnswerGiven () {
+    return true;
+  }
+
+  /**
+   * Get latest score -- not applicable.
+   *
+   * @return {number} Latest score.
+   * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-2}
+   */
+  getScore () {
+    return null;
+  }
+
+  /**
+   * Get maximum possible score -- not applicable.
+   *
+   * @return {number} Score necessary for mastering.
+   * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-3}
+   */
+  getMaxScore () {
+    return null;
+  }
+
+  /**
+   * Show solution -- not applicable.
+   *
+   * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-4}
+   */
+  showSolutions () {
+    return;
+  }
+
+  /**
+   * Reset task.
+   *
+   * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-5}
+   */
+  resetTask () {
+    this.bingo = false;
+  }
+
+  /**
+   * Get xAPI data.
+   *
+   * @return {Object} xAPI statement.
+   * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-6}
+   */
+  getXAPIData () {
+    return {
+      statement: this.getXAPIAnswerEvent().data.statement
+    };
+  }
+
+  /**
+   * Build xAPI answer event.
+   *
+   * @return {H5P.XAPIEvent} xAPI answer event.
+   */
+  getXAPIAnswerEvent () {
+    const xAPIEvent = this.createDictationXAPIEvent('answered');
+
+    xAPIEvent.setScoredResult(this.getScore(), this.getMaxScore(), this, true, this.hasBingo());
+    // TODO: Add all activated buttons here
+    xAPIEvent.data.statement.result.response = this.buttons
+      .filter(button => button.isActivated())
+      .map(button => button.getLabel())
+      .join('[,]');
+
+    return xAPIEvent;
+  }
+
+  hasBingo () {
+    return this.bingo;
   }
 }

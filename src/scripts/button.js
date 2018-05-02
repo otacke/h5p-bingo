@@ -66,6 +66,10 @@ class Button extends H5P.EventDispatcher {
       that.button.classList.remove('h5p-button-spinning');
     }, 300);
   }
+
+  getLabel() {
+    return this.buttonLabel.innerHTML;
+  }
 }
 
 export default Button;
