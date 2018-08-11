@@ -1,5 +1,5 @@
 /* jslint esversion: 6 */
-/* globals: H5P */
+/* globals H5P */
 
 class Button extends H5P.EventDispatcher {
   /**
@@ -10,7 +10,9 @@ class Button extends H5P.EventDispatcher {
     this.id = id;
     this.buttonLabel = document.createElement('div');
     this.buttonLabel.classList.add('h5p-bingo-button-label');
-    this.buttonLabel.innerHTML = label;
+    if (typeof label !== 'undefined') {
+      this.buttonLabel.innerHTML = label;  
+    }
 
     this.buttonSymbol = document.createElement('div');
     this.buttonSymbol.classList.add('h5p-bingo-button-symbol');
@@ -24,26 +26,27 @@ class Button extends H5P.EventDispatcher {
     this.button.appendChild(this.buttonSymbol);
     this.button.addEventListener('click', () => {
       if (!this.isBlocked()) {
-        this.toggle();
+        this.toggleActivated();
         this.trigger('click', this.id);
       }
     });
   }
 
-  toggleBlocked(blocked) {
+  toggleBlocked (blocked) {
     blocked = (!this.isBlocked() || blocked) ? true : false;
     this.button.classList.toggle('h5p-button-blocked', blocked);
   }
 
-  toggle (visible) {
+  toggleActivated (activated) {
     if (this.isBlocked ()) {
       return;
     }
-
-    visible = (!this.isActivated() || visible) ? true : false;
-      this.button.classList.toggle('h5p-button-activated', visible);
-      this.buttonLabel.classList.toggle('h5p-button-transparent', visible);
-      this.buttonSymbol.classList.toggle('h5p-button-transparent', !visible);
+    if (typeof activated === 'undefined') {
+      activated = !this.isActivated() ? true : false;
+    }
+      this.button.classList.toggle('h5p-button-activated', activated);
+      this.buttonLabel.classList.toggle('h5p-button-transparent', activated);
+      this.buttonSymbol.classList.toggle('h5p-button-transparent', !activated);
   }
 
   getDOMElement () {
@@ -67,8 +70,17 @@ class Button extends H5P.EventDispatcher {
     }, 300);
   }
 
+  setLabel(label) {
+    this.buttonLabel.innerHTML = label;
+  }
+
   getLabel() {
     return this.buttonLabel.innerHTML;
+  }
+
+  reset() {
+    this.toggleBlocked(false);
+    this.toggleActivated(false);
   }
 }
 
