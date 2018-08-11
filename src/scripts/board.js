@@ -6,8 +6,14 @@ import Button from './button';
 class Board extends H5P.EventDispatcher {
   /**
    * @constructor
+   *
+   * @param {object} params - Parameters from semantics.
+   * @param {string} params.words - List of words/phrases/numbers.
+   * @param {number} params.size - Size of the board.
+   * @param {boolean} params.shuffleOnRetry - If true, board will be shuffled on retry.
+   * @param {function} params.buttonClicked - Callback to check if game is won.
    */
-  constructor(params) {
+  constructor (params) {
     super();
 
     this.params = params;
@@ -30,7 +36,6 @@ class Board extends H5P.EventDispatcher {
 
     // Setup board
     this.board = document.createElement('div');
-
     for (let i = 0; i < this.params.size; i++) {
       const row = document.createElement('div');
       row.classList.add('h5p-bingo-column');
@@ -63,7 +68,7 @@ class Board extends H5P.EventDispatcher {
     for (let i = 0; i < size * size; i++) {
       const button = new Button(i);
       button.on('click', () => {
-        this.params.checkWon();
+        this.params.buttonClicked();
       });
       buttons.push(button);
     }
@@ -94,7 +99,7 @@ class Board extends H5P.EventDispatcher {
    *
    * @param {boolean} enabled - If true, joker should be set.
    */
-  setJoker(enabled) {
+  setJoker (enabled) {
     if (enabled !== true || this.params.size % 2 === 0) {
       return;
     }

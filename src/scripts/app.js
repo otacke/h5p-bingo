@@ -112,7 +112,7 @@ export default class Bingo extends H5P.Question {
         size: this.params.size,
         shuffleOnRetry: this.params.behaviour.shuffleOnRetry,
         joker: this.params.joker,
-        checkWon: this.checkWon
+        buttonClicked: this.checkWon
       });
       this.setContent(this.board.getDOMElement());
 

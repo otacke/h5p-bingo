@@ -4,14 +4,18 @@
 class Button extends H5P.EventDispatcher {
   /**
    * @constructor
+   *
+   * @param {number} id - Button's ID.
+   * @param {string} [label] - Button's label.
    */
-  constructor(id, label) {
+  constructor (id, label) {
     super();
+
     this.id = id;
     this.buttonLabel = document.createElement('div');
     this.buttonLabel.classList.add('h5p-bingo-button-label');
     if (typeof label !== 'undefined') {
-      this.buttonLabel.innerHTML = label;  
+      this.buttonLabel.innerHTML = label;
     }
 
     this.buttonSymbol = document.createElement('div');
@@ -32,11 +36,39 @@ class Button extends H5P.EventDispatcher {
     });
   }
 
+  /**
+   * Get the button's DOM element.
+   *
+   * @return {object} Button's DOM element.
+   */
+  getDOMElement () {
+    return this.button;
+  }
+
+  /**
+   * Toggle button's blocked state.
+   *
+   * @param {boolean} [blocked] - Optional override.
+   */
   toggleBlocked (blocked) {
     blocked = (!this.isBlocked() || blocked) ? true : false;
     this.button.classList.toggle('h5p-button-blocked', blocked);
   }
 
+  /**
+   * Determine if button is blocked.
+   *
+   * @return {boolean} True, if button is activated, else false.
+   */
+  isBlocked () {
+    return this.button.classList.contains('h5p-button-blocked');
+  }
+
+  /**
+   * Toggle button's activated state.
+   *
+   * @param {boolean} [blocked] - Optional override.
+   */
   toggleActivated (activated) {
     if (this.isBlocked ()) {
       return;
@@ -44,43 +76,58 @@ class Button extends H5P.EventDispatcher {
     if (typeof activated === 'undefined') {
       activated = !this.isActivated() ? true : false;
     }
-      this.button.classList.toggle('h5p-button-activated', activated);
-      this.buttonLabel.classList.toggle('h5p-button-transparent', activated);
-      this.buttonSymbol.classList.toggle('h5p-button-transparent', !activated);
+    this.button.classList.toggle('h5p-button-activated', activated);
+    this.buttonLabel.classList.toggle('h5p-button-transparent', activated);
+    this.buttonSymbol.classList.toggle('h5p-button-transparent', !activated);
   }
 
-  getDOMElement () {
-    return this.button;
-  }
-
+  /**
+   * Determine if button is activated.
+   *
+   * @return {boolean} True, if button is activated, else false.
+   */
   isActivated () {
     return this.button.classList.contains('h5p-button-activated');
   }
 
-  isBlocked () {
-    return this.button.classList.contains('h5p-button-blocked');
-  }
-
-  animate () {
-    const that = this;
-
-    this.button.classList.add('h5p-button-spinning');
-    setTimeout(function () {
-      that.button.classList.remove('h5p-button-spinning');
-    }, 300);
-  }
-
-  setLabel(label) {
+  /**
+   * Set button label.
+   *
+   * @param {string} label - Button label.
+   */
+  setLabel (label) {
     this.buttonLabel.innerHTML = label;
   }
 
-  getLabel() {
+  /**
+   * Get button label.
+   *
+   * @return {string} Button label.
+   */
+  getLabel () {
     return this.buttonLabel.innerHTML;
   }
 
-  reset() {
+  /**
+   * Reset button states.
+   */
+  reset () {
     this.toggleBlocked(false);
     this.toggleActivated(false);
+  }
+
+  /**
+   * Animate button.
+   *
+   * @param {number} [duration=300] - Duration in ms.
+   */
+  animate (duration=300) {
+    const that = this;
+
+    this.button.classList.add('h5p-button-spinning');
+    setTimeout(() => {
+      that.button.classList.remove('h5p-button-spinning');
+    }, duration);
   }
 }
 
