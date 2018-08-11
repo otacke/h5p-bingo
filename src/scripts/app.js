@@ -3,7 +3,11 @@
 
 import Board from './board';
 
+// Used for xAPI title and task description
+const H5P_BINGO_DEFAULT_DESCRIPTION = 'Bingo';
+
 export default class Bingo extends H5P.Question {
+
   /**
    * @constructor
    *
@@ -68,6 +72,10 @@ export default class Bingo extends H5P.Question {
         this.board.blockButtons();
         this.board.animatePatterns(winners);
         this.bingo = true;
+
+        // Trigger xAPI statement
+        this.trigger(this.getXAPIAnswerEvent());
+
         if (this.params.behaviour.enableRetry) {
           this.showButton('try-again');
         }
@@ -190,17 +198,51 @@ export default class Bingo extends H5P.Question {
      * @return {H5P.XAPIEvent} XAPI answer event.
      */
     this.getXAPIAnswerEvent = () => {
-      const xAPIEvent = this.createDictationXAPIEvent('answered');
+      const xAPIEvent = this.createBingoXAPIEvent('answered');
 
       xAPIEvent.setScoredResult(this.getScore(), this.getMaxScore(), this, true, this.hasBingo());
-      // TODO: Add all activated buttons here
-      xAPIEvent.data.statement.result.response = this.buttons
-        .filter(button => button.isActivated())
-        .map(button => button.getLabel())
+      xAPIEvent.data.statement.result.response = this.board
+        .getActivatedButtonsLabels()
         .join('[,]');
 
       return xAPIEvent;
     };
+
+    /**
+     * Create an xAPI event for Bingo.
+     *
+     * @param {string} verb - Short id of the verb we want to trigger.
+     * @return {H5P.XAPIEvent} Event template.
+     */
+    this.createBingoXAPIEvent = (verb) => {
+      const xAPIEvent = this.createXAPIEventTemplate(verb);
+      this.extend(
+        xAPIEvent.getVerifiedStatementValue(['object', 'definition']),
+        this.getxAPIDefinition());
+      return xAPIEvent;
+    };
+
+    /**
+     * Get the xAPI definition for the xAPI object.
+     *
+     * @return {object} XAPI definition.
+     */
+    this.getxAPIDefinition = () => {
+      const definition = {};
+      definition.name = {'en-US': H5P_BINGO_DEFAULT_DESCRIPTION};
+      definition.description = {'en-US': this.getTitle()};
+      definition.type = 'http://adlnet.gov/expapi/activities/cmi.interaction';
+      definition.interactionType = 'other';
+
+      return definition;
+    };
+
+    /**
+     * Get the xAPI definition for the xAPI object.
+     *
+     * @return {object} XAPI definition.
+     */
+    this.getTitle = () => (this.params.taskDescription) ? this.params.taskDescription : H5P_BINGO_DEFAULT_DESCRIPTION;
 
     /**
      * Detect winning/completion state.
@@ -208,5 +250,27 @@ export default class Bingo extends H5P.Question {
      * @return {boolean} True, if Bingo.
      */
     this.hasBingo = () => this.bingo;
+
+    /**
+     * Extend an array just like JQuery's extend.
+     *
+     * @param {object} arguments - Objects to be merged.
+     * @return {object} Merged objects.
+     */
+    this.extend = function () {
+      for (let i = 1; i < arguments.length; i++) {
+        for (let key in arguments[i]) {
+          if (arguments[i].hasOwnProperty(key)) {
+            if (typeof arguments[0][key] === 'object' && typeof arguments[i][key] === 'object') {
+              this.extend(arguments[0][key], arguments[i][key]);
+            }
+            else {
+              arguments[0][key] = arguments[i][key];
+            }
+          }
+        }
+      }
+      return arguments[0];
+    };
   }
 }

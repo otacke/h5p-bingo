@@ -128,6 +128,21 @@ class Board extends H5P.EventDispatcher {
   }
 
   /**
+   * Get labels from all buttons that are activated.
+   *
+   * @return {object[]} Label strings.
+   */
+  getActivatedButtonsLabels() {
+    return this.buttons
+      .filter(
+        button => button.isActivated() && button.getLabel() !== ''
+      )
+      .map(
+        button => button.getLabel()
+      );
+  }
+
+  /**
    * Block all buttons.
    */
   blockButtons () {
