@@ -93,7 +93,7 @@
       },
       {
         "label": "Shuffle on retry",
-        "description": "If checked, the words/phrases/numbers will be shuffled on retry",
+        "description": "If checked, the words/phrases/numbers will be shuffled on retry.",
         "importance": "low",
         "name": "shuffleOnRetry",
         "type": "boolean",
