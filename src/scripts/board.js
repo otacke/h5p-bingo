@@ -63,7 +63,7 @@ class Board extends H5P.EventDispatcher {
    * @param {number} [arguments.fontSizeMin=6] Minimum font size in px.
    * @param {boolean} [arguments.fitLabels] If true, scale labels to fit into buttons
    */
-  resizeButtons({shrinkFactor, fontSizeMin=6, fitLabels}={}) {
+  resizeButtons({shrinkFactor, fontSizeMin=1, fitLabels}={}) {
     /**
      * Scale font to fit longest word into button.
      *
@@ -84,31 +84,19 @@ class Board extends H5P.EventDispatcher {
     };
 
     // Compute style values
-    const margin = this.board.clientWidth / 100;
-    const border = this.board.clientWidth / 100 / 2.5;
-    const buttonWidth = this.board.clientWidth / this.params.size -
-      2 * border -
-      3 * margin;
+    const buttonWidth = this.buttons[0].getDOMElement().clientWidth;
 
     // Set default font size to style's font size before checking for fitting
     if (typeof shrinkFactor === 'undefined') {
-      const fontSizeBase = parseInt(window.getComputedStyle(this.board)
+      const fontSizeBase = parseInt(window.getComputedStyle(document.body)
         .getPropertyValue('font-size'));
       shrinkFactor = buttonWidth / (fontSizeBase * 10);
     }
     const fontSize = Math.max(buttonWidth / (shrinkFactor * 10), fontSizeMin);
 
     // Set values
-    this.board.style.padding = 2 * margin + 'px';
-    this.buttons.forEach(button => {
-      const buttonDOM = button.getDOMElement();
-      buttonDOM.style.width = buttonWidth + 'px';
-      buttonDOM.style.height = buttonDOM.style.width;
-      buttonDOM.style.margin = margin + 'px';
-      buttonDOM.style.borderWidth = border + 'px';
-      buttonDOM.style.fontSize = fontSize + 'px';
-      buttonDOM.style.lineHeight = 1.5 * fontSize + 'px';
-    });
+    this.board.style.fontSize = fontSize + 'px';
+    this.board.style.lineHeight = 1.5 * fontSize + 'px';
 
     // Fit labels into buttons
     if (fitLabels === true && fontSize > fontSizeMin) {
