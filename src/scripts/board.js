@@ -17,9 +17,6 @@ class Board extends H5P.EventDispatcher {
   constructor (params) {
     super();
 
-    // Default shrink factor for fitting labels
-    this.shrinkFactor = 0.8;
-
     this.params = params;
 
     // Set words
@@ -53,7 +50,7 @@ class Board extends H5P.EventDispatcher {
 
     this.on('resize', () => {
       setTimeout(() => {
-        this.resizeButtons(this.shrinkFactor, {fitLabels: this.params.fitLabels});
+        this.resizeButtons({fitLabels: this.params.fitLabels});
       }, 0);
     });
   }
@@ -61,40 +58,45 @@ class Board extends H5P.EventDispatcher {
   /**
    * Resize buttons.
    *
-   * @param {number} [shrinkFactor=1] Larger values mean smaller fonts.
-   * @param {object} [options] Options.
-   * @param {boolean} [options.fitLabels] If true, scale labels to fit into buttons
-   * @param {number} [options.fontSizeMin] Minimal font size in px.
+   * @param {object} [arguments] Optional arguments.
+   * @param {number} [arguments.shrinkFactor] Shrink factor.
+   * @param {number} [arguments.fontSizeMin=6] Minimum font size in px.
+   * @param {boolean} [arguments.fitLabels] If true, scale labels to fit into buttons
    */
-  resizeButtons(shrinkFactor=1, options={}) {
+  resizeButtons({shrinkFactor, fontSizeMin=6, fitLabels}={}) {
     /**
      * Scale font to fit longest word into button.
      *
-     * @param {number} shrinkFactor Shrink factor.
-     * @param {object} options Options.
+     * @param {object} [arguments] Optional arguments.
+     * @param {number} [arguments.shrinkFactor] Shrink factor.
+     * @param {number} [arguments.fontSizeMin=6] Minimum font size in px.
+     * @param {boolean} [arguments.fitLabels] If true, scale labels to fit into buttons
      */
-    const fitLabels = (shrinkFactor, options) => {
+    const fit = ({shrinkFactor, fontSizeMin=6, fitLabels}={}) => {
       const longestLabelWidth = Math.max(
         ...this.buttons.map(button => button.getLabelWidth())
       );
       const buttonWidth = this.buttons[0].getDOMElement().clientWidth;
 
       if (longestLabelWidth > buttonWidth) {
-        this.resizeButtons(shrinkFactor * 1.1, options);
+        this.resizeButtons({shrinkFactor: shrinkFactor * 1.1, fontSizeMin, fitLabels});
       }
     };
 
-    // Default minimal font size
-    options.fontSizeMin = options.fontSizeMin || 6;
-
-    // Compute base values
-    const margin = this.board.clientWidth/100;
+    // Compute style values
+    const margin = this.board.clientWidth / 100;
     const border = this.board.clientWidth / 100 / 2.5;
-    const buttonWidth = -2*border - 3*margin + this.board.clientWidth / this.params.size;
-    const fontSize = Math.max(
-      buttonWidth / (shrinkFactor * 10),
-      options.fontSizeMin
-    );
+    const buttonWidth = this.board.clientWidth / this.params.size -
+      2 * border -
+      3 * margin;
+
+    // Set default font size to style's font size before checking for fitting
+    if (typeof shrinkFactor === 'undefined') {
+      const fontSizeBase = parseInt(window.getComputedStyle(this.board)
+        .getPropertyValue('font-size'));
+      shrinkFactor = buttonWidth / (fontSizeBase * 10);
+    }
+    const fontSize = Math.max(buttonWidth / (shrinkFactor * 10), fontSizeMin);
 
     // Set values
     this.board.style.padding = 2 * margin + 'px';
@@ -104,14 +106,13 @@ class Board extends H5P.EventDispatcher {
       buttonDOM.style.height = buttonDOM.style.width;
       buttonDOM.style.margin = margin + 'px';
       buttonDOM.style.borderWidth = border + 'px';
-
       buttonDOM.style.fontSize = fontSize + 'px';
       buttonDOM.style.lineHeight = 1.5 * fontSize + 'px';
     });
 
     // Fit labels into buttons
-    if (options.fitLabels === true && fontSize > options.fontSizeMin) {
-      fitLabels(shrinkFactor, options);
+    if (fitLabels === true && fontSize > fontSizeMin) {
+      fit({shrinkFactor, fontSizeMin, fitLabels});
     }
   }
 
