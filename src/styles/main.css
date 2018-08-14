@@ -21,10 +21,10 @@
   border-radius: 0.5em;
   position: relative;
   text-align: center;
-  margin: 1vw;
   background: white;
   transition: transform 0.8s;
   box-shadow: 0px 0px 1.5em 0.2em rgba(0,0,0,0.31);
+  overflow: hidden;
 }
 
 .h5p-bingo .h5p-bingo-button:not(.h5p-button-blocked):hover {

@@ -109,6 +109,15 @@ class Button extends H5P.EventDispatcher {
   }
 
   /**
+   * Get button label width.
+   *
+   * @return {number} Button label width.
+   */
+  getLabelWidth () {
+    return this.buttonLabel.offsetWidth;
+  }
+
+  /**
    * Reset button states.
    */
   reset () {
