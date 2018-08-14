@@ -10,13 +10,16 @@
 .h5p-bingo .h5p-bingo-column {
   display: flex;
   flex-direction: column;
+  flex: 1;
   align-items: center;
   width: 100%;
+  min-width: 0;
 }
 
 .h5p-bingo .h5p-bingo-button {
   display: flex;
   justify-content: center;
+  flex: 1;
   align-items: center;
   border: 0.1em solid white;
   border-radius: 0.5em;
