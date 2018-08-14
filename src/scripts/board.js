@@ -12,7 +12,6 @@ class Board extends H5P.EventDispatcher {
    * @param {number} params.size - Size of the board.
    * @param {boolean} params.shuffleOnRetry - If true, board will be shuffled on retry.
    * @param {function} params.buttonClicked - Callback to check if game is won.
-   * @param {boolean} params.fitLabels - If true, force labels to fit into buttons.
    */
   constructor (params) {
     super();
@@ -48,9 +47,14 @@ class Board extends H5P.EventDispatcher {
 
     this.board.classList.add('h5p-bingo-board');
 
+    // Base font size to be used if possible
+    this.fontSizeBase = parseInt(window.getComputedStyle(document.body)
+      .getPropertyValue('font-size'));
+
+    // Resize font sizes and thus board
     this.on('resize', () => {
       setTimeout(() => {
-        this.resizeButtons({fitLabels: this.params.fitLabels});
+        this.resizeButtons();
       }, 0);
     });
   }
@@ -59,48 +63,30 @@ class Board extends H5P.EventDispatcher {
    * Resize buttons.
    *
    * @param {object} [arguments] Optional arguments.
-   * @param {number} [arguments.shrinkFactor] Shrink factor.
-   * @param {number} [arguments.fontSizeMin=6] Minimum font size in px.
-   * @param {boolean} [arguments.fitLabels] If true, scale labels to fit into buttons
+   * @param {number} [arguments.startFontSize] Shrink factor.
+   * @param {number} [arguments.fontSizeMin=-Infinity] Minimum font size in px.
+   * @param {number} [arguments.fontSizeMax=Infinity] Maximum font size in px.
    */
-  resizeButtons({shrinkFactor, fontSizeMin=1, fitLabels}={}) {
-    /**
-     * Scale font to fit longest word into button.
-     *
-     * @param {object} [arguments] Optional arguments.
-     * @param {number} [arguments.shrinkFactor] Shrink factor.
-     * @param {number} [arguments.fontSizeMin=6] Minimum font size in px.
-     * @param {boolean} [arguments.fitLabels] If true, scale labels to fit into buttons
-     */
-    const fit = ({shrinkFactor, fontSizeMin=6, fitLabels}={}) => {
-      const longestLabelWidth = Math.max(
-        ...this.buttons.map(button => button.getLabelWidth())
-      );
-      const buttonWidth = this.buttons[0].getDOMElement().clientWidth;
+  resizeButtons({startFontSize=this.fontSizeBase, fontSizeMin=-Infinity, fontSizeMax=Infinity}={}) {
+    const fontSize = Math.min(Math.max(startFontSize, fontSizeMin), fontSizeMax);
 
-      if (longestLabelWidth > buttonWidth) {
-        this.resizeButtons({shrinkFactor: shrinkFactor * 1.1, fontSizeMin, fitLabels});
-      }
-    };
-
-    // Compute style values
-    const buttonWidth = this.buttons[0].getDOMElement().clientWidth;
-
-    // Set default font size to style's font size before checking for fitting
-    if (typeof shrinkFactor === 'undefined') {
-      const fontSizeBase = parseInt(window.getComputedStyle(document.body)
-        .getPropertyValue('font-size'));
-      shrinkFactor = buttonWidth / (fontSizeBase * 10);
+    // Determine button with widest label as future reference
+    if (!this.widestLabelId) {
+      const lengths = this.buttons.map(button => button.getLabelWidth());
+      this.widestLabelId = lengths.reduce((max, cur, index, arr) => cur > arr[max] ? index : max, 0);
     }
-    const fontSize = Math.max(buttonWidth / (shrinkFactor * 10), fontSizeMin);
 
     // Set values
     this.board.style.fontSize = fontSize + 'px';
     this.board.style.lineHeight = 1.5 * fontSize + 'px';
 
     // Fit labels into buttons
-    if (fitLabels === true && fontSize > fontSizeMin) {
-      fit({shrinkFactor, fontSizeMin, fitLabels});
+    if (fontSize > fontSizeMin) {
+      const longestLabelWidth = this.buttons[this.widestLabelId].getLabelWidth();
+      const buttonWidth = this.buttons[this.widestLabelId].getDOMElement().clientWidth;
+      if (longestLabelWidth > buttonWidth) {
+        this.resizeButtons({startFontSize: startFontSize * 0.9, fontSizeMin});
+      }
     }
   }
 

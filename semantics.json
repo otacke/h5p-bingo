@@ -117,15 +117,6 @@
         "type": "boolean",
         "default": false,
         "optional": true
-      },
-      {
-        "label": "Fit labels",
-        "description": "Force long words to fit into labels. Can lead to small font sizes.",
-        "importance": "low",
-        "name": "fitLabels",
-        "type": "boolean",
-        "default": true,
-        "optional": true
       }
     ]
   },
