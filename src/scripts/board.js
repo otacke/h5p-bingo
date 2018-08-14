@@ -78,14 +78,13 @@ class Board extends H5P.EventDispatcher {
 
     // Set values
     this.board.style.fontSize = fontSize + 'px';
-    this.board.style.lineHeight = 1.5 * fontSize + 'px';
 
     // Fit labels into buttons
     if (fontSize > fontSizeMin) {
       const longestLabelWidth = this.buttons[this.widestLabelId].getLabelWidth();
       const buttonWidth = this.buttons[this.widestLabelId].getDOMElement().clientWidth;
       if (longestLabelWidth > buttonWidth) {
-        this.resizeButtons({startFontSize: startFontSize * 0.9, fontSizeMin});
+        this.resizeButtons({startFontSize: startFontSize * 0.9});
       }
     }
   }
