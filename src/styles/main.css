@@ -1,10 +1,9 @@
 .h5p-bingo .h5p-bingo-board {
   display: flex;
   flex-direction: row;
-  font-size: 1em;
   background: #f22626;
   padding: 1%;
-  line-height: 1.5;
+  line-height: 1.3em;
 }
 
 .h5p-bingo .h5p-bingo-column {
@@ -12,7 +11,6 @@
   flex-direction: column;
   flex: 1;
   align-items: center;
-  width: 100%;
   min-width: 0;
 }
 
@@ -30,7 +28,6 @@
   box-shadow: 0px 0px 1.5em 0.2em rgba(0,0,0,0.31);
   overflow: hidden;
   width: calc(90% - 0.2em);
-  height: 100%;
   margin: 5% 0;
 }
 

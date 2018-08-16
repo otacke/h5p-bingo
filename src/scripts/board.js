@@ -76,14 +76,28 @@ class Board extends H5P.EventDispatcher {
       this.widestLabelId = lengths.reduce((max, cur, index, arr) => cur > arr[max] ? index : max, 0);
     }
 
+    // Determine button with highest label as future reference
+    if (!this.highestLabelId) {
+      const widths = this.buttons.map(button => button.getLabelHeight());
+      this.highestLabelId = widths.reduce((max, cur, index, arr) => cur > arr[max] ? index : max, 0);
+    }
+
     // Set values
     this.board.style.fontSize = fontSize + 'px';
+
+    const buttonWidth = this.buttons[this.widestLabelId].getWidth();
+
+    // This feels really wrong, but gives us cross-browser squareness ...
+    this.buttons.forEach(button => {
+      button.setMaxHeight(buttonWidth + 'px');
+    });
 
     // Fit labels into buttons
     if (fontSize > fontSizeMin) {
       const longestLabelWidth = this.buttons[this.widestLabelId].getLabelWidth();
-      const buttonWidth = this.buttons[this.widestLabelId].getDOMElement().clientWidth;
-      if (longestLabelWidth > buttonWidth) {
+      const highestLabelHeight = this.buttons[this.highestLabelId].getLabelHeight();
+
+      if (longestLabelWidth > buttonWidth || highestLabelHeight > buttonWidth) {
         this.resizeButtons({startFontSize: startFontSize * 0.9});
       }
     }

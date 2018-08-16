@@ -118,6 +118,33 @@ class Button extends H5P.EventDispatcher {
   }
 
   /**
+   * Get button label width.
+   *
+   * @return {number} Button label width.
+   */
+  getLabelHeight () {
+    return this.buttonLabel.offsetHeight;
+  }
+
+  /**
+   * Get button width.
+   *
+   * @return {number} Button width.
+   */
+  getWidth () {
+    return this.button.offsetWidth;
+  }
+
+  /**
+   * Set button max Height.
+   *
+   * @param {number} height - Button height.
+   */
+  setMaxHeight (height) {
+    this.button.style.maxHeight = height;
+  }
+
+  /**
    * Reset button states.
    */
   reset () {
