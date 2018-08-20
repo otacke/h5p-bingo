@@ -29,6 +29,7 @@
   overflow: hidden;
   width: calc(90% - 0.2em);
   margin: 5% 0;
+  white-space: nowrap;
 }
 
 .h5p-bingo .h5p-bingo-button:not(.h5p-button-blocked):hover {
