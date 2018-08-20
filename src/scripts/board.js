@@ -234,6 +234,7 @@ class Board extends H5P.EventDispatcher {
     this.setJoker(this.params.joker);
     delete this.widestLabelId;
     delete this.highestLabelId;
+    this.trigger('resize');
   }
 
   /**
