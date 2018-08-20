@@ -68,6 +68,10 @@ class Board extends H5P.EventDispatcher {
    * @param {number} [arguments.fontSizeMax=Infinity] Maximum font size in px.
    */
   resizeButtons({startFontSize=this.fontSizeBase, fontSizeMin=-Infinity, fontSizeMax=Infinity}={}) {
+    if (this.preventResize === true) {
+      return;
+    }
+
     const fontSize = Math.min(Math.max(startFontSize, fontSizeMin), fontSizeMax);
 
     // Determine button with widest label as future reference
@@ -244,11 +248,19 @@ class Board extends H5P.EventDispatcher {
      * @param {number} [delay=100] - Optional delay between each animation.
      */
     const animatePattern = (pattern, delay=100) => {
+      // Stop resizing when animation plays
+      this.preventResize = true;
+
       if (pattern.length > 0) {
         this.buttons[pattern[0]].animate();
         setTimeout(() => {
           animatePattern(pattern.slice(1));
         }, delay);
+      }
+      else {
+        setTimeout(() => {
+          this.preventResize = false;
+        });
       }
     };
 
