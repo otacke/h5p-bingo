@@ -148,7 +148,7 @@ class Board extends H5P.EventDispatcher {
       if (filler.length === 0) {
         filler = words.slice();
       }
-      const label = filler.splice(Math.floor(Math.random() * filler.length), 1);
+      const label = filler.splice(Math.floor(Math.random() * filler.length), 1)[0];
       button.setLabel(label);
     });
   }
