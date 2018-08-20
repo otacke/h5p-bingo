@@ -132,7 +132,10 @@ class Button extends H5P.EventDispatcher {
    * @return {number} Button width.
    */
   getWidth () {
-    return this.button.offsetWidth;
+    const computedStyle = window.getComputedStyle(this.button, null);
+    const borderLeft = parseFloat(computedStyle.getPropertyValue('border-left-width'));
+    const borderRight = parseFloat(computedStyle.getPropertyValue('border-right-width'));
+    return this.button.offsetWidth - borderLeft - borderRight;
   }
 
   /**

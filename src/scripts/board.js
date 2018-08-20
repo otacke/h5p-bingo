@@ -48,7 +48,7 @@ class Board extends H5P.EventDispatcher {
     this.board.classList.add('h5p-bingo-board');
 
     // Base font size to be used if possible
-    this.fontSizeBase = parseInt(window.getComputedStyle(document.body)
+    this.fontSizeBase = parseFloat(window.getComputedStyle(document.body, null)
       .getPropertyValue('font-size'));
 
     // Resize font sizes and thus board
