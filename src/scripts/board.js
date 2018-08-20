@@ -76,14 +76,16 @@ class Board extends H5P.EventDispatcher {
 
     // Determine button with widest label as future reference
     if (!this.widestLabelId) {
-      const lengths = this.buttons.map(button => button.getLabelWidth());
-      this.widestLabelId = lengths.reduce((max, cur, index, arr) => cur > arr[max] ? index : max, 0);
+      this.widestLabelId = this.buttons
+        .map(button => button.getLabelWidth())
+        .reduce((max, cur, index, arr) => cur > arr[max] ? index : max, 0);
     }
 
     // Determine button with highest label as future reference
     if (!this.highestLabelId) {
-      const widths = this.buttons.map(button => button.getLabelHeight());
-      this.highestLabelId = widths.reduce((max, cur, index, arr) => cur > arr[max] ? index : max, 0);
+      this.highestLabelId = this.buttons
+        .map(button => button.getLabelHeight())
+        .reduce((max, cur, index, arr) => cur > arr[max] ? index : max, 0);
     }
 
     // Set values
