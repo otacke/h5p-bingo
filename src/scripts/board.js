@@ -226,6 +226,8 @@ class Board extends H5P.EventDispatcher {
       this.setButtonLabels(this.words);
     }
     this.setJoker(this.params.joker);
+    delete this.widestLabelId;
+    delete this.highestLabelId;
   }
 
   /**
