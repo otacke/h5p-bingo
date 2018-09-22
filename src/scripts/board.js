@@ -19,10 +19,10 @@ class Board extends H5P.EventDispatcher {
     this.params = params;
 
     // Set words
-    if (!this.params.words) {
-      this.words = [];
+    this.words = [];
+    if (!this.params.words || this.params.words.trim() === '') {
       for (let i = 1; i <= 3 * this.params.size * this.params.size; i++) {
-        this.words.push(i);
+        this.words.push(i.toString());
       }
     }
     else {
