@@ -46,6 +46,7 @@ class Board extends H5P.EventDispatcher {
     }
 
     this.board.classList.add('h5p-bingo-board');
+    this.board.style.background = this.params.visualization.backgroundColor;
 
     // Base font size to be used if possible
     this.fontSizeBase = parseFloat(window.getComputedStyle(document.body, null)

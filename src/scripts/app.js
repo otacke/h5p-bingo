@@ -30,6 +30,9 @@ export default class Bingo extends H5P.Question {
     this.params.joker = this.params.behaviour.joker || false;
     this.params.size = params.size || 5;
 
+    this.params.visualization = this.params.visualization || {};
+    this.params.visualization.backgroundColor = this.params.visualization.backgroundColor || '#f22626';
+
     /**
      * Build all winning patterns for a Bingo sheet.
      *
@@ -118,7 +121,8 @@ export default class Bingo extends H5P.Question {
         size: this.params.size,
         shuffleOnRetry: this.params.behaviour.shuffleOnRetry,
         joker: this.params.joker,
-        buttonClicked: this.checkWon
+        buttonClicked: this.checkWon,
+        visualization: this.params.visualization
       });
       this.setContent(this.board.getDOMElement());
 
