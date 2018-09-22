@@ -13,7 +13,7 @@ class Board extends H5P.EventDispatcher {
    * @param {boolean} params.shuffleOnRetry - If true, board will be shuffled on retry.
    * @param {function} params.buttonClicked - Callback to check if game is won.
    */
-  constructor (params) {
+  constructor(params) {
     super();
 
     this.params = params;
@@ -114,7 +114,7 @@ class Board extends H5P.EventDispatcher {
    *
    * @return {object} DOM element.
    */
-  getDOMElement () {
+  getDOMElement() {
     return this.board;
   }
 
@@ -124,7 +124,7 @@ class Board extends H5P.EventDispatcher {
    * @param {number} [size=5] - Size of the bingo board.
    * @return {object[]} Array as board.
    */
-  initButtons (size=5) {
+  initButtons(size=5) {
     const buttons = [];
     for (let i = 0; i < size * size; i++) {
       const button = new Button(i);
@@ -144,7 +144,7 @@ class Board extends H5P.EventDispatcher {
    *
    * @param {object[]} words - Words to set button labels to.
    */
-  setButtonLabels (words) {
+  setButtonLabels(words) {
     let filler = [];
     this.buttons.forEach(button => {
       if (filler.length === 0) {
@@ -160,7 +160,7 @@ class Board extends H5P.EventDispatcher {
    *
    * @param {boolean} enabled - If true, joker should be set.
    */
-  setJoker (enabled) {
+  setJoker(enabled) {
     if (enabled !== true || this.params.size % 2 === 0) {
       return;
     }
@@ -178,7 +178,7 @@ class Board extends H5P.EventDispatcher {
    * @param {object[]} patterns - Arrays containing the fields.
    * @return {object[]} All patterns matching the win condition.
    */
-  getMatches (patterns) {
+  getMatches(patterns) {
     const matches = [];
     patterns.forEach(pattern => {
       if (pattern.every(field => this.buttons[field].isActivated())) {
@@ -206,7 +206,7 @@ class Board extends H5P.EventDispatcher {
   /**
    * Block all buttons.
    */
-  blockButtons () {
+  blockButtons() {
     this.buttons.forEach(button => {
       button.toggleBlocked(true);
     });
@@ -215,7 +215,7 @@ class Board extends H5P.EventDispatcher {
   /**
    * Unblock all buttons.
    */
-  unblockButtons () {
+  unblockButtons() {
     this.buttons.forEach(button => {
       button.toggleBlocked(false);
     });
@@ -224,7 +224,7 @@ class Board extends H5P.EventDispatcher {
   /**
    * Reset the board.
    */
-  reset () {
+  reset() {
     this.buttons.forEach(button => {
       button.reset();
     });
@@ -243,7 +243,7 @@ class Board extends H5P.EventDispatcher {
    * @param {object[]} patterns - Sets of buttons' IDs to be animated.
    * @param {number} [delay=100] - Optional delay between each animation.
    */
-  animatePatterns (patterns, delay=100) {
+  animatePatterns(patterns, delay=100) {
     /**
      * Animate a pattern.
      *

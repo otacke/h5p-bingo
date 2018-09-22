@@ -12,10 +12,8 @@ export default class Bingo extends H5P.Question {
    * @constructor
    *
    * @param {object} params - Parameters from semantics.
-   * @param {string} contentId - Content ID.
-   * @param {object} [extras] - Content data (metadata/saves);
    */
-  constructor (params, contentId, extras = {}) {
+  constructor(params) {
     super('bingo');
 
     this.params = params || {};
