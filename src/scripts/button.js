@@ -8,7 +8,7 @@ class Button extends H5P.EventDispatcher {
    * @param {number} id - Button's ID.
    * @param {string} [label] - Button's label.
    */
-  constructor (id, label) {
+  constructor(id, label) {
     super();
 
     this.id = id;
@@ -41,7 +41,7 @@ class Button extends H5P.EventDispatcher {
    *
    * @return {object} Button's DOM element.
    */
-  getDOMElement () {
+  getDOMElement() {
     return this.button;
   }
 
@@ -50,7 +50,7 @@ class Button extends H5P.EventDispatcher {
    *
    * @param {boolean} [blocked] - Optional override.
    */
-  toggleBlocked (blocked) {
+  toggleBlocked(blocked) {
     blocked = (!this.isBlocked() || blocked) ? true : false;
     this.button.classList.toggle('h5p-button-blocked', blocked);
   }
@@ -60,7 +60,7 @@ class Button extends H5P.EventDispatcher {
    *
    * @return {boolean} True, if button is activated, else false.
    */
-  isBlocked () {
+  isBlocked() {
     return this.button.classList.contains('h5p-button-blocked');
   }
 
@@ -69,7 +69,7 @@ class Button extends H5P.EventDispatcher {
    *
    * @param {boolean} [blocked] - Optional override.
    */
-  toggleActivated (activated) {
+  toggleActivated(activated) {
     if (this.isBlocked ()) {
       return;
     }
@@ -86,7 +86,7 @@ class Button extends H5P.EventDispatcher {
    *
    * @return {boolean} True, if button is activated, else false.
    */
-  isActivated () {
+  isActivated() {
     return this.button.classList.contains('h5p-button-activated');
   }
 
@@ -95,7 +95,7 @@ class Button extends H5P.EventDispatcher {
    *
    * @param {string} label - Button label.
    */
-  setLabel (label) {
+  setLabel(label) {
     this.buttonLabel.innerHTML = label.replace(/\s/g, '<br />');
   }
 
@@ -104,7 +104,7 @@ class Button extends H5P.EventDispatcher {
    *
    * @return {string} Button label.
    */
-  getLabel () {
+  getLabel() {
     return this.buttonLabel.innerHTML;
   }
 
@@ -113,7 +113,7 @@ class Button extends H5P.EventDispatcher {
    *
    * @return {number} Button label width.
    */
-  getLabelWidth () {
+  getLabelWidth() {
     return this.buttonLabel.offsetWidth;
   }
 
@@ -122,7 +122,7 @@ class Button extends H5P.EventDispatcher {
    *
    * @return {number} Button label width.
    */
-  getLabelHeight () {
+  getLabelHeight() {
     return this.buttonLabel.offsetHeight;
   }
 
@@ -131,7 +131,7 @@ class Button extends H5P.EventDispatcher {
    *
    * @return {number} Button width.
    */
-  getWidth () {
+  getWidth() {
     const computedStyle = window.getComputedStyle(this.button, null);
     const borderLeft = parseFloat(computedStyle.getPropertyValue('border-left-width'));
     const borderRight = parseFloat(computedStyle.getPropertyValue('border-right-width'));
@@ -143,14 +143,14 @@ class Button extends H5P.EventDispatcher {
    *
    * @param {number} height - Button height.
    */
-  setMaxHeight (height) {
+  setMaxHeight(height) {
     this.button.style.maxHeight = height;
   }
 
   /**
    * Reset button states.
    */
-  reset () {
+  reset() {
     this.toggleBlocked(false);
     this.toggleActivated(false);
   }
@@ -160,7 +160,7 @@ class Button extends H5P.EventDispatcher {
    *
    * @param {number} [duration=300] - Duration in ms.
    */
-  animate (duration=300) {
+  animate(duration=300) {
     const that = this;
 
     this.button.classList.add('h5p-button-spinning');
