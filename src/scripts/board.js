@@ -12,8 +12,10 @@ class Board extends H5P.EventDispatcher {
    * @param {number} params.size - Size of the board.
    * @param {boolean} params.shuffleOnRetry - If true, board will be shuffled on retry.
    * @param {function} params.buttonClicked - Callback to check if game is won.
+   * @param {object} params.visualization - Visualization parameters.
+   * @param {number} contentId - ContentId.
    */
-  constructor(params) {
+  constructor(params, contentId) {
     super();
 
     this.params = params;
@@ -29,8 +31,13 @@ class Board extends H5P.EventDispatcher {
       this.words = this.params.words.split('\n');
     }
 
+    // Button image path
+    const imagePath = (params.visualization.buttonImage && params.visualization.buttonImage.path) ?
+      H5P.getPath(params.visualization.buttonImage.path, contentId) :
+      undefined;
+
     // Initialize buttons
-    this.buttons = this.initButtons(this.params.size);
+    this.buttons = this.initButtons(this.params.size, imagePath);
     this.setButtonLabels(this.words);
     this.setJoker(this.params.joker);
 
@@ -123,12 +130,13 @@ class Board extends H5P.EventDispatcher {
    * Create a set of buttons.
    *
    * @param {number} [size=5] - Size of the bingo board.
+   * @param {string} [imagePath] - Path to button image.
    * @return {object[]} Array as board.
    */
-  initButtons(size=5) {
+  initButtons(size=5, imagePath) {
     const buttons = [];
     for (let i = 0; i < size * size; i++) {
-      const button = new Button(i);
+      const button = new Button(i, imagePath);
       button.on('click', () => {
         this.params.buttonClicked();
       });

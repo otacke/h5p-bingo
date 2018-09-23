@@ -12,8 +12,9 @@ export default class Bingo extends H5P.Question {
    * @constructor
    *
    * @param {object} params - Parameters from semantics.
+   * @param {number} contentId - Content Id.
    */
-  constructor(params) {
+  constructor(params, contentId) {
     super('bingo');
 
     this.params = params || {};
@@ -32,6 +33,8 @@ export default class Bingo extends H5P.Question {
 
     this.params.visualization = this.params.visualization || {};
     this.params.visualization.backgroundColor = this.params.visualization.backgroundColor || '#f22626';
+
+    this.contentId = contentId;
 
     /**
      * Build all winning patterns for a Bingo sheet.
@@ -123,7 +126,7 @@ export default class Bingo extends H5P.Question {
         joker: this.params.joker,
         buttonClicked: this.checkWon,
         visualization: this.params.visualization
-      });
+      }, this.contentId);
       this.setContent(this.board.getDOMElement());
 
       // Add buttons

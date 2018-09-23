@@ -1,33 +1,31 @@
-/* jslint esversion: 6 */
-/* globals H5P */
-
 class Button extends H5P.EventDispatcher {
   /**
    * @constructor
    *
    * @param {number} id - Button's ID.
-   * @param {string} [label] - Button's label.
+   * @param {string} imagePath - Path to image URL.
    */
-  constructor(id, label) {
+  constructor(id, imagePath) {
     super();
 
     this.id = id;
     this.buttonLabel = document.createElement('div');
     this.buttonLabel.classList.add('h5p-bingo-button-label');
-    if (typeof label !== 'undefined') {
-      this.buttonLabel.innerHTML = label;
-    }
 
-    this.buttonSymbol = document.createElement('div');
-    this.buttonSymbol.classList.add('h5p-bingo-button-symbol');
-    this.buttonSymbol.classList.add('h5p-button-transparent');
+    // Button image
+    this.buttonImage = document.createElement('div');
+    this.buttonImage.classList.add('h5p-bingo-button-image');
+    if (imagePath) {
+      this.buttonImage.style.background = `no-repeat center/100% url("${imagePath}")`;
+    }
+    this.buttonImage.classList.add('h5p-button-transparent');
 
     this.button = document.createElement('div');
     this.button.classList.add('h5p-bingo-button');
     this.button.setAttribute('role', 'button');
     this.button.setAttribute('value', id);
     this.button.appendChild(this.buttonLabel);
-    this.button.appendChild(this.buttonSymbol);
+    this.button.appendChild(this.buttonImage);
     this.button.addEventListener('click', () => {
       if (!this.isBlocked()) {
         this.toggleActivated();
@@ -78,7 +76,7 @@ class Button extends H5P.EventDispatcher {
     }
     this.button.classList.toggle('h5p-button-activated', activated);
     this.buttonLabel.classList.toggle('h5p-button-transparent', activated);
-    this.buttonSymbol.classList.toggle('h5p-button-transparent', !activated);
+    this.buttonImage.classList.toggle('h5p-button-transparent', !activated);
   }
 
   /**
