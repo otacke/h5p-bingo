@@ -43,7 +43,6 @@
     "widget": "html",
     "importance": "high",
     "description": "Optionally give a description here.",
-    "placeholder": "Click on the words that you have noticed.",
     "optional": true,
     "enterMode": "div",
     "tags": [
@@ -81,13 +80,13 @@
     "type": "group",
     "label": "Visuals",
     "importance": "low",
-    "description": "You can customize the visualization here",
+    "description": "You can customize the visual appearance here.",
     "fields": [
       {
         "name": "buttonImage",
         "type": "image",
         "label": "Image",
-        "description": "Background image the buttons",
+        "description": "Background image for the buttons.",
         "importance": "low",
         "optional": true
       },
@@ -96,7 +95,7 @@
         "type": "text",
         "label": "Background Color",
         "importance": "low",
-        "description": "Background color for the board",
+        "description": "Background color for the board.",
         "optional": true,
         "default": "",
         "widget": "colorSelector",
