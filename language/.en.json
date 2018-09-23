@@ -1,0 +1,74 @@
+{
+  "semantics": [
+    {
+      "label": "Media",
+      "fields": [
+        {
+          "label": "Type",
+          "description": "Optional media to display above the question."
+        },
+        {
+          "label": "Disable image zooming",
+          "showWhen": {
+            "rules": [
+              {}
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Task description",
+      "description": "Optionally give a description here."
+    },
+    {
+      "label": "Words/Phrases/Numbers",
+      "description": "Use one line for each word, phrase or number. If this field is left blank, random numbers will be used."
+    },
+    {
+      "label": "Board size"
+    },
+    {
+      "label": "Visuals",
+      "description": "You can customize the visual appearance here.",
+      "fields": [
+        {
+          "label": "Image",
+          "description": "Background image for the buttons."
+        },
+        {
+          "label": "Background Color",
+          "description": "Background color for the board.",
+          "default": "",
+          "spectrum": {}
+        }
+      ]
+    },
+    {
+      "label": "Behavioural settings",
+      "description": "These options will let you control how the task behaves.",
+      "fields": [
+        {
+          "label": "Enable \"Retry\""
+        },
+        {
+          "label": "Shuffle on retry",
+          "description": "If checked, the words/phrases/numbers will be shuffled on retry.",
+          "showWhen": {
+            "rules": [
+              {}
+            ]
+          }
+        },
+        {
+          "label": "Set joker",
+          "description": "Will place an unturnable joker in the center of the board if its size is odd."
+        }
+      ]
+    },
+    {
+      "label": "Text for \"Retry\" button",
+      "default": "Retry"
+    }
+  ]
+}
