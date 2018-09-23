@@ -2,7 +2,7 @@
   "title": "Bingo",
   "description": "Game for boring conferences and meetings",
   "majorVersion": 0,
-  "minorVersion": 1,
+  "minorVersion": 2,
   "patchVersion": 0,
   "runnable": 1,
   "embedTypes": ["iframe"],
