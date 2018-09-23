@@ -9,7 +9,7 @@ class Board extends H5P.EventDispatcher {
    * @param {number} params.size - Size of the board.
    * @param {boolean} params.shuffleOnRetry - If true, board will be shuffled on retry.
    * @param {function} params.buttonClicked - Callback to check if game is won.
-   * @param {object} params.visualization - Visualization parameters.
+   * @param {object} params.visuals - Visuals parameters.
    * @param {number} contentId - ContentId.
    */
   constructor(params, contentId) {
@@ -29,8 +29,8 @@ class Board extends H5P.EventDispatcher {
     }
 
     // Button image path
-    const imagePath = (params.visualization.buttonImage && params.visualization.buttonImage.path) ?
-      H5P.getPath(params.visualization.buttonImage.path, contentId) :
+    const imagePath = (params.visuals.buttonImage && params.visuals.buttonImage.path) ?
+      H5P.getPath(params.visuals.buttonImage.path, contentId) :
       undefined;
 
     // Initialize buttons
@@ -50,8 +50,10 @@ class Board extends H5P.EventDispatcher {
     }
 
     this.board.classList.add('h5p-bingo-board');
-    this.board.style.background = this.params.visualization.backgroundColor;
-
+    // Global CSS customization should still be possible
+    if (this.params.visuals.backgroundColor !== '') {
+      this.board.style.background = this.params.visuals.backgroundColor;
+    }
     // Base font size to be used if possible
     this.fontSizeBase = parseFloat(window.getComputedStyle(document.body, null)
       .getPropertyValue('font-size'));

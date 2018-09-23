@@ -77,9 +77,9 @@
     "max": 7
   },
   {
-    "name": "visualization",
+    "name": "visuals",
     "type": "group",
-    "label": "Visualization",
+    "label": "Visuals",
     "importance": "low",
     "description": "You can customize the visualization here",
     "fields": [
@@ -98,7 +98,7 @@
         "importance": "low",
         "description": "Background color for the board",
         "optional": true,
-        "default": "#f22626",
+        "default": "",
         "widget": "colorSelector",
         "spectrum": {
           "showInput": true

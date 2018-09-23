@@ -28,8 +28,7 @@ export default class Bingo extends H5P.Question {
     this.params.joker = this.params.behaviour.joker || false;
     this.params.size = params.size || 5;
 
-    this.params.visualization = this.params.visualization || {};
-    this.params.visualization.backgroundColor = this.params.visualization.backgroundColor || '#f22626';
+    this.params.visuals = this.params.visuals || {};
 
     this.contentId = contentId;
 
@@ -122,7 +121,7 @@ export default class Bingo extends H5P.Question {
         shuffleOnRetry: this.params.behaviour.shuffleOnRetry,
         joker: this.params.joker,
         buttonClicked: this.checkWon,
-        visualization: this.params.visualization
+        visuals: this.params.visuals
       }, this.contentId);
       this.setContent(this.board.getDOMElement());
 
