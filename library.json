@@ -3,7 +3,7 @@
   "description": "Game for boring conferences and meetings",
   "majorVersion": 0,
   "minorVersion": 2,
-  "patchVersion": 0,
+  "patchVersion": 1,
   "runnable": 1,
   "embedTypes": ["iframe"],
   "author": "Oliver Tacke",
