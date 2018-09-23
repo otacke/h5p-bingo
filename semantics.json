@@ -64,10 +64,10 @@
     "type": "text",
     "widget": "textarea",
     "optional": true,
-    "description": "Use one line for each word or phrase. If this field is left blank, random numbers will be used."
+    "description": "Use one line for each word, phrase or number. If this field is left blank, random numbers will be used."
   },
   {
-    "label": "Size",
+    "label": "Board size",
     "importance": "high",
     "name": "size",
     "type": "number",
