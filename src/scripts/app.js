@@ -1,6 +1,3 @@
-/* jslint esversion: 6 */
-/* globals H5P */
-
 import Board from './board';
 
 // Used for xAPI title and task description
@@ -265,7 +262,7 @@ export default class Bingo extends H5P.Question {
     this.hasBingo = () => this.bingo;
 
     /**
-     * Extend an array just like JQuery's extend.
+     * Extend an object just like JQuery's extend.
      *
      * @param {object} arguments - Objects to be merged.
      * @return {object} Merged objects.

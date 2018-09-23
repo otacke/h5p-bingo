@@ -1,6 +1,3 @@
-/* jslint esversion: 6 */
-/* globals H5P */
-
 import Button from './button';
 
 class Board extends H5P.EventDispatcher {
