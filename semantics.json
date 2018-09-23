@@ -87,7 +87,7 @@
         "name": "backgroundColor",
         "type": "text",
         "label": "Background Color",
-        "importance": "medium",
+        "importance": "low",
         "description": "Background color for the board",
         "optional": true,
         "default": "#f22626",
@@ -133,7 +133,7 @@
       },
       {
         "label": "Set joker",
-        "description": "Will place an unturnable joker in the center of the board.",
+        "description": "Will place an unturnable joker in the center of the board if its size is odd.",
         "importance": "low",
         "name": "joker",
         "type": "boolean",
