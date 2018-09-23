@@ -1,5 +1,5 @@
 # h5p-bingo
-This is a simple game for boring conferences and meetings ;-)
+This is a simple game for boring conferences and meetings or other events ;-) Create (Buzzword) Bingo sheets online and share them with your friends and colleagues. And if you really want to, you can play normal Bingo, too ...
 
 No, there's no real multiplayer support and won't be there before H5P learns
 some more tricks ...
