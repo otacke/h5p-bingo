@@ -51,7 +51,7 @@
   background-color: #efefef;
 }
 
-.h5p-bingo .h5p-bingo-button:not(.h5p-button-activated):hover {
+.h5p-bingo .h5p-bingo-button:not(.h5p-button-blocked):not(.h5p-button-activated):hover {
   border-color: #efefef;
 }
 
