@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 20.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -8,138 +10,70 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    version="1.1"
-   viewBox="0 -64 640 640"
    id="svg2"
-   inkscape:version="0.91 r13725"
-   sodipodi:docname="starbadge.svg"
    inkscape:export-filename="/home/john/Desktop/score_h5p.png"
    inkscape:export-xdpi="9.3500004"
    inkscape:export-ydpi="9.3500004"
-   width="640"
-   height="640">
-  <metadata
-     id="metadata12">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <defs
-     id="defs10">
-    <style
-       id="style4310">
-      .cls-1 {
-        isolation: isolate;
-      }
-
-      .cls-2 {
-        fill: #589b42;
-      }
-
-      .cls-3 {
-        fill: #8ac97a;
-      }
-
-      .cls-4 {
-        opacity: 0.2;
-        mix-blend-mode: multiply;
-      }
-
-      .cls-5 {
-        fill: #f26262;
-      }
-
-      .cls-6 {
-        fill: #f7cf5c;
-      }
-
-      .cls-7 {
-        fill: none;
-      }
-    </style>
-  </defs>
-  <sodipodi:namedview
-     pagecolor="#ffffff"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="starbadge.svg"
+   x="0px"
+   y="0px"
+   viewBox="0 0 512 512"
+   style="enable-background:new 0 0 512 512;"
+   xml:space="preserve"><metadata
+     id="metadata16"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
+     id="defs14" /><style
+     type="text/css"
+     id="style3">
+	.st0{fill:#881D28;}
+	.st1{fill:#F4BE24;}
+	.st2{fill:#F7CF5C;}
+</style><sodipodi:namedview
      bordercolor="#666666"
      borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="1861"
-     inkscape:window-height="1056"
-     id="namedview8"
-     showgrid="false"
-     inkscape:zoom="0.4609375"
-     inkscape:cx="-334.81319"
-     inkscape:cy="137.20362"
-     inkscape:window-x="59"
-     inkscape:window-y="24"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="svg2"
-     fit-margin-top="0"
+     fit-margin-bottom="0"
      fit-margin-left="0"
      fit-margin-right="0"
-     fit-margin-bottom="0"
-     units="px" />
-  <rect
-     style="isolation:isolate;fill:none"
-     y="-1053.5847"
-     x="809.42383"
-     class="cls-7"
-     width="3194.3052"
-     height="1804.3899"
-     id="rect4382" />
-  <g
-     id="g4698"
-     transform="matrix(0.8,0,0,0.8,1010.3865,96.755334)">
-    <circle
-       r="320"
-       cy="199.05583"
-       cx="-862.98309"
-       id="path4609-5"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:isolate;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#f22626;fill-opacity:1;fill-rule:nonzero;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
-    <circle
-       r="300"
-       cy="199.05583"
-       cx="-862.98309"
-       id="path4609"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:isolate;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#f26262;fill-opacity:1;fill-rule:nonzero;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
-    <g
-       transform="translate(97.70802,-373.12281)"
-       id="g4676">
-      <g
-         transform="matrix(0.59749326,0.25144816,0.25144816,-0.59749326,-1415.7085,704.35833)"
-         id="g4-5"
-         inkscape:export-filename="/opt/lampp/htdocs/drupal/sites/default/files/h5p/development/h5p-interactive-video/src/gui/score_h5p_white.png"
-         inkscape:export-xdpi="9.3500004"
-         inkscape:export-ydpi="9.3500004"
-         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:isolate;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#f4be24;fill-opacity:1;fill-rule:nonzero;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate">
-        <path
-           d="m 394.705,591.36 13.033,156.393 c 3.724,39.098 50.269,57.716 80.058,31.651 L 605.091,673.28 c 11.171,-11.171 27.927,-14.895 42.822,-11.171 l 152.669,37.236 c 39.098,9.309 70.749,-29.789 53.993,-67.025 L 789.411,487.098 c -5.585,-14.895 -5.585,-31.651 3.724,-44.684 l 81.92,-135.913 c 20.48,-33.513 -7.447,-76.335 -46.545,-72.611 l -158.255,18.618 c -16.756,1.862 -31.651,-3.724 -40.96,-16.756 L 526.895,114.734 C 500.83,84.945 450.56,97.978 443.113,137.076 l -31.651,154.531 c -3.724,14.895 -13.033,27.927 -27.927,33.513 l -147.084,61.44 c -35.375,14.895 -39.098,67.025 -3.724,85.644 L 370.502,550.4 c 13.033,11.171 22.342,26.065 24.204,40.96 l -0.001,0 z"
-           id="path6-3"
-           inkscape:connector-curvature="0"
-           style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;isolation:isolate;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#f4be24;fill-opacity:1;fill-rule:nonzero;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
-      </g>
-      <g
-         transform="matrix(0.50454986,0.21233401,0.21233401,-0.50454986,-1344.928,681.93037)"
-         id="g4-5-6"
-         inkscape:export-filename="/opt/lampp/htdocs/drupal/sites/default/files/h5p/development/h5p-interactive-video/src/gui/score_h5p_white.png"
-         inkscape:export-xdpi="9.3500004"
-         inkscape:export-ydpi="9.3500004"
-         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:isolate;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#f7cf5c;fill-opacity:1;fill-rule:nonzero;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate">
-        <path
-           d="m 394.705,591.36 13.033,156.393 c 3.724,39.098 50.269,57.716 80.058,31.651 L 605.091,673.28 c 11.171,-11.171 27.927,-14.895 42.822,-11.171 l 152.669,37.236 c 39.098,9.309 70.749,-29.789 53.993,-67.025 L 789.411,487.098 c -5.585,-14.895 -5.585,-31.651 3.724,-44.684 l 81.92,-135.913 c 20.48,-33.513 -7.447,-76.335 -46.545,-72.611 l -158.255,18.618 c -16.756,1.862 -31.651,-3.724 -40.96,-16.756 L 526.895,114.734 C 500.83,84.945 450.56,97.978 443.113,137.076 l -31.651,154.531 c -3.724,14.895 -13.033,27.927 -27.927,33.513 l -147.084,61.44 c -35.375,14.895 -39.098,67.025 -3.724,85.644 L 370.502,550.4 c 13.033,11.171 22.342,26.065 24.204,40.96 l -0.001,0 z"
-           id="path6-3-2"
-           inkscape:connector-curvature="0"
-           style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;isolation:isolate;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#f7cf5c;fill-opacity:1;fill-rule:nonzero;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
-      </g>
-    </g>
-  </g>
-</svg>
+     fit-margin-top="0"
+     gridtolerance="10"
+     guidetolerance="10"
+     id="namedview8"
+     inkscape:current-layer="svg2"
+     inkscape:cx="-702.542"
+     inkscape:cy="137.20362"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-height="1056"
+     inkscape:window-maximized="1"
+     inkscape:window-width="1861"
+     inkscape:window-x="59"
+     inkscape:window-y="24"
+     inkscape:zoom="0.4609375"
+     objecttolerance="10"
+     pagecolor="#ffffff"
+     showgrid="false"
+     units="px" /><g
+     transform="matrix(0.8,0,0,0.8,1088.5529,-201.74291)"
+     id="g4676"><g
+       inkscape:export-ydpi="9.3500004"
+       inkscape:export-xdpi="9.3500004"
+       inkscape:export-filename="/opt/lampp/htdocs/drupal/sites/default/files/h5p/development/h5p-interactive-video/src/gui/score_h5p_white.png"
+       transform="matrix(0.59749326,0.25144816,0.25144816,-0.59749326,-1415.7085,704.35833)"
+       id="g4-5"><path
+         style="fill:#f4be24"
+         d="m 317.4,518.5 10.2,122.1 c 2.9,30.5 39.2,45.1 62.5,24.7 l 91.6,-82.8 c 8.7,-8.7 21.8,-11.6 33.4,-8.7 l 119.2,29.1 c 30.5,7.3 55.2,-23.3 42.1,-52.3 L 625.5,437.2 c -4.4,-11.6 -4.4,-24.7 2.9,-34.9 L 692.3,296.2 C 708.3,270 686.5,236.6 656,239.5 L 532.5,254 c -13.1,1.5 -24.7,-2.9 -32,-13.1 L 420.6,146.4 C 400.3,123.1 361,133.3 355.2,163.8 l -24.7,120.6 c -2.9,11.6 -10.2,21.8 -21.8,26.2 l -114.8,48 c -27.6,11.6 -30.5,52.3 -2.9,66.9 l 107.6,61 c 10.1,8.7 17.3,20.3 18.8,32 l 0,0 0,0 z"
+         class="st1"
+         inkscape:connector-curvature="0"
+         id="path6-3" /></g><g
+       inkscape:export-ydpi="9.3500004"
+       inkscape:export-xdpi="9.3500004"
+       inkscape:export-filename="/opt/lampp/htdocs/drupal/sites/default/files/h5p/development/h5p-interactive-video/src/gui/score_h5p_white.png"
+       transform="matrix(0.50454986,0.21233401,0.21233401,-0.50454986,-1344.928,681.93037)"
+       id="g4-5-6"><path
+         style="fill:#f7cf5c"
+         d="m 310.2,500.1 9.1,109.1 c 2.6,27.3 35.1,40.2 55.8,22.1 l 81.8,-74 c 7.8,-7.8 19.5,-10.4 29.9,-7.8 l 106.5,26 c 27.3,6.5 49.3,-20.8 37.7,-46.7 L 585.6,427.5 c -3.9,-10.4 -3.9,-22.1 2.6,-31.2 l 57.1,-94.8 c 14.3,-23.4 -5.2,-53.2 -32.5,-50.6 l -110.4,13 c -11.7,1.3 -22.1,-2.6 -28.6,-11.7 L 402.4,167.8 C 384.2,147 349.2,156.1 344,183.4 l -22.1,107.8 c -2.6,10.4 -9.1,19.5 -19.5,23.4 l -102.6,42.8 c -24.7,10.4 -27.3,46.7 -2.6,59.7 l 96.1,54.5 c 9.1,7.8 15.6,18.2 16.9,28.5 l 0,0 0,0 z"
+         class="st2"
+         inkscape:connector-curvature="0"
+         id="path6-3-2" /></g></g></svg>

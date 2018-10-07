@@ -1,9 +1,9 @@
 {
   "title": "Bingo",
-  "description": "Game for boring conferences and meetings",
+  "description": "Game for boring conferences and meetings - or just Bingo",
   "majorVersion": 0,
   "minorVersion": 2,
-  "patchVersion": 1,
+  "patchVersion": 2,
   "runnable": 1,
   "embedTypes": ["iframe"],
   "author": "Oliver Tacke",

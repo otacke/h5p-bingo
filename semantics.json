@@ -58,13 +58,47 @@
     ]
   },
   {
-    "label": "Words/Phrases/Numbers",
-    "importance": "high",
+    "label": "Mode",
+    "description": "Choose the mode for playing. Numbers will be filled in automatically, words need to be given.",
+    "name": "mode",
+    "type": "select",
+    "optional": false,
+    "options": [
+      {
+        "value": "numbers",
+        "label": "Play with numbers"
+      },
+      {
+        "value": "words",
+        "label": "Play with words"
+      }
+    ],
+    "default": "words"
+  },
+  {
     "name": "words",
-    "type": "text",
-    "widget": "textarea",
-    "optional": true,
-    "description": "Use one line for each word, phrase or number. If this field is left blank, random numbers will be used."
+    "label": "Words or phrases",
+    "type": "group",
+    "expanded": true,
+    "widget": "showWhen",
+    "showWhen": {
+      "rules": [
+        {
+          "field": "mode",
+          "equals": "words"
+        }
+      ]
+    },
+    "fields": [
+      {
+        "name": "wordsContent",
+        "label": "Words or phrases",
+        "description": "Use one line for each word, phrase or number. If this field is left blank, random numbers will be used.",
+        "type": "text",
+        "widget": "textarea",
+        "optional": true
+      }
+    ]
   },
   {
     "label": "Board size",
@@ -86,7 +120,7 @@
         "name": "buttonImage",
         "type": "image",
         "label": "Image",
-        "description": "Background image for the buttons.",
+        "description": "Joker image for the buttons.",
         "importance": "low",
         "optional": true
       },

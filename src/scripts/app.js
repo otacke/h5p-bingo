@@ -116,6 +116,7 @@ export default class Bingo extends H5P.Question {
 
       // Register content
       this.board = new Board({
+        mode: this.params.mode,
         words: this.params.words,
         size: this.params.size,
         shuffleOnRetry: this.params.behaviour.shuffleOnRetry,

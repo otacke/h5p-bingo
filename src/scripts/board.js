@@ -19,13 +19,18 @@ class Board extends H5P.EventDispatcher {
 
     // Set words
     this.words = [];
-    if (!this.params.words || this.params.words.trim() === '') {
+    if (this.params.mode === 'numbers') {
       for (let i = 1; i <= 3 * this.params.size * this.params.size; i++) {
         this.words.push(i.toString());
       }
     }
     else {
-      this.words = this.params.words.split('\n');
+      if (!this.params.words || this.params.words.trim() === '') {
+        this.words = ['someone', 'forgot', 'to', 'set', 'some', 'words'];
+      }
+      else {
+        this.words = this.params.words.split('\n');
+      }
     }
 
     // Button image path
@@ -100,10 +105,12 @@ class Board extends H5P.EventDispatcher {
 
     const buttonWidth = this.buttons[this.widestLabelId].getWidth();
 
+    // TODO: Seems something like this is still needed for IE11.
+
     // This feels really wrong, but gives us cross-browser squareness ...
-    this.buttons.forEach(button => {
-      button.setMaxHeight(buttonWidth + 'px');
-    });
+    // this.buttons.forEach(button => {
+    //   button.setMaxHeight(buttonWidth + 'px');
+    // });
 
     // Fit labels into buttons
     if (fontSize > fontSizeMin) {
@@ -135,7 +142,7 @@ class Board extends H5P.EventDispatcher {
   initButtons(size=5, imagePath) {
     const buttons = [];
     for (let i = 0; i < size * size; i++) {
-      const button = new Button(i, imagePath);
+      const button = new Button(i, imagePath, {mode: this.params.mode});
       button.on('click', () => {
         this.params.buttonClicked();
       });
@@ -175,6 +182,7 @@ class Board extends H5P.EventDispatcher {
 
     // Make center button a joker
     const button = this.buttons[Math.floor(this.params.size/2) * this.params.size + Math.floor(this.params.size/2)];
+    button.toggleFlipped(true);
     button.toggleActivated(true);
     button.toggleBlocked(true);
     button.setLabel('');
