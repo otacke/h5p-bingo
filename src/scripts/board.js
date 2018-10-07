@@ -182,6 +182,7 @@ class Board extends H5P.EventDispatcher {
     // Make center button a joker
     const button = this.buttons[Math.floor(this.params.size/2) * this.params.size + Math.floor(this.params.size/2)];
     button.toggleFlipped(true);
+    button.toggleBingo(true);
     button.toggleActivated(true);
     button.toggleBlocked(true);
     button.setLabel('');

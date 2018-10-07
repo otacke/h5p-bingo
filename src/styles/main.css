@@ -75,7 +75,6 @@
   background: url('../images/starbadge.svg') center/100% no-repeat;
   position: absolute;
   transition: opacity 0.1s ease 0.2s, display 0.1s ease 0.2s;
-  background-color: rgb(136, 29, 40);
 }
 
 .h5p-bingo .h5p-button-flipped {
