@@ -1,0 +1,97 @@
+{
+  "semantics": [
+    {
+      "label": "Medien",
+      "fields": [
+        {
+          "label": "Typ",
+          "description": "Optionale Medien, die über der Frage dargestellt werden."
+        },
+        {
+          "label": "Bild-Zoom deaktivieren",
+          "showWhen": {
+            "rules": [
+              {}
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Aufgabenbeschreibung",
+      "description": "Du kannst hier wahlweise eine Aufgabenbeschreibung angeben."
+    },
+    {
+      "label": "Modus",
+      "description": "Wähle den Spielmodus. Zahlen werden automatisch generiert, Wörter müssen eingegeben werden.",
+      "options": [
+        {
+          "label": "Spiele mit Zahlen"
+        },
+        {
+          "label": "Spiele mit Wörtern"
+        }
+      ],
+      "default": "words"
+    },
+    {
+      "label": "Wörter oder Phrasen",
+      "showWhen": {
+        "rules": [
+          {}
+        ]
+      },
+      "fields": [
+        {
+          "label": "Wörter und Phrasen",
+          "description": "Benutze eine Zeile für jedes Wort und jede Phrase."
+        }
+      ]
+    },
+    {
+      "label": "Spielfeldgröße"
+    },
+    {
+      "label": "Visuelles",
+      "description": "Du kannst hier das optische Erscheinungsbild anpassen.",
+      "fields": [
+        {
+          "label": "Bild",
+          "description": "Hintergrundbild für die Felder."
+        },
+        {
+          "label": "Hintergrundfarbe",
+          "description": "Hintergrundfarbe für das Spielfeld.",
+          "default": "",
+          "spectrum": {}
+        }
+      ]
+    },
+    {
+      "label": "Einstellungen",
+      "description": "Hier kannst Du einstellen, wie sich die Aufgabe verhält.",
+      "fields": [
+        {
+          "label": "\"Wiederholen\" erlauben"
+        },
+        {
+          "label": "Beim Wiederholen neu mischen",
+          "description": "Wenn gewählt, werden doe Wörter/Phrasen/Zahlen beim Wiederholen neu gemischt.",
+          "showWhen": {
+            "rules": [
+              {}
+            ]
+          }
+        },
+        {
+          "label": "Joker setzen",
+          "description": "Wenn gewählt, wird ein nicht anwählbarer Joker in die Mitte des Spielfelds gesetzt, wenn es eine ungerade Größe hat."
+        }
+      ]
+    },
+    {
+      "label": "Text für den \"Wiederholen\"-Knopf",
+      "default": "Wiederholen"
+    }
+  ]
+}
