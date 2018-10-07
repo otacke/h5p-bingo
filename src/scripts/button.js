@@ -49,13 +49,33 @@ class Button extends H5P.EventDispatcher {
   }
 
   /**
+   * Toggle a class, workaround for IE11 (doesn't support classList.toggle fully).
+   *
+   * @param {object} classList - ClassList.
+   * @param {string} token - Token.
+   * @param {boolean} force - Override.
+   */
+  toggle(classList, token , force) {
+    if (typeof force === 'undefined') {
+      force = !classList.contains(token);
+    }
+
+    if (force === true) {
+      classList.add(token);
+    }
+    else {
+      classList.remove(token);
+    }
+  }
+
+  /**
    * Toggle button's blocked state.
    *
    * @param {boolean} [blocked] - Optional override.
    */
   toggleBlocked(blocked) {
     blocked = (!this.isBlocked() || blocked) ? true : false;
-    this.button.classList.toggle('h5p-button-blocked', blocked);
+    this.toggle(this.button.classList, 'h5p-button-blocked', blocked);
   }
 
   /**
@@ -76,10 +96,7 @@ class Button extends H5P.EventDispatcher {
     if (this.isBlocked ()) {
       return;
     }
-    if (typeof activated === 'undefined') {
-      activated = !this.isActivated() ? true : false;
-    }
-    this.button.classList.toggle('h5p-button-activated', activated);
+    this.toggle(this.button.classList, 'h5p-button-activated', activated);
   }
 
   /**
@@ -100,11 +117,8 @@ class Button extends H5P.EventDispatcher {
     if (this.isBlocked ()) {
       return;
     }
-    if (typeof flipped === 'undefined') {
-      flipped = !this.isActivated() ? true : false;
-    }
-    this.buttonLabel.classList.toggle('h5p-button-transparent', flipped);
-    this.buttonImage.classList.toggle('h5p-button-transparent', !flipped);
+    this.toggle(this.buttonLabel.classList, 'h5p-button-transparent', flipped);
+    this.toggle(this.buttonImage.classList, 'h5p-button-transparent', !flipped);
   }
 
   /**
@@ -122,10 +136,7 @@ class Button extends H5P.EventDispatcher {
    * @param {boolean} [bingo] - Optional override.
    */
   toggleBingo(bingo) {
-    if (typeof bingo === 'undefined') {
-      bingo = !this.isBingo() ? true : false;
-    }
-    this.button.classList.toggle('h5p-button-bingo', bingo);
+    this.toggle(this.button.classList, 'h5p-button-bingo', bingo);
   }
 
   /**
@@ -201,6 +212,15 @@ class Button extends H5P.EventDispatcher {
    */
   setMaxHeight(height) {
     this.button.style.maxHeight = height;
+  }
+
+  /**
+   * Set button min Height.
+   *
+   * @param {number} height - Button height.
+   */
+  setMinHeight(height) {
+    this.button.style.minHeight = height;
   }
 
   /**

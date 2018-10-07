@@ -105,12 +105,11 @@ class Board extends H5P.EventDispatcher {
 
     const buttonWidth = this.buttons[this.widestLabelId].getWidth();
 
-    // TODO: Seems something like this is still needed for IE11.
-
-    // This feels really wrong, but gives us cross-browser squareness ...
-    // this.buttons.forEach(button => {
-    //   button.setMaxHeight(buttonWidth + 'px');
-    // });
+    // Workaround for IE11 ...
+    const buttonOffsetWidth = this.buttons[this.widestLabelId].getOffsetWidth();
+    this.buttons.forEach(button => {
+      button.setMinHeight(buttonOffsetWidth + 'px');
+    });
 
     // Fit labels into buttons
     if (fontSize > fontSizeMin) {
