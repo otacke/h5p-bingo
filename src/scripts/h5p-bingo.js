@@ -1,8 +1,5 @@
 import Board from './h5p-bingo-board';
 
-// Used for xAPI title and task description
-const H5P_BINGO_DEFAULT_DESCRIPTION = 'Bingo';
-
 export default class Bingo extends H5P.Question {
 
   /**
@@ -10,8 +7,9 @@ export default class Bingo extends H5P.Question {
    *
    * @param {object} params - Parameters from semantics.
    * @param {number} contentId - Content Id.
+   * @param {object} contentData - Content data.
    */
-  constructor(params, contentId) {
+  constructor(params, contentId, contentData) {
     super('bingo');
 
     this.params = params || {};
@@ -31,6 +29,7 @@ export default class Bingo extends H5P.Question {
     this.params.visuals = this.params.visuals || {};
 
     this.contentId = contentId;
+    this.contentData = contentData;
 
     /**
      * Build all winning patterns for a Bingo sheet.
@@ -239,20 +238,13 @@ export default class Bingo extends H5P.Question {
      */
     this.getxAPIDefinition = () => {
       const definition = {};
-      definition.name = {'en-US': H5P_BINGO_DEFAULT_DESCRIPTION};
-      definition.description = {'en-US': this.getTitle()};
+      definition.name = {'en-US': this.getTitle()};
+      definition.description = {'en-US': this.getDescription()};
       definition.type = 'http://adlnet.gov/expapi/activities/cmi.interaction';
       definition.interactionType = 'other';
 
       return definition;
     };
-
-    /**
-     * Get the xAPI definition for the xAPI object.
-     *
-     * @return {object} XAPI definition.
-     */
-    this.getTitle = () => (this.params.taskDescription) ? this.params.taskDescription : H5P_BINGO_DEFAULT_DESCRIPTION;
 
     /**
      * Detect winning/completion state.
@@ -282,5 +274,28 @@ export default class Bingo extends H5P.Question {
       }
       return arguments[0];
     };
+
+    /**
+     * Get tasks title.
+     * @return {string} Title.
+     */
+    this.getTitle = () => {
+      let raw;
+      if (this.contentData && this.contentData.metadata) {
+        raw = this.contentData.metadata.title;
+      }
+      raw = raw || Bingo.DEFAULT_DESCRIPTION;
+
+      return H5P.createTitle(raw);
+    };
+
+    /**
+     * Get tasks description.
+     * @return {string} Description.
+     */
+    this.getDescription = () => this.params.taskDescription || Bingo.DEFAULT_DESCRIPTION;
   }
 }
+
+/** @constant {string} */
+Bingo.DEFAULT_DESCRIPTION = 'Bingo';
