@@ -1,13 +1,12 @@
 import Board from './h5p-bingo-board';
 
+/** Class representing a bingo game */
 export default class Bingo extends H5P.Question {
-
   /**
    * @constructor
-   *
-   * @param {object} params - Parameters from semantics.
-   * @param {number} contentId - Content Id.
-   * @param {object} contentData - Content data.
+   * @param {object} params Parameters from semantics.
+   * @param {number} contentId Content Id.
+   * @param {object} contentData Content data.
    */
   constructor(params, contentId, contentData) {
     super('bingo');
@@ -16,9 +15,10 @@ export default class Bingo extends H5P.Question {
     this.params.behaviour = this.params.behaviour || {};
 
     /*
-     * this.params.behaviour.enableSolutionsButton and this.params.behaviour.enableRetry are used by
-     * contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-8} and
-     * {@link https://h5p.org/documentation/developers/contracts#guides-header-9}
+     * this.params.behaviour.enableSolutionsButton and this.params.behaviour.enableRetry
+     * are used by H5P Question contract
+     * @see {@link https://h5p.org/documentation/developers/contracts#guides-header-8}
+     * @see {@link https://h5p.org/documentation/developers/contracts#guides-header-9}
      */
     this.params.behaviour.enableSolutionsButton = false;
     this.params.behaviour.enableRetry = this.params.behaviour.enableRetry || false;
@@ -33,11 +33,10 @@ export default class Bingo extends H5P.Question {
 
     /**
      * Build all winning patterns for a Bingo sheet.
-     *
-     * @param {number} size - Sheet size.
+     * @param {number} size Sheet size.
      * @return {object[]} Arrays containing patterns.
      */
-    this.buildWinningPatterns = function (size) {
+    this.buildWinningPatterns = (size) => {
       const patterns = [];
       const diagonal1 = [];
       const diagonal2 = [];
@@ -70,7 +69,7 @@ export default class Bingo extends H5P.Question {
       if (winners.length !== 0) {
         this.board.blockButtons();
         this.board.animatePatterns(winners);
-        this.bingo = true;
+        this.bingoState = true;
 
         // Trigger xAPI statement
         this.trigger(this.getXAPIAnswerEvent());
@@ -89,6 +88,8 @@ export default class Bingo extends H5P.Question {
       var media = this.params.media.type;
       if (media && media.library) {
         var type = media.library.split(' ')[0];
+
+        // Image
         if (type === 'H5P.Image') {
           if (media.params.file) {
             this.setImage(media.params.file.path, {
@@ -98,6 +99,8 @@ export default class Bingo extends H5P.Question {
             });
           }
         }
+
+        // Video
         else if (type === 'H5P.Video') {
           if (media.params.sources) {
             this.setVideo(media);
@@ -123,18 +126,15 @@ export default class Bingo extends H5P.Question {
         buttonClicked: this.checkWon,
         visuals: this.params.visuals
       }, this.contentId);
-      this.setContent(this.board.getDOMElement());
+
+      this.setContent(this.board.getDOM());
 
       // Add buttons
       this.addButtons();
 
-      setTimeout(() => {
-        this.board.trigger('resize');
-      }, 0);
+      setTimeout(() => this.board.trigger('resize'), 0);
 
-      this.on('resize', () => {
-        this.board.trigger('resize');
-      });
+      this.on('resize', () => this.board.trigger('resize'));
     };
 
     /**
@@ -149,7 +149,6 @@ export default class Bingo extends H5P.Question {
 
     /**
      * Check if some kind of answer was given -- not applicable.
-     *
      * @return {boolean} True, if answer was given.
      * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-1}
      */
@@ -157,7 +156,6 @@ export default class Bingo extends H5P.Question {
 
     /**
      * Get latest score -- not applicable.
-     *
      * @return {number} Latest score.
      * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-2}
      */
@@ -165,7 +163,6 @@ export default class Bingo extends H5P.Question {
 
     /**
      * Get maximum possible score -- not applicable.
-     *
      * @return {number} Score necessary for mastering.
      * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-3}
      */
@@ -173,37 +170,29 @@ export default class Bingo extends H5P.Question {
 
     /**
      * Show solution -- not applicable.
-     *
      * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-4}
      */
     this.showSolutions = () => undefined;
 
     /**
      * Reset task.
-     *
      * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-5}
      */
     this.resetTask = () => {
-      this.bingo = false;
+      this.bingoState = false;
       this.hideButton('try-again');
       this.board.reset();
     };
 
     /**
      * Get xAPI data.
-     *
      * @return {Object} xAPI statement.
      * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-6}
      */
-    this.getXAPIData = () => {
-      return {
-        statement: this.getXAPIAnswerEvent().data.statement
-      };
-    };
+    this.getXAPIData = () => ({statement: this.getXAPIAnswerEvent().data.statement});
 
     /**
      * Build xAPI answer event.
-     *
      * @return {H5P.XAPIEvent} XAPI answer event.
      */
     this.getXAPIAnswerEvent = () => {
@@ -219,8 +208,7 @@ export default class Bingo extends H5P.Question {
 
     /**
      * Create an xAPI event for Bingo.
-     *
-     * @param {string} verb - Short id of the verb we want to trigger.
+     * @param {string} verb Short id of the verb we want to trigger.
      * @return {H5P.XAPIEvent} Event template.
      */
     this.createBingoXAPIEvent = (verb) => {
@@ -233,7 +221,6 @@ export default class Bingo extends H5P.Question {
 
     /**
      * Get the xAPI definition for the xAPI object.
-     *
      * @return {object} XAPI definition.
      */
     this.getxAPIDefinition = () => {
@@ -248,14 +235,12 @@ export default class Bingo extends H5P.Question {
 
     /**
      * Detect winning/completion state.
-     *
      * @return {boolean} True, if Bingo.
      */
-    this.hasBingo = () => this.bingo;
+    this.hasBingo = () => this.bingoState;
 
     /**
      * Extend an object just like JQuery's extend.
-     *
      * @param {object} arguments - Objects to be merged.
      * @return {object} Merged objects.
      */

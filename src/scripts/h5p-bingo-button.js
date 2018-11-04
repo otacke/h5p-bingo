@@ -1,11 +1,11 @@
+/** Class representing a button on a board */
 class Button extends H5P.EventDispatcher {
   /**
    * @constructor
-   *
-   * @param {number} id - Button's ID.
-   * @param {string} imagePath - Path to image URL.
-   * @param {object} [options] - Options.
-   * @param {number} [options.mode] - Mode, numbers or words
+   * @param {number} id Button's ID.
+   * @param {string} imagePath Path to image URL.
+   * @param {object} [options={}] Options.
+   * @param {number} [options.mode=words] Mode, numbers or words
    */
   constructor(id, imagePath, options = {}) {
     super();
@@ -13,6 +13,8 @@ class Button extends H5P.EventDispatcher {
     options.mode = options.mode || 'words';
 
     this.id = id;
+
+    // Button label
     this.buttonLabel = document.createElement('div');
     this.buttonLabel.classList.add('h5p-bingo-button-label');
 
@@ -20,10 +22,11 @@ class Button extends H5P.EventDispatcher {
     this.buttonImage = document.createElement('div');
     this.buttonImage.classList.add('h5p-bingo-button-image');
     if (imagePath) {
-      this.buttonImage.style.background = `no-repeat center/100% url("${imagePath}")`;
+      this.buttonImage.style.background = `no-repeat center/100% url('${imagePath}')`;
     }
     this.buttonImage.classList.add('h5p-button-transparent');
 
+    // Button
     this.button = document.createElement('div');
     this.button.classList.add('h5p-bingo-button');
     this.button.classList.add(`${options.mode}`);
@@ -41,22 +44,20 @@ class Button extends H5P.EventDispatcher {
 
   /**
    * Get the button's DOM element.
-   *
    * @return {object} Button's DOM element.
    */
-  getDOMElement() {
+  getDOM() {
     return this.button;
   }
 
   /**
-   * Toggle a class, workaround for IE11 (doesn't support classList.toggle fully).
-   *
-   * @param {object} classList - ClassList.
-   * @param {string} token - Token.
-   * @param {boolean} force - Override.
+   * Toggle class, workaround for IE11 (doesn't support classList.toggle fully).
+   * @param {object} classList ClassList.
+   * @param {string} token Token.
+   * @param {boolean} [force] Override.
    */
-  toggle(classList, token , force) {
-    if (typeof force === 'undefined') {
+  toggle(classList, token, force) {
+    if (force === undefined) {
       force = !classList.contains(token);
     }
 
@@ -70,7 +71,6 @@ class Button extends H5P.EventDispatcher {
 
   /**
    * Toggle button's blocked state.
-   *
    * @param {boolean} [blocked] - Optional override.
    */
   toggleBlocked(blocked) {
@@ -80,7 +80,6 @@ class Button extends H5P.EventDispatcher {
 
   /**
    * Determine if button is blocked.
-   *
    * @return {boolean} True, if button is activated, else false.
    */
   isBlocked() {
@@ -89,7 +88,6 @@ class Button extends H5P.EventDispatcher {
 
   /**
    * Toggle button's activated state.
-   *
    * @param {boolean} [activated] - Optional override.
    */
   toggleActivated(activated) {
@@ -101,7 +99,6 @@ class Button extends H5P.EventDispatcher {
 
   /**
    * Determine if button is activated.
-   *
    * @return {boolean} True, if button is activated, else false.
    */
   isActivated() {
@@ -110,7 +107,6 @@ class Button extends H5P.EventDispatcher {
 
   /**
    * Toggle button's flipped state.
-   *
    * @param {boolean} [blocked] - Optional override.
    */
   toggleFlipped(flipped) {
@@ -123,7 +119,6 @@ class Button extends H5P.EventDispatcher {
 
   /**
    * Determine if button is flipped.
-   *
    * @return {boolean} True, if button is flipped, else false.
    */
   isFlipped() {
@@ -132,7 +127,6 @@ class Button extends H5P.EventDispatcher {
 
   /**
    * Toggle button's bingo state.
-   *
    * @param {boolean} [bingo] - Optional override.
    */
   toggleBingo(bingo) {
@@ -140,9 +134,8 @@ class Button extends H5P.EventDispatcher {
   }
 
   /**
-   * Determine if button is flipped.
-   *
-   * @return {boolean} True, if button is flipped, else false.
+   * Determine if there was a bingo..
+   * @return {boolean} True, if there was a bingo.
    */
   isBingo() {
     return this.button.classList.contains('h5p-button-bingo');
@@ -150,8 +143,7 @@ class Button extends H5P.EventDispatcher {
 
   /**
    * Set button label.
-   *
-   * @param {string} label - Button label.
+   * @param {string} label Button label.
    */
   setLabel(label) {
     this.buttonLabel.innerHTML = label.replace(/\s/g, '<br />');
@@ -159,7 +151,6 @@ class Button extends H5P.EventDispatcher {
 
   /**
    * Get button label.
-   *
    * @return {string} Button label.
    */
   getLabel() {
@@ -168,7 +159,6 @@ class Button extends H5P.EventDispatcher {
 
   /**
    * Get button label width.
-   *
    * @return {number} Button label width.
    */
   getLabelWidth() {
@@ -176,9 +166,8 @@ class Button extends H5P.EventDispatcher {
   }
 
   /**
-   * Get button label width.
-   *
-   * @return {number} Button label width.
+   * Get button label height.
+   * @return {number} Button label height.
    */
   getLabelHeight() {
     return this.buttonLabel.offsetHeight;
@@ -186,7 +175,6 @@ class Button extends H5P.EventDispatcher {
 
   /**
    * Get button width.
-   *
    * @return {number} Button width.
    */
   getWidth() {
@@ -198,7 +186,6 @@ class Button extends H5P.EventDispatcher {
 
   /**
    * Get button offset width.
-   *
    * @return {number} Button offset width.
    */
   getOffsetWidth() {
@@ -206,8 +193,7 @@ class Button extends H5P.EventDispatcher {
   }
 
   /**
-   * Set button max Height.
-   *
+   * Set button maximum height.
    * @param {number} height - Button height.
    */
   setMaxHeight(height) {
@@ -215,8 +201,7 @@ class Button extends H5P.EventDispatcher {
   }
 
   /**
-   * Set button min Height.
-   *
+   * Set button minimum height.
    * @param {number} height - Button height.
    */
   setMinHeight(height) {
@@ -235,8 +220,7 @@ class Button extends H5P.EventDispatcher {
 
   /**
    * Animate button.
-   *
-   * @param {number} [args.duration=400] - Duration in ms.
+   * @param {number} [args.duration=400] Duration in ms.
    */
   animate(duration = 400) {
     const that = this;

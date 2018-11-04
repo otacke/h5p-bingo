@@ -1,16 +1,16 @@
 import Button from './h5p-bingo-button';
 
+/** Class representing a bingo board */
 class Board extends H5P.EventDispatcher {
   /**
    * @constructor
-   *
-   * @param {object} params - Parameters from semantics.
-   * @param {string} params.words - List of words/phrases/numbers.
-   * @param {number} params.size - Size of the board.
-   * @param {boolean} params.shuffleOnRetry - If true, board will be shuffled on retry.
-   * @param {function} params.buttonClicked - Callback to check if game is won.
-   * @param {object} params.visuals - Visuals parameters.
-   * @param {number} contentId - ContentId.
+   * @param {object} params Parameters from semantics.
+   * @param {string} params.words List of words/phrases/numbers.
+   * @param {number} params.size Size of the board.
+   * @param {boolean} params.shuffleOnRetry If true, board will be shuffled on retry.
+   * @param {function} params.buttonClicked Callback to check if game is won.
+   * @param {object} params.visuals Visuals parameters.
+   * @param {number} contentId ContentId.
    */
   constructor(params, contentId) {
     super();
@@ -49,7 +49,7 @@ class Board extends H5P.EventDispatcher {
       const row = document.createElement('div');
       row.classList.add('h5p-bingo-column');
       for (let j = 0; j < this.params.size; j++) {
-        row.appendChild(this.buttons[i * this.params.size + j].getDOMElement());
+        row.appendChild(this.buttons[i * this.params.size + j].getDOM());
       }
       this.board.appendChild(row);
     }
@@ -59,15 +59,14 @@ class Board extends H5P.EventDispatcher {
     if (this.params.visuals.backgroundColor !== '') {
       this.board.style.background = this.params.visuals.backgroundColor;
     }
+
     // Base font size to be used if possible
     this.fontSizeBase = parseFloat(window.getComputedStyle(document.body, null)
       .getPropertyValue('font-size'));
 
     // Resize font sizes and thus board
     this.on('resize', () => {
-      setTimeout(() => {
-        this.resizeButtons();
-      }, 0);
+      setTimeout(() => this.resizeButtons(), 0);
     });
   }
 
@@ -79,7 +78,7 @@ class Board extends H5P.EventDispatcher {
    * @param {number} [arguments.fontSizeMin=-Infinity] Minimum font size in px.
    * @param {number} [arguments.fontSizeMax=Infinity] Maximum font size in px.
    */
-  resizeButtons({startFontSize=this.fontSizeBase, fontSizeMin=-Infinity, fontSizeMax=Infinity}={}) {
+  resizeButtons({startFontSize=this.fontSizeBase, fontSizeMin = -Infinity, fontSizeMax = Infinity} = {}) {
     if (this.preventResize === true) {
       return;
     }
@@ -90,6 +89,7 @@ class Board extends H5P.EventDispatcher {
     if (!this.widestLabelId) {
       this.widestLabelId = this.buttons
         .map(button => button.getLabelWidth())
+        // Retrieve index of maximum value
         .reduce((max, cur, index, arr) => cur > arr[max] ? index : max, 0);
     }
 
@@ -97,6 +97,7 @@ class Board extends H5P.EventDispatcher {
     if (!this.highestLabelId) {
       this.highestLabelId = this.buttons
         .map(button => button.getLabelHeight())
+        // Retrieve index of maximum value
         .reduce((max, cur, index, arr) => cur > arr[max] ? index : max, 0);
     }
 
@@ -108,7 +109,7 @@ class Board extends H5P.EventDispatcher {
     // Workaround for IE11 ...
     const buttonOffsetWidth = this.buttons[this.widestLabelId].getOffsetWidth();
     this.buttons.forEach(button => {
-      button.setMinHeight(buttonOffsetWidth + 'px');
+      button.setMinHeight(`${buttonOffsetWidth}px`);
     });
 
     // Fit labels into buttons
@@ -124,27 +125,23 @@ class Board extends H5P.EventDispatcher {
 
   /**
    * Get the DOM element for the board.
-   *
    * @return {object} DOM element.
    */
-  getDOMElement() {
+  getDOM() {
     return this.board;
   }
 
   /**
    * Create a set of buttons.
-   *
-   * @param {number} [size=5] - Size of the bingo board.
-   * @param {string} [imagePath] - Path to button image.
+   * @param {number} [size=5] Size of the bingo board.
+   * @param {string} [imagePath] Path to button image.
    * @return {object[]} Array as board.
    */
-  initButtons(size=5, imagePath) {
+  initButtons(size = 5, imagePath) {
     const buttons = [];
     for (let i = 0; i < size * size; i++) {
       const button = new Button(i, imagePath, {mode: this.params.mode});
-      button.on('click', () => {
-        this.params.buttonClicked();
-      });
+      button.on('click', () => this.params.buttonClicked());
       buttons.push(button);
     }
 
@@ -155,8 +152,7 @@ class Board extends H5P.EventDispatcher {
    * Randomly set button labels from a set of words.
    * If there number of words is smaller than the number of buttons,
    * the words will be used repeatedly.
-   *
-   * @param {object[]} words - Words to set button labels to.
+   * @param {object[]} words Words to set button labels to.
    */
   setButtonLabels(words) {
     let filler = [];
@@ -171,8 +167,7 @@ class Board extends H5P.EventDispatcher {
 
   /**
    * Make center button a joker.
-   *
-   * @param {boolean} enabled - If true, joker should be set.
+   * @param {boolean} enabled If true, joker should be set.
    */
   setJoker(enabled) {
     if (enabled !== true || this.params.size % 2 === 0) {
@@ -180,7 +175,8 @@ class Board extends H5P.EventDispatcher {
     }
 
     // Make center button a joker
-    const button = this.buttons[Math.floor(this.params.size/2) * this.params.size + Math.floor(this.params.size/2)];
+    const button = this.buttons[Math.floor(this.params.size / 2) * this.params.size +
+      Math.floor(this.params.size / 2)];
     button.toggleFlipped(true);
     button.toggleBingo(true);
     button.toggleActivated(true);
@@ -190,8 +186,7 @@ class Board extends H5P.EventDispatcher {
 
   /**
    * Get matches to a button pattern.
-   *
-   * @param {object[]} patterns - Arrays containing the fields.
+   * @param {object[]} patterns Arrays containing the fields.
    * @return {object[]} All patterns matching the win condition.
    */
   getMatches(patterns) {
@@ -201,91 +196,77 @@ class Board extends H5P.EventDispatcher {
         matches.push(pattern);
       }
     });
+
     return matches;
   }
 
   /**
    * Get labels from all buttons that are activated.
-   *
    * @return {object[]} Label strings.
    */
   getActivatedButtonsLabels() {
     return this.buttons
-      .filter(
-        button => button.isActivated() && button.getLabel() !== ''
-      )
-      .map(
-        button => button.getLabel()
-      );
+      .filter(button => button.isActivated() && button.getLabel() !== '')
+      .map(button => button.getLabel());
   }
 
   /**
    * Block all buttons.
    */
   blockButtons() {
-    this.buttons.forEach(button => {
-      button.toggleBlocked(true);
-    });
+    this.buttons.forEach(button => button.toggleBlocked(true));
   }
 
   /**
    * Unblock all buttons.
    */
   unblockButtons() {
-    this.buttons.forEach(button => {
-      button.toggleBlocked(false);
-    });
+    this.buttons.forEach(button => button.toggleBlocked(false));
   }
 
   /**
    * Reset the board.
    */
   reset() {
-    this.buttons.forEach(button => {
-      button.reset();
-    });
+    this.buttons.forEach(button => button.reset());
+
     if (this.params.shuffleOnRetry) {
       this.setButtonLabels(this.words);
     }
+
     this.setJoker(this.params.joker);
+
     delete this.widestLabelId;
     delete this.highestLabelId;
+
     this.trigger('resize');
   }
 
   /**
    * Animate patterns.
-   *
-   * @param {object[]} patterns - Sets of buttons' IDs to be animated.
-   * @param {number} [delay=100] - Optional delay between each animation.
+   * @param {object[]} patterns Sets of buttons' IDs to be animated.
+   * @param {number} [delay=100] Optional delay between each animation.
    */
-  animatePatterns(patterns, delay=100) {
+  animatePatterns(patterns, delay = 100) {
     /**
      * Animate a pattern.
-     *
-     * @param {object[]} pattern - IDs of buttons to be animated.
-     * @param {number} [delay=100] - Optional delay between each animation.
+     * @param {object[]} pattern IDs of buttons to be animated.
+     * @param {number} [delay=100] Optional delay between each animation.
      */
-    const animatePattern = (pattern, delay=100) => {
+    const animatePattern = (pattern, delay = 100) => {
       // Stop resizing when animation plays
       this.preventResize = true;
 
       if (pattern.length > 0) {
         this.buttons[pattern[0]].animate();
-        setTimeout(() => {
-          animatePattern(pattern.slice(1));
-        }, delay);
+        setTimeout(() => animatePattern(pattern.slice(1)), delay);
       }
       else {
-        setTimeout(() => {
-          this.preventResize = false;
-        });
+        setTimeout(() => this.preventResize = false);
       }
     };
 
-    patterns.forEach(pattern => {
-      animatePattern(pattern, delay);
-    });
+    patterns.forEach(pattern => animatePattern(pattern, delay));
   }
 }
 
