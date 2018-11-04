@@ -8,7 +8,7 @@ some more tricks ...
 If you like what I do, please consider to become my supporter at patreon: https://www.patreon.com/otacke
 
 ## Building the distribution files
-Pull or download this archive files and go into the h5p-bingo folder. There run
+Pull or download this archive files and go into the main folder. There run
 
 ```bash
 npm install
@@ -20,7 +20,7 @@ to get the required modules. Then build the project using
 npm run build
 ```
 
-or 
+or
 
 ```bash
 npm run watch
