@@ -15,7 +15,12 @@
   },
   "preloadedJs": [
     {
-      "path": "dist/dist.js"
+      "path": "dist/h5p-bingo.js"
+    }
+  ],
+  "preloadedCss": [
+    {
+      "path": "dist/h5p-bingo.css"
     }
   ],
   "preloadedDependencies": [

@@ -1,4 +1,4 @@
-import Button from './button';
+import Button from './h5p-bingo-button';
 
 class Board extends H5P.EventDispatcher {
   /**

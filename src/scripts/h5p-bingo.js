@@ -1,4 +1,4 @@
-import Board from './board';
+import Board from './h5p-bingo-board';
 
 // Used for xAPI title and task description
 const H5P_BINGO_DEFAULT_DESCRIPTION = 'Bingo';
