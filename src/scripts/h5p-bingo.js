@@ -125,12 +125,15 @@ export default class Bingo extends H5P.Question {
         joker: this.params.joker,
         buttonClicked: this.checkWon,
         visuals: this.params.visuals
-      }, this.contentId);
+      }, this.contentId, this.contentData.previousState || []);
 
       this.setContent(this.board.getDOM());
 
       // Add buttons
       this.addButtons();
+
+      // Check because of previous content state
+      this.checkWon();
 
       setTimeout(() => this.board.trigger('resize'), 0);
 
@@ -279,6 +282,13 @@ export default class Bingo extends H5P.Question {
      * @return {string} Description.
      */
     this.getDescription = () => this.params.taskDescription || Bingo.DEFAULT_DESCRIPTION;
+
+    /**
+     * Answer call to return the current state.
+     *
+     * @return {object[]} Current state.
+     */
+    this.getCurrentState = () => this.board.getCurrentState();
   }
 }
 

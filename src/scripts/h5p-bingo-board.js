@@ -11,25 +11,38 @@ class Board extends H5P.EventDispatcher {
    * @param {function} params.buttonClicked Callback to check if game is won.
    * @param {object} params.visuals Visuals parameters.
    * @param {number} contentId ContentId.
+   * @param {object[]} [previousState] State of previous session.
+   * @param {string} [previousState[].label] Button's label.
+   * @param {boolean} [previousState[].flipped] True, if button was flipped, else false.
    */
-  constructor(params, contentId) {
+  constructor(params, contentId, previousState) {
     super();
 
     this.params = params;
+    this.previousState = previousState;
 
     // Set words
     this.words = [];
-    if (this.params.mode === 'numbers') {
-      for (let i = 1; i <= 3 * this.params.size * this.params.size; i++) {
-        this.words.push(i.toString());
-      }
+
+    // Use previous if available
+    if (previousState.length > 0) {
+      this.words = previousState.map(button => button.label);
     }
     else {
-      if (!this.params.words || this.params.words.trim() === '') {
-        this.words = ['someone', 'forgot', 'to', 'set', 'some', 'words'];
+      // Use numbers
+      if (this.params.mode === 'numbers') {
+        for (let i = 1; i <= 3 * this.params.size * this.params.size; i++) {
+          this.words.push(i.toString());
+        }
       }
       else {
-        this.words = this.params.words.split('\n');
+        // Use words
+        if (!this.params.words || this.params.words.trim() === '') {
+          this.words = ['someone', 'forgot', 'to', 'set', 'some', 'words'];
+        }
+        else {
+          this.words = this.params.words.split('\n');
+        }
       }
     }
 
@@ -41,6 +54,14 @@ class Board extends H5P.EventDispatcher {
     // Initialize buttons
     this.buttons = this.initButtons(this.params.size, imagePath);
     this.setButtonLabels(this.words);
+
+    // Set activated state from previous session
+    if (previousState.length > 0) {
+      this.buttons.forEach((button, index) => {
+        button.toggleActivated(previousState[index].flipped);
+      });
+    }
+
     this.setJoker(this.params.joker);
 
     // Setup board
@@ -156,11 +177,21 @@ class Board extends H5P.EventDispatcher {
    */
   setButtonLabels(words) {
     let filler = [];
-    this.buttons.forEach(button => {
-      if (filler.length === 0) {
-        filler = words.slice();
+
+    this.buttons.forEach((button, index) => {
+      let label;
+
+      // Keep previous state with order or random new one
+      if (this.previousState.length > 0) {
+        label = this.previousState[index].label;
       }
-      const label = filler.splice(Math.floor(Math.random() * filler.length), 1)[0];
+      else {
+        if (filler.length === 0) {
+          filler = words.slice();
+        }
+        label = filler.splice(Math.floor(Math.random() * filler.length), 1)[0];
+      }
+
       button.setLabel(label);
     });
   }
@@ -268,6 +299,19 @@ class Board extends H5P.EventDispatcher {
 
     patterns.forEach(pattern => animatePattern(pattern, delay));
   }
+
+  /**
+   * Answer call to return the current state.
+   *
+   * @return {object[]} Current state.
+   */
+  getCurrentState() {
+    return this.buttons.map(button => ({
+      label: button.getLabel(),
+      flipped: button.isActivated()
+    }));
+  }
+
 }
 
 export default Board;
