@@ -182,7 +182,7 @@ class Board extends H5P.EventDispatcher {
       let label;
 
       // Keep previous state with order or random new one
-      if (this.previousState.length > 0) {
+      if (this.previousState.length > 0 && this.params.shuffleOnRetry !== true) {
         label = this.previousState[index].label;
       }
       else {
