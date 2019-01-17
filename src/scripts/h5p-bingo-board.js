@@ -99,7 +99,7 @@ class Board extends H5P.EventDispatcher {
    * @param {number} [arguments.fontSizeMin=-Infinity] Minimum font size in px.
    * @param {number} [arguments.fontSizeMax=Infinity] Maximum font size in px.
    */
-  resizeButtons({startFontSize=this.fontSizeBase, fontSizeMin = -Infinity, fontSizeMax = Infinity} = {}) {
+  resizeButtons({startFontSize = this.fontSizeBase, fontSizeMin = -Infinity, fontSizeMax = Infinity} = {}) {
     if (this.preventResize === true) {
       return;
     }
