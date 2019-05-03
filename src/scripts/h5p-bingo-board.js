@@ -242,6 +242,29 @@ class Board extends H5P.EventDispatcher {
   }
 
   /**
+   * Get IDs from all buttons that are activated.
+   * @return {object[]} IDs.
+   */
+  getActivatedButtonsIDs() {
+    return this.buttons
+      .filter(button => button.isActivated())
+      .map(button => button.id);
+  }
+
+  /**
+   * Get possible choices for this board.
+   * @return {object} XApi choices object.
+   */
+  getXAPIChoices() {
+    return this.buttons.map((button, index) => ({
+      'id': index,
+      'description': {
+        'en-US': button.getLabel()
+      }
+    }));
+  }
+
+  /**
    * Block all buttons.
    */
   blockButtons() {

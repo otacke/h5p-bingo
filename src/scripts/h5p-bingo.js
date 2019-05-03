@@ -203,7 +203,7 @@ export default class Bingo extends H5P.Question {
 
       xAPIEvent.setScoredResult(this.getScore(), this.getMaxScore(), this, true, this.hasBingo());
       xAPIEvent.data.statement.result.response = this.board
-        .getActivatedButtonsLabels()
+        .getActivatedButtonsIDs()
         .join('[,]');
 
       return xAPIEvent;
@@ -231,7 +231,14 @@ export default class Bingo extends H5P.Question {
       definition.name = {'en-US': this.getTitle()};
       definition.description = {'en-US': this.getDescription()};
       definition.type = 'http://adlnet.gov/expapi/activities/cmi.interaction';
-      definition.interactionType = 'other';
+      definition.interactionType = 'choice';
+      definition.choices = this.board.getXAPIChoices();
+      // There's no right or wrong, but reporting expects a pattern; all correct is better
+      definition.correctResponsesPattern = [
+        Array.apply(null, {length: this.params.size * this.params.size})
+          .map(Number.call, Number)
+          .join('[,]')
+      ];
 
       return definition;
     };
