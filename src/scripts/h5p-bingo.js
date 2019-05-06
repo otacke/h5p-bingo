@@ -72,7 +72,8 @@ export default class Bingo extends H5P.Question {
         this.bingoState = true;
 
         // Trigger xAPI statement
-        this.trigger(this.getXAPIAnswerEvent());
+        // Removed until "choice" processor of reporting can handle an empty correct responses pattern correctly
+        // this.trigger(this.getXAPIAnswerEvent());
 
         if (this.params.behaviour.enableRetry) {
           this.showButton('try-again');
@@ -192,7 +193,8 @@ export default class Bingo extends H5P.Question {
      * @return {Object} xAPI statement.
      * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-6}
      */
-    this.getXAPIData = () => ({statement: this.getXAPIAnswerEvent().data.statement});
+    // Removed until "choice" processor of reporting can handle an empty correct responses pattern correctly
+    // this.getXAPIData = () => ({statement: this.getXAPIAnswerEvent().data.statement});
 
     /**
      * Build xAPI answer event.
