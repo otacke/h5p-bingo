@@ -22,29 +22,7 @@ class Board extends H5P.EventDispatcher {
     this.previousState = previousState;
 
     // Set words
-    this.words = [];
-
-    // Use previous if available
-    if (previousState.length > 0) {
-      this.words = previousState.map(button => button.label);
-    }
-    else {
-      // Use numbers
-      if (this.params.mode === 'numbers') {
-        for (let i = 1; i <= 3 * this.params.size * this.params.size; i++) {
-          this.words.push(i.toString());
-        }
-      }
-      else {
-        // Use words
-        if (!this.params.words || this.params.words.trim() === '') {
-          this.words = ['someone', 'forgot', 'to', 'set', 'some', 'words'];
-        }
-        else {
-          this.words = this.params.words.split('\n');
-        }
-      }
-    }
+    this.words = this.generateWords(this.previousState);
 
     // Button image path
     const imagePath = (params.visuals.buttonImage && params.visuals.buttonImage.path) ?
@@ -89,6 +67,39 @@ class Board extends H5P.EventDispatcher {
     this.on('resize', () => {
       setTimeout(() => this.resizeButtons(), 0);
     });
+  }
+
+  /**
+   * Generate words.
+   * @param {object[]} [previousState] State of previous session.
+   * @return {object[]} Words.
+   */
+  generateWords(previousState = []) {
+    let words = [];
+
+    // Use previous if available
+    if (previousState.length > 0) {
+      words = previousState.map(button => button.label);
+    }
+    else {
+      // Use numbers
+      if (this.params.mode === 'numbers') {
+        for (let i = 1; i <= 3 * this.params.size * this.params.size; i++) {
+          words.push(i.toString());
+        }
+      }
+      else {
+        // Use words
+        if (!this.params.words || this.params.words.trim() === '') {
+          words = ['someone', 'forgot', 'to', 'set', 'some', 'words'];
+        }
+        else {
+          words = this.params.words.split('\n');
+        }
+      }
+    }
+
+    return words;
   }
 
   /**
@@ -182,7 +193,7 @@ class Board extends H5P.EventDispatcher {
       let label;
 
       // Keep previous state with order or random new one
-      if (this.previousState.length > 0 && this.params.shuffleOnRetry !== true) {
+      if (this.previousState.length > 0) {
         label = this.previousState[index].label;
       }
       else {
@@ -285,6 +296,8 @@ class Board extends H5P.EventDispatcher {
     this.buttons.forEach(button => button.reset());
 
     if (this.params.shuffleOnRetry) {
+      this.previousState = [];
+      this.words = this.generateWords();
       this.setButtonLabels(this.words);
     }
 
