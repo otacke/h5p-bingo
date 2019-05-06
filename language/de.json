@@ -76,7 +76,7 @@
         },
         {
           "label": "Beim Wiederholen neu mischen",
-          "description": "Wenn gewählt, werden doe Wörter/Phrasen/Zahlen beim Wiederholen neu gemischt.",
+          "description": "Wenn gewählt, werden die Wörter/Phrasen/Zahlen beim Wiederholen neu gemischt.",
           "showWhen": {
             "rules": [
               {}
