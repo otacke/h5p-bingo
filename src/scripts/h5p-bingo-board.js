@@ -65,7 +65,9 @@ class Board extends H5P.EventDispatcher {
 
     // Resize font sizes and thus board
     this.on('resize', () => {
-      setTimeout(() => this.resizeButtons(), 0);
+      setTimeout(() => {
+        this.resizeButtons();
+      }, 0);
     });
   }
 
@@ -279,21 +281,27 @@ class Board extends H5P.EventDispatcher {
    * Block all buttons.
    */
   blockButtons() {
-    this.buttons.forEach(button => button.toggleBlocked(true));
+    this.buttons.forEach(button => {
+      button.toggleBlocked(true);
+    });
   }
 
   /**
    * Unblock all buttons.
    */
   unblockButtons() {
-    this.buttons.forEach(button => button.toggleBlocked(false));
+    this.buttons.forEach(button => {
+      button.toggleBlocked(false);
+    });
   }
 
   /**
    * Reset the board.
    */
   reset() {
-    this.buttons.forEach(button => button.reset());
+    this.buttons.forEach(button => {
+      button.reset();
+    });
 
     if (this.params.shuffleOnRetry) {
       this.previousState = [];
@@ -326,14 +334,20 @@ class Board extends H5P.EventDispatcher {
 
       if (pattern.length > 0) {
         this.buttons[pattern[0]].animate();
-        setTimeout(() => animatePattern(pattern.slice(1)), delay);
+        setTimeout(() => {
+          animatePattern(pattern.slice(1));
+        }, delay);
       }
       else {
-        setTimeout(() => this.preventResize = false);
+        setTimeout(() => {
+          this.preventResize = false;
+        });
       }
     };
 
-    patterns.forEach(pattern => animatePattern(pattern, delay));
+    patterns.forEach(pattern => {
+      animatePattern(pattern, delay);
+    });
   }
 
   /**
