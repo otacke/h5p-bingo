@@ -133,12 +133,18 @@ export default class Bingo extends H5P.Question {
       // Add buttons
       this.addButtons();
 
-      setTimeout(() => this.board.trigger('resize'), 0);
+      setTimeout(() => {
+        this.board.trigger('resize');
+      }, 0);
 
-      // Check because of previous content state
-      this.checkWon();
+      // Check after resize slack time because of previous content state
+      setTimeout(() => {
+        this.checkWon();
+      }, 50);
 
-      this.on('resize', () => this.board.trigger('resize'));
+      this.on('resize', () => {
+        this.board.trigger('resize');
+      });
     };
 
     /**
