@@ -23,6 +23,7 @@ class Board extends H5P.EventDispatcher {
 
     // Set words
     this.words = this.generateWords(this.previousState);
+    this.words = this.words.map(words => this.addHTMLLineBreaks(words));
 
     // Button image path
     const imagePath = (params.visuals.buttonImage && params.visuals.buttonImage.path) ?
@@ -102,6 +103,35 @@ class Board extends H5P.EventDispatcher {
     }
 
     return words;
+  }
+
+  /**
+   * Add line breaks to words.
+   *
+   * Uses the words' character lengths and the longest word's character length
+   * as a heuristic to set a maximum width and line breaks accordingly
+   * @param {string} [words=''] Words.
+   * @params {number} [lengthMax] Maximum character length per line.
+   * @return {string} Sentence with <br />s.
+   */
+  addHTMLLineBreaks(words = '', lengthMax) {
+    // Try to have a width/height ratio of 2:1
+    lengthMax = lengthMax || Math.ceil(Math.sqrt(words.length) * 2);
+    words = words.split(' ');
+
+    let out = [];
+    let current = '';
+    words.forEach( (word, index) => {
+      if (current.length + 1 + word.length > lengthMax && index > 0) {
+        current = `${current}<br />`;
+        out.push(current);
+        current = '';
+      }
+      current = `${current} ${word}`.trim();
+    });
+    out.push(current);
+
+    return out.join('');
   }
 
   /**

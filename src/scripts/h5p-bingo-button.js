@@ -146,7 +146,7 @@ class Button extends H5P.EventDispatcher {
    * @param {string} label Button label.
    */
   setLabel(label) {
-    this.buttonLabel.innerHTML = label.replace(/\s/g, '<br />');
+    this.buttonLabel.innerHTML = label;
   }
 
   /**
