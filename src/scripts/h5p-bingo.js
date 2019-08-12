@@ -112,7 +112,6 @@ export default class Bingo extends H5P.Question {
       // Register optional task introduction text
       if (this.params.taskDescription) {
         this.introduction = document.createElement('div');
-        this.introduction.setAttribute('tabindex', '0');
         this.introduction.innerHTML = this.params.taskDescription;
         this.setIntroduction(this.introduction);
       }
