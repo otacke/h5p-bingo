@@ -22,8 +22,9 @@ class Board extends H5P.EventDispatcher {
     this.previousState = previousState;
 
     // Set words
-    this.words = this.generateWords(this.previousState);
-    this.words = this.words.map(words => this.addHTMLLineBreaks(words));
+    this.words = this
+      .generateWords(this.previousState)
+      .map(words => this.addHTMLLineBreaks(words));
 
     // Button image path
     const imagePath = (params.visuals.buttonImage && params.visuals.buttonImage.path) ?
@@ -335,7 +336,7 @@ class Board extends H5P.EventDispatcher {
 
     if (this.params.shuffleOnRetry) {
       this.previousState = [];
-      this.words = this.generateWords();
+      this.words = this.generateWords().map(words => this.addHTMLLineBreaks(words));
       this.setButtonLabels(this.words);
     }
 
