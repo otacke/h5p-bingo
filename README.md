@@ -7,6 +7,9 @@ some more tricks ...
 ## Support me at patreon!
 If you like what I do, please consider to become my supporter at patreon: https://www.patreon.com/otacke
 
+## Example
+!["Bingo for H5P"](https://ibin.co/4sqiO3undZsQ.png "Bingo for H5P")
+
 ## Building the distribution files
 Pull or download this archive files and go into the main folder. There run
 
