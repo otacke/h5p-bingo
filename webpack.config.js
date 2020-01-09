@@ -17,7 +17,7 @@ const config = {
   plugins: [
     new MinifyPlugin({}, {
       sourceMap: isDev
-    }),    
+    }),
     new MiniCssExtractPlugin({
       filename: 'h5p-bingo.css'
     })
@@ -56,9 +56,5 @@ const config = {
     colors: true
   }
 };
-
-if (isDev) {
-  config.devtool = 'inline-source-map';
-}
 
 module.exports = config;
