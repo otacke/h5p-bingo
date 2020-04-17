@@ -4,9 +4,6 @@ This is a simple game for boring conferences and meetings or other events ;-) Cr
 No, there's no real multiplayer support and won't be there before H5P learns
 some more tricks ...
 
-## Support me at patreon!
-If you like what I do, please consider to become my supporter at patreon: https://www.patreon.com/otacke
-
 ## Example
 !["Bingo for H5P"](https://ibin.co/4sqiO3undZsQ.png "Bingo for H5P")
 
