@@ -32,6 +32,9 @@ export default class Bingo extends H5P.Question {
     this.contentId = contentId;
     this.contentData = contentData;
 
+    const defaultLanguage = (this.contentData && this.contentData.metadata) ? this.contentData.metadata.defaultLanguage || 'en' : 'en';
+    this.languageTag = Util.formatLanguageCode(defaultLanguage);
+
     /**
      * Build all winning patterns for a Bingo sheet.
      * @param {number} size Sheet size.
@@ -236,8 +239,10 @@ export default class Bingo extends H5P.Question {
      */
     this.getxAPIDefinition = () => {
       const definition = {};
-      definition.name = {'en-US': this.getTitle()};
-      definition.description = {'en-US': this.getDescription()};
+      definition.name = {};
+      definition.name[this.languageTag] = this.getTitle();
+      definition.description = {};
+      definition.description[this.languageTag] = this.getDescription();
       definition.type = 'http://adlnet.gov/expapi/activities/cmi.interaction';
       definition.interactionType = 'choice';
       definition.choices = this.board.getXAPIChoices();
