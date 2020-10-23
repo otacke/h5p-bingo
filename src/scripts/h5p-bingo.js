@@ -1,4 +1,5 @@
 import Board from './h5p-bingo-board';
+import Util from './h5p-bingo-util';
 
 /** Class representing a bingo game */
 export default class Bingo extends H5P.Question {
@@ -223,7 +224,7 @@ export default class Bingo extends H5P.Question {
      */
     this.createBingoXAPIEvent = (verb) => {
       const xAPIEvent = this.createXAPIEventTemplate(verb);
-      this.extend(
+      Util.extend(
         xAPIEvent.getVerifiedStatementValue(['object', 'definition']),
         this.getxAPIDefinition());
       return xAPIEvent;
@@ -255,27 +256,6 @@ export default class Bingo extends H5P.Question {
      * @return {boolean} True, if Bingo.
      */
     this.hasBingo = () => this.bingoState;
-
-    /**
-     * Extend an object just like JQuery's extend.
-     * @param {object} arguments - Objects to be merged.
-     * @return {object} Merged objects.
-     */
-    this.extend = function () {
-      for (let i = 1; i < arguments.length; i++) {
-        for (let key in arguments[i]) {
-          if (arguments[i].hasOwnProperty(key)) {
-            if (typeof arguments[0][key] === 'object' && typeof arguments[i][key] === 'object') {
-              this.extend(arguments[0][key], arguments[i][key]);
-            }
-            else {
-              arguments[0][key] = arguments[i][key];
-            }
-          }
-        }
-      }
-      return arguments[0];
-    };
 
     /**
      * Get tasks title.
