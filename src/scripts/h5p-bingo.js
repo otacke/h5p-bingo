@@ -12,22 +12,18 @@ export default class Bingo extends H5P.Question {
   constructor(params, contentId, contentData) {
     super('bingo');
 
-    this.params = params || {};
-    this.params.behaviour = this.params.behaviour || {};
-
-    /*
-     * this.params.behaviour.enableSolutionsButton and this.params.behaviour.enableRetry
-     * are used by H5P Question contract
-     * @see {@link https://h5p.org/documentation/developers/contracts#guides-header-8}
-     * @see {@link https://h5p.org/documentation/developers/contracts#guides-header-9}
-     */
-    this.params.behaviour.enableSolutionsButton = false;
-    this.params.behaviour.enableRetry = this.params.behaviour.enableRetry || false;
-
-    this.params.joker = this.params.behaviour.joker || false;
-    this.params.size = params.size || 5;
-
-    this.params.visuals = this.params.visuals || {};
+    this.params = Util.extend({
+      size: 5,
+      behaviour: {
+        enableSolutionsButton: false,
+        enableRetry: true,
+        shuffleOnRetry: true,
+        joker: false,
+      },
+      visuals: {},
+      tryAgain: 'Retry',
+      a11yTryAgain: 'Retry the task. Reset all responses and start the task over again.'
+    }, params);
 
     this.contentId = contentId;
     this.contentData = contentData;
@@ -126,7 +122,7 @@ export default class Bingo extends H5P.Question {
         words: this.params.words,
         size: this.params.size,
         shuffleOnRetry: this.params.behaviour.shuffleOnRetry,
-        joker: this.params.joker,
+        joker: this.params.behaviour.joker,
         buttonClicked: this.checkWon,
         visuals: this.params.visuals
       }, this.contentId, this.contentData.previousState || []);
@@ -157,7 +153,9 @@ export default class Bingo extends H5P.Question {
       // Retry button
       this.addButton('try-again', this.params.tryAgain, () => {
         this.resetTask();
-      }, false, {}, {});
+      }, false, {
+        'aria-label': this.params.a11yTryAgain
+      }, {});
     };
 
     /**

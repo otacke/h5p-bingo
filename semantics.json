@@ -190,5 +190,13 @@
     "importance": "low",
     "default": "Retry",
     "common": true
+  },
+  {
+    "name": "a11yTryAgain",
+    "type": "text",
+    "label": "Assistive technology description for \"Retry\" button",
+    "importance": "low",
+    "default": "Retry the task. Reset all responses and start the task over again.",
+    "common": true
   }
 ]
