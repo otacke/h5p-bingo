@@ -1,19 +1,14 @@
 {
   "semantics": [
     {
-      "label": "Medien",
+      "label": "Medium",
       "fields": [
         {
           "label": "Typ",
-          "description": "Optionale Medien, die über der Frage dargestellt werden."
+          "description": "Optionales Medium, das über der Frage dargestellt wird."
         },
         {
-          "label": "Bild-Zoom deaktivieren",
-          "showWhen": {
-            "rules": [
-              {}
-            ]
-          }
+          "label": "Bild-Zoom deaktivieren"
         }
       ]
     },
@@ -36,11 +31,6 @@
     },
     {
       "label": "Wörter oder Phrasen",
-      "showWhen": {
-        "rules": [
-          {}
-        ]
-      },
       "fields": [
         {
           "label": "Wörter und Phrasen",
@@ -62,8 +52,7 @@
         {
           "label": "Hintergrundfarbe",
           "description": "Hintergrundfarbe für das Spielfeld.",
-          "default": "",
-          "spectrum": {}
+          "default": ""
         }
       ]
     },
@@ -76,12 +65,7 @@
         },
         {
           "label": "Beim Wiederholen neu mischen",
-          "description": "Wenn gewählt, werden die Wörter/Phrasen/Zahlen beim Wiederholen neu gemischt.",
-          "showWhen": {
-            "rules": [
-              {}
-            ]
-          }
+          "description": "Wenn gewählt, werden die Wörter/Phrasen/Zahlen beim Wiederholen neu gemischt."
         },
         {
           "label": "Joker setzen",
