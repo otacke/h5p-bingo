@@ -1,0 +1,97 @@
+{
+  "semantics": [
+    {
+      "label": "Media",
+      "fields": [
+        {
+          "label": "Type",
+          "description": "Optionele media. Deze wordt boven de taakomschrijving getoond."
+        },
+        {
+          "label": "Schakel het zoomen van de afbeelding uit",
+          "showWhen": {
+            "rules": [
+              {}
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Taakomschrijving",
+      "description": "Geef hier eventueel een beschrijving."
+    },
+    {
+      "label": "Modus",
+      "description": "Kies de modus voor het afspelen. Cijfers worden automatisch ingevuld, woorden moeten worden opgegeven.",
+      "options": [
+        {
+          "label": "Spelen met getallen"
+        },
+        {
+          "label": "Spelen met woorden"
+        }
+      ],
+      "default": "woorden"
+    },
+    {
+      "label": "Woorden of zinnen",
+      "showWhen": {
+        "rules": [
+          {}
+        ]
+      },
+      "fields": [
+        {
+          "label": "Woorden of zinnen",
+          "description": "Gebruik één regel voor elk woord en elke zin."
+        }
+      ]
+    },
+    {
+      "label": "Speelbordgrootte"
+    },
+    {
+      "label": "Beeldmateriaal",
+      "description": "Je kunt het visuele uiterlijk hier aanpassen.",
+      "fields": [
+        {
+          "label": "Afbeelding",
+          "description": "Jokerafbeelding voor de knoppen."
+        },
+        {
+          "label": "Achtergrondkleur",
+          "description": "Achtergrondkleur van het speelbord.",
+          "default": "",
+          "spectrum": {}
+        }
+      ]
+    },
+    {
+      "label": "Gedragsinstellingen",
+      "description": "Met deze opties kun je controleren hoe de taak zich gedraagt.",
+      "fields": [
+        {
+          "label": "Schakel \"Opnieuw\" in"
+        },
+        {
+          "label": "Schudden voor een nieuw spel",
+          "description": "Indien aangevinkt, worden de woorden/zinnen/cijfers bij het opnieuw proberen geschud.",
+          "showWhen": {
+            "rules": [
+              {}
+            ]
+          }
+        },
+        {
+          "label": "Zet de joker in",
+          "description": "Hiermee plaats je een onomdraaibare joker in het midden van het speelbord als je een afwijkende grootte gebruikt."
+        }
+      ]
+    },
+    {
+      "label": "Tekst voor \"Opnieuw\" knop",
+      "default": "Opnieuw"
+    }
+  ]
+}
