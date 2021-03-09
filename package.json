@@ -35,6 +35,5 @@
     "resolve-url-loader": "^3.1.2",
     "webpack": "^4.42.0",
     "webpack-cli": "^3.3.11"
-  },
-  "dependencies": {}
+  }
 }
