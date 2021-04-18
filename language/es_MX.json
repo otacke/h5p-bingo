@@ -1,0 +1,81 @@
+{
+  "semantics": [
+    {
+      "label": "Medio",
+      "fields": [
+        {
+          "label": "Tipo",
+          "description": "Medio opcional para mostrar arriba de la pregunta."
+        },
+        {
+          "label": "Deshabilitar zoom de imagen"
+        }
+      ]
+    },
+    {
+      "label": "Descripción del trabajo",
+      "description": "Opcionalmente dar aquí una descripción."
+    },
+    {
+      "label": "Modo",
+      "description": "Elegir el modo para jugar. Los números pueden ser llenados automáticamente, las palabras necesitan ser dadas.",
+      "options": [
+        {
+          "label": "Jugar con números"
+        },
+        {
+          "label": "Jugar con palabras"
+        }
+      ],
+      "default": "palabras"
+    },
+    {
+      "label": "Palabras o frases",
+      "fields": [
+        {
+          "label": "Palabras o frases",
+          "description": "Usar una línea para cada palabra y frase."
+        }
+      ]
+    },
+    {
+      "label": "Tamaño del tablero"
+    },
+    {
+      "label": "Visuales",
+      "description": "Usted puede personalizar aquí la apariencia visual.",
+      "fields": [
+        {
+          "label": "Imagen",
+          "description": "Imagen de guasón (comodín) para los botones."
+        },
+        {
+          "label": "Color del Fondo",
+          "description": "Color del fondo para el tablero.",
+          "default": ""
+        }
+      ]
+    },
+    {
+      "label": "Configuraciones del comportamiento",
+      "description": "Estas opciones le permitirán controlar como se comporta el trabajo.",
+      "fields": [
+        {
+          "label": "Habilitar \"Reintentar\""
+        },
+        {
+          "label": "Barajear en reintento",
+          "description": "Si se activa, las palabras/frases/números serán barajeados al reintentar."
+        },
+        {
+          "label": "Configurar guasón (comodín)",
+          "description": "Colocará un guasón (comodín) no-volteable en el centro del tablero si su tamaño es impar."
+        }
+      ]
+    },
+    {
+      "label": "Texto para botón \"Reintentar\"",
+      "default": "Reintentar"
+    }
+  ]
+}
