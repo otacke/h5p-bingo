@@ -1,0 +1,97 @@
+{
+  "semantics": [
+    {
+      "label": "미디어",
+      "fields": [
+        {
+          "label": "유형",
+          "description": "질문 위에 표시할 선택적 미디어"
+        },
+        {
+          "label": "이미지 확대/축소 사용 안 함",
+          "showWhen": {
+            "rules": [
+              {}
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "작업 설명",
+      "description": "선택적으로 여기에 설명을 해 주세요."
+    },
+    {
+      "label": "모드",
+      "description": "게임 모드를 선택합니다. 숫자는 자동으로 입력되며, 단어는 제공되어야 합니다.",
+      "options": [
+        {
+          "label": "숫자로 플레이"
+        },
+        {
+          "label": "단어로 플레이"
+        }
+      ],
+      "default": "단어"
+    },
+    {
+      "label": "단어 혹은 구",
+      "showWhen": {
+        "rules": [
+          {}
+        ]
+      },
+      "fields": [
+        {
+          "label": "단어 혹은 구",
+          "description": "각 단어 혹은 구에 대해 한 줄을 사용하세요."
+        }
+      ]
+    },
+    {
+      "label": "보드 크기"
+    },
+    {
+      "label": "비주얼",
+      "description": "여기서 시각적 모양을 사용자 정의할 수 있습니다.",
+      "fields": [
+        {
+          "label": "이미지",
+          "description": "버튼에 대한 조커 이미지"
+        },
+        {
+          "label": "배경색깔",
+          "description": "보드 배경색",
+          "default": "",
+          "spectrum": {}
+        }
+      ]
+    },
+    {
+      "label": "행동설정",
+      "description": "이 옵션을 사용하면 작업 동작을 제어할 수 있습니다.",
+      "fields": [
+        {
+          "label": "재시도 활성화"
+        },
+        {
+          "label": "재시도시 다시 섞기",
+          "description": "선택한 경우 단어/구문/숫자가 다시 시도될 때 섞입니다.",
+          "showWhen": {
+            "rules": [
+              {}
+            ]
+          }
+        },
+        {
+          "label": "조커 설정",
+          "description": "크기가 이상할 경우 회전할 수 없는 조커를 보드 중앙에 배치합니다."
+        }
+      ]
+    },
+    {
+      "label": "재시도 버튼 텍스트",
+      "default": "재시도"
+    }
+  ]
+}
