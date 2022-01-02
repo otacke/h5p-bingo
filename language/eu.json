@@ -1,0 +1,80 @@
+{
+  "semantics": [
+    {
+      "label": "Multimedia",
+      "fields": [
+        {
+          "label": "Mota",
+          "description": "Galderaren gainean erakusteko aukerazko multimedia."
+        },
+        {
+          "label": "Desgaitu irudien zooma"
+        }
+      ]
+    },
+    {
+      "label": "Lanaren deskribapena",
+      "description": "Hemen deskribapen bat eman dezakezu (aukerazkoa)."
+    },
+    {
+      "label": "Modua",
+      "description": "Aukeratu ezazu jokatzeko modua. Zenbakiak automatikoki beteko dira, hitzak eman behar dira.",
+      "options": [
+        {
+          "label": "Jokatu zenbakiekin"
+        },
+        {
+          "label": "Jokatu hitzekin"
+        }
+      ],
+      "default": "hitz"
+    },
+    {
+      "label": "Hitzak edo esaldiak",
+      "fields": [
+        {
+          "label": "Hitzak edo esaldiak",
+          "description": "Erabili lerro bana hitz eta esaldi bakoitzarentzat."
+        }
+      ]
+    },
+    {
+      "label": "Arbelaren tamaina"
+    },
+    {
+      "label": "Itxura",
+      "description": "Hemen itxura bisuala pertsonalizatu dezakezu.",
+      "fields": [
+        {
+          "label": "Irudia",
+          "description": "Jokerraren (komodina) botoientzako irudia."
+        },
+        {
+          "label": "Atzeko planoko Kolorea",
+          "description": "Arbelaren atzeko planorako kolorea."
+        }
+      ]
+    },
+    {
+      "label": "Portaeraren ezarpenak",
+      "description": "Aukera hauek lanaren portaera kontrolatzea ahalbidetzen dizute.",
+      "fields": [
+        {
+          "label": "Gaitu \"Saiatu berriro\""
+        },
+        {
+          "label": "Nahastu berriz saiatzean",
+          "description": "Markatuz gero, berriz saiatzerakoan hitzak/esaldiak/zenbakiak nahastuko dira."
+        },
+        {
+          "label": "Konfiguratu jokerra (komodina)",
+          "description": "Arbelaren erdian buelta eman ezin den joker (komodin) bat kokatuko du tamaina bakoitia bada."
+        }
+      ]
+    },
+    {
+      "label": "\"Saiatu berriro\" botoiarentzako testua",
+      "default": "Saiatu berriro"
+    }
+  ]
+}
