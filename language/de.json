@@ -27,7 +27,7 @@
           "label": "Spiele mit Wörtern"
         }
       ],
-      "default": "words"
+      "default": "Wörter"
     },
     {
       "label": "Wörter oder Phrasen",
@@ -51,8 +51,7 @@
         },
         {
           "label": "Hintergrundfarbe",
-          "description": "Hintergrundfarbe für das Spielfeld.",
-          "default": ""
+          "description": "Hintergrundfarbe für das Spielfeld."
         }
       ]
     },
