@@ -1,0 +1,80 @@
+{
+  "semantics": [
+    {
+      "fields": [
+        {
+          "label": "Tips",
+          "description": "Papildu multivide, kuru atspoguļot virs jautājuma."
+        },
+        {
+          "label": "Atspējot attēla tālummaiņu"
+        }
+      ],
+      "label": "Multivide"
+    },
+    {
+      "label": "Uzdevuma apraksts",
+      "description": "Ja vēlaties sniedziet šeit aprakstu."
+    },
+    {
+      "label": "Režīms",
+      "options": [
+        {
+          "label": "Spēlēt ar skaitļiem"
+        },
+        {
+          "label": "Spēlēt ar vārdiem"
+        }
+      ],
+      "default": "vārdi",
+      "description": "Izvēlieties spēles režīmu. Cipari tiks aizpildīti automātiski, vārdi jānorāda."
+    },
+    {
+      "label": "Vārdi vai frāzes",
+      "fields": [
+        {
+          "label": "Vārdi vai frāzes",
+          "description": "Katram vārdam un frāzei izmantojiet vienu rindiņu."
+        }
+      ]
+    },
+    {
+      "label": "Dēļa izmērs"
+    },
+    {
+      "label": "Noformējums",
+      "description": "Šeit varat pielāgot vizuālo izskatu.",
+      "fields": [
+        {
+          "label": "Attēls",
+          "description": "Džokera attēls pogām."
+        },
+        {
+          "label": "Fona krāsa",
+          "description": "Dēļa fona krāsa."
+        }
+      ]
+    },
+    {
+      "label": "Uzvedības iestatījumi",
+      "fields": [
+        {
+          "label": "Atļaut \"Mēģināt vēlreiz\""
+        },
+        {
+          "label": "Atkārtotam mēģinājumam jaukt secību",
+          "description": "Ja atzīmēts, atkārtojot mēģinājumu, vārdi/frāzes/skaitļi tiks sakārtoti nejaušā secībā."
+        },
+        {
+          "label": "Iestatīt džokeru",
+          "description": "Novietos neapgriežamu džokeru dēļa centrā, ja tā izmērs ir nepāra."
+        }
+      ],
+      "description": "Šie iestatījumi ļaus jums kontrolēt uzdevuma uzvedību."
+    },
+    {
+      "label": "Pogas \"Mēģināt vēlreiz\" teksts",
+      "default": "Mēģināt vēlreiz"
+    }
+  ]
+}
