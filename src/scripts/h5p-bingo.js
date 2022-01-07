@@ -107,6 +107,14 @@ export default class Bingo extends H5P.Question {
             this.setVideo(media);
           }
         }
+
+        // Audio
+        else if (media.library.includes('H5P.Audio')) {
+          if (media.params.files) {
+            // Register task audio
+            this.setAudio(media);
+          }
+        }
       }
 
       // Register optional task introduction text
