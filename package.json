@@ -1,6 +1,6 @@
 {
   "name": "h5p-bingo",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Game for boring conferences or meetings ;-)",
   "scripts": {
     "build": "cross-env NODE_ENV=production ./node_modules/.bin/webpack",
