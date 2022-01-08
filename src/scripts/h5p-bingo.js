@@ -45,6 +45,7 @@ export default class Bingo extends H5P.Question {
     // Audio samples
     this.audios = {};
     this.registerAudios(this.params.sound);
+    this.isMuted = false;
 
     this.winningPatterns = this.buildWinningPatterns(this.params.size);
   }
@@ -84,7 +85,7 @@ export default class Bingo extends H5P.Question {
    * @param {string} id Id.
    */
   playAudio(id) {
-    if (typeof id !== 'string' || !this.audios[id]) {
+    if (this.isMuted || typeof id !== 'string' || !this.audios[id]) {
       return;
     }
 
@@ -98,6 +99,17 @@ export default class Bingo extends H5P.Question {
   stopAudios() {
     if (Object.keys(this.audios).length) {
       H5P.SoundJS.stop();
+    }
+  }
+
+  /**
+   * Handle toggling sound.
+   */
+  handleSoundToggled() {
+    this.isMuted = !this.isMuted;
+
+    if (this.isMuted) {
+      this.stopAudios();
     }
   }
 
@@ -212,7 +224,11 @@ export default class Bingo extends H5P.Question {
       buttonClicked: () => {
         this.checkWon();
       },
-      visuals: this.params.visuals
+      visuals: this.params.visuals,
+      hasSound: Object.keys(this.audios).length > 0,
+      onSoundToggled: () => {
+        this.handleSoundToggled();
+      }
     }, this.contentId, this.contentData.previousState || []);
 
     this.setContent(this.board.getDOM());

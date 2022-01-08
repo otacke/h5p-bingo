@@ -65,6 +65,16 @@ class Board extends H5P.EventDispatcher {
     this.fontSizeBase = parseFloat(window.getComputedStyle(document.body, null)
       .getPropertyValue('font-size'));
 
+    if (this.params.hasSound) {
+      const toggleSound = document.createElement('button');
+      toggleSound.classList.add('h5p-bingo-toggle-sound-button');
+      toggleSound.addEventListener('click', () => {
+        toggleSound.classList.toggle('muted');
+        this.params.onSoundToggled();
+      });
+      this.board.appendChild(toggleSound);
+    }
+
     // Resize font sizes and thus board
     this.on('resize', () => {
       setTimeout(() => {

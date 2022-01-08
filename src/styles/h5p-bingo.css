@@ -5,6 +5,43 @@
   padding: 1em;
   line-height: 1.3em;
   background: #46b5a1;
+  position: relative;
+}
+
+.h5p-bingo .h5p-bingo-board .h5p-bingo-toggle-sound-button {
+  background: #000000;
+  border: .1em solid transparent;
+  border-radius: 50%;
+  top: -.5em;
+  color: #ffffff;
+  font-size: 1.1em;
+  height: 2em;
+  position: absolute;
+  right: -.5em;
+  width: 2em;
+}
+
+.h5p-bingo .h5p-bingo-board .h5p-bingo-toggle-sound-button:not(.muted)::before {
+  content: '\f028';
+  font-family: 'H5PFontAwesome4';
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.h5p-bingo .h5p-bingo-board .h5p-bingo-toggle-sound-button.muted::before {
+  content: '\f026';
+  font-family: 'H5PFontAwesome4';
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.h5p-bingo .h5p-bingo-board .h5p-bingo-toggle-sound-button:hover {
+  background-color: #2b2b2b;
+  cursor: pointer;
 }
 
 .h5p-bingo .h5p-bingo-column {
