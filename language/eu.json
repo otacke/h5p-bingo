@@ -26,8 +26,7 @@
         {
           "label": "Jokatu hitzekin"
         }
-      ],
-      "default": "hitz"
+      ]
     },
     {
       "label": "Hitzak edo esaldiak",
@@ -75,6 +74,10 @@
     {
       "label": "\"Saiatu berriro\" botoiarentzako testua",
       "default": "Saiatu berriro"
+    },
+    {
+      "label": "Assistive technology description for \"Retry\" button",
+      "default": "Retry the task. Reset all responses and start the task over again."
     }
   ]
 }

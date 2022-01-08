@@ -26,8 +26,7 @@
         {
           "label": "Jugar con palabras"
         }
-      ],
-      "default": "palabras"
+      ]
     },
     {
       "label": "Palabras o frases",
@@ -75,6 +74,10 @@
     {
       "label": "Texto para botón \"Reintentar\"",
       "default": "Reintentar"
+    },
+    {
+      "label": "Assistive technology description for \"Retry\" button",
+      "default": "Retry the task. Reset all responses and start the task over again."
     }
   ]
 }

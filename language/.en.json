@@ -8,12 +8,7 @@
           "description": "Optional media to display above the question."
         },
         {
-          "label": "Disable image zooming",
-          "showWhen": {
-            "rules": [
-              {}
-            ]
-          }
+          "label": "Disable image zooming"
         }
       ]
     },
@@ -31,16 +26,10 @@
         {
           "label": "Play with words"
         }
-      ],
-      "default": "words"
+      ]
     },
     {
       "label": "Words or phrases",
-      "showWhen": {
-        "rules": [
-          {}
-        ]
-      },
       "fields": [
         {
           "label": "Words or phrases",
@@ -76,12 +65,7 @@
         },
         {
           "label": "Shuffle on retry",
-          "description": "If checked, the words/phrases/numbers will be shuffled on retry.",
-          "showWhen": {
-            "rules": [
-              {}
-            ]
-          }
+          "description": "If checked, the words/phrases/numbers will be shuffled on retry."
         },
         {
           "label": "Set joker",
@@ -92,6 +76,10 @@
     {
       "label": "Text for \"Retry\" button",
       "default": "Retry"
+    },
+    {
+      "label": "Assistive technology description for \"Retry\" button",
+      "default": "Retry the task. Reset all responses and start the task over again."
     }
   ]
 }

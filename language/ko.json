@@ -26,8 +26,7 @@
         {
           "label": "단어로 플레이"
         }
-      ],
-      "default": "단어"
+      ]
     },
     {
       "label": "단어 혹은 구",
@@ -75,6 +74,10 @@
     {
       "label": "재시도 버튼 텍스트",
       "default": "재시도"
+    },
+    {
+      "label": "Assistive technology description for \"Retry\" button",
+      "default": "Retry the task. Reset all responses and start the task over again."
     }
   ]
 }
