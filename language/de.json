@@ -113,12 +113,12 @@
       "default": "Die Aufgabe wiederholen. Alle Eingaben werden zurückgesetzt und die Aufgabe wird erneut gestartet."
     },
     {
-      "label": "Assistive technology description for \"Mute\" button",
-      "default": "Mute audio, currently unmuted"
+      "label": "Beschreibung des \"Stummschalten\"-Buttons (für Hilfsmittel zur Barrierefreiheit)",
+      "default": "Stummschalten, derzeit nicht laut geschaltet"
     },
     {
-      "label": "Assistive technology description for \"Unmute\" button",
-      "default": "Unmute audio, currently muted"
+      "label": "Beschreibung des \"Lautschalten\"-Buttons (für Hilfsmittel zur Barrierefreiheit)",
+      "default": "Laut schalten, derzeit stumm geschaltet"
     }
   ]
 }
