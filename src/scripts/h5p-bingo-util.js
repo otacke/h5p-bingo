@@ -45,6 +45,72 @@ class Util {
 
     return languageCode;
   }
+
+  /**
+   * Compute display limits.
+   * @param {HTMLElement} [container = {}] Container.
+   * @return {object|null} Height and width in px, fallback screen size.
+   */
+  static computeDisplayLimits(container) {
+    container = (typeof container === 'object') ? container : {};
+
+    let topWindow = Util.getTopWindow();
+
+    // iOS doesn't change screen dimensions on rotation
+    let screenSize = (Util.isIOS() && window.orientation === 90) ?
+      { height: screen.width, width: screen.height } :
+      { height: screen.height, width: screen.width };
+
+    topWindow = topWindow || {
+      innerHeight: screenSize.height,
+      innerWidth: screenSize.width
+    };
+
+    // Smallest value of viewport and container wins
+    return {
+      height: Math.min(topWindow.innerHeight, screenSize.height),
+      width: Math.min(topWindow.innerWidth, container.offsetWidth || Infinity)
+    };
+  }
+
+  /**
+   * Detect whether user is running iOS.
+   * @return {boolean} True, if user is running iOS.
+   */
+  static isIOS() {
+    return (
+      ['iPad Simulator', 'iPhone Simulator', 'iPod Simulator', 'iPad', 'iPhone', 'iPod'].includes(navigator.platform) ||
+      (navigator.userAgent.includes('Mac') && 'ontouchend' in document)
+    );
+  }
+
+  /**
+	 * Get top DOM Window object.
+	 * @param {Window} [startWindow=window] Window to start looking from.
+	 * @return {Window|null} Top window.
+	 */
+  static getTopWindow(startWindow) {
+    let sameOrigin;
+    startWindow = startWindow || window;
+
+    // H5P iframe may be on different domain than iframe content
+    try {
+      sameOrigin = startWindow.parent.location.host === window.location.host;
+    }
+    catch (error) {
+      sameOrigin = null;
+    }
+
+    if (!sameOrigin) {
+      return null;
+    }
+
+    if (startWindow.parent === startWindow || !startWindow.parent) {
+      return startWindow;
+    }
+
+    return this.getTopWindow(startWindow.parent);
+  }
 }
 
 export default Util;

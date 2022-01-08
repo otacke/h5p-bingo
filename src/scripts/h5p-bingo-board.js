@@ -214,6 +214,19 @@ class Board extends H5P.EventDispatcher {
   }
 
   /**
+   * Set maximum board width (to limit height).
+   * @param {string} CSS width value.
+   */
+  setMaximumWidth(width) {
+    if (typeof width === 'string') {
+      this.board.style.maxWidth = width;
+    }
+    else {
+      this.board.style.maxWidth = '';
+    }
+  }
+
+  /**
    * Randomly set button labels from a set of words.
    * If there number of words is smaller than the number of buttons,
    * the words will be used repeatedly.
@@ -392,7 +405,6 @@ class Board extends H5P.EventDispatcher {
       flipped: button.isActivated()
     }));
   }
-
 }
 
 export default Board;

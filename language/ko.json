@@ -82,6 +82,25 @@
         {
           "label": "조커 설정",
           "description": "크기가 이상할 경우 회전할 수 없는 조커를 보드 중앙에 배치합니다."
+        },
+        {
+          "label": "Height limit mode",
+          "description": "Decide if you want to limit the board height to fit the visible area. Automatic detection may not be perfect depending on your website's setup, e.g. if it has sticky top navigation bars. Good custom values are hard to set manually.",
+          "options": [
+            {
+              "label": "No limit"
+            },
+            {
+              "label": "Automatic"
+            },
+            {
+              "label": "Custom"
+            }
+          ]
+        },
+        {
+          "label": "Height limit",
+          "description": "Maximum height of the board in pixels."
         }
       ]
     },

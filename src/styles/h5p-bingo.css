@@ -1,7 +1,8 @@
 .h5p-bingo .h5p-bingo-board {
+  box-sizing: border-box;
   display: flex;
   flex-direction: row;
-  padding: 1%;
+  padding: 1em;
   line-height: 1.3em;
   background: #46b5a1;
 }

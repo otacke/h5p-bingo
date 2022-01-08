@@ -19,6 +19,7 @@ export default class Bingo extends H5P.Question {
         enableRetry: true,
         shuffleOnRetry: true,
         joker: false,
+        heightLimitMode: 'none'
       },
       sound: {
         soundSelected: [],
@@ -33,6 +34,10 @@ export default class Bingo extends H5P.Question {
 
     this.contentId = contentId;
     this.contentData = contentData;
+
+    if (this.params.behaviour.heightLimitMode === 'custom' && !this.params.behaviour.heightLimit) {
+      this.params.behaviour.heightLimitMode = 'none';
+    }
 
     const defaultLanguage = (this.contentData && this.contentData.metadata) ? this.contentData.metadata.defaultLanguage || 'en' : 'en';
     this.languageTag = Util.formatLanguageCode(defaultLanguage);
@@ -223,8 +228,42 @@ export default class Bingo extends H5P.Question {
     }, 50);
 
     this.on('resize', () => {
+      // Limit board height
+      if (this.params.behaviour.heightLimitMode === 'auto') {
+        const maxBoardWidth = this.computeMaxBoardWidth();
+        this.board.setMaximumWidth(`${maxBoardWidth}px`);
+      }
+      else if (this.params.behaviour.heightLimitMode === 'custom') {
+        this.board.setMaximumWidth(`${this.params.behaviour.heightLimit}px`);
+      }
+
       this.board.trigger('resize');
     });
+  }
+
+  /**
+   * Compute maximum board width.
+   * @return {number} Maximum board width in pixels.
+   */
+  computeMaxBoardWidth() {
+    if (!this.board) {
+      return null; // Might not be ready yet.
+    }
+
+    const h5pContainer = this.board.getDOM().closest('.h5p-container');
+    const h5pContent = this.board.getDOM().closest('.h5p-question-content');
+
+    if (!h5pContainer || !h5pContent) {
+      return null; // Might not be ready yet.
+    }
+
+    // Determine visible display size (best effort only)
+    const displayLimits = Util.computeDisplayLimits(h5pContainer);
+
+    const contentStyle = window.getComputedStyle(h5pContent);
+    const contentMargin = parseInt(contentStyle.getPropertyValue('margin-left')) + parseInt(contentStyle.getPropertyValue('margin-right'));
+
+    return Math.min(displayLimits.width, displayLimits.height) - contentMargin;
   }
 
   /**
