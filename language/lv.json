@@ -50,8 +50,7 @@
         },
         {
           "label": "Fona krāsa",
-          "description": "Dēļa fona krāsa.",
-          "default": ""
+          "description": "Dēļa fona krāsa."
         }
       ]
     },

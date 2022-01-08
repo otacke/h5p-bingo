@@ -50,8 +50,7 @@
         },
         {
           "label": "Color del Fondo",
-          "description": "Color del fondo para el tablero.",
-          "default": ""
+          "description": "Color del fondo para el tablero."
         }
       ]
     },

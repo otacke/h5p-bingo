@@ -50,8 +50,7 @@
         },
         {
           "label": "배경색깔",
-          "description": "보드 배경색",
-          "default": ""
+          "description": "보드 배경색"
         }
       ]
     },

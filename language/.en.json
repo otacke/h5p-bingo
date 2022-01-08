@@ -50,8 +50,7 @@
         },
         {
           "label": "Background Color",
-          "description": "Background color for the board.",
-          "default": ""
+          "description": "Background color for the board."
         }
       ]
     },

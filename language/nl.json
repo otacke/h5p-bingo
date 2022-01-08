@@ -50,8 +50,7 @@
         },
         {
           "label": "Achtergrondkleur",
-          "description": "Achtergrondkleur van het speelbord.",
-          "default": ""
+          "description": "Achtergrondkleur van het speelbord."
         }
       ]
     },

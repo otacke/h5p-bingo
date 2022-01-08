@@ -24,7 +24,9 @@ export default class Bingo extends H5P.Question {
         soundSelected: [],
         soundWon: []
       },
-      visuals: {},
+      visuals: {
+        backgroundColor: ''
+      },
       tryAgain: 'Retry',
       a11yTryAgain: 'Retry the task. Reset all responses and start the task over again.'
     }, params);

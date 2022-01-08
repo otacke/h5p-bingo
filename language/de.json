@@ -50,8 +50,7 @@
         },
         {
           "label": "Hintergrundfarbe",
-          "description": "Hintergrundfarbe für das Spielfeld.",
-          "default": ""
+          "description": "Hintergrundfarbe für das Spielfeld."
         }
       ]
     },

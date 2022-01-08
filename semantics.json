@@ -132,7 +132,6 @@
         "importance": "low",
         "description": "Background color for the board.",
         "optional": true,
-        "default": "",
         "widget": "colorSelector",
         "spectrum": {
           "showInput": true

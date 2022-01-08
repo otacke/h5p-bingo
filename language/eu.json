@@ -50,8 +50,7 @@
         },
         {
           "label": "Atzeko planoko Kolorea",
-          "description": "Arbelaren atzeko planorako kolorea.",
-          "default": ""
+          "description": "Arbelaren atzeko planorako kolorea."
         }
       ]
     },
