@@ -57,15 +57,15 @@
     },
     {
       "label": "Audio",
-      "description": "You can customize audio here.",
+      "description": "Du kannst hier Toneinstellungen ändern.",
       "fields": [
         {
-          "label": "Selected/unselected a field",
-          "description": "Sound to play when a field is selected or unselected."
+          "label": "Feld ausgewählt/abgewählt",
+          "description": "Ton, der abgespielt werden soll, wenn ein Feld ausgewählt oder abgewählt wird."
         },
         {
-          "label": "Completed row or column",
-          "description": "Sound to play when the user has selected a complete row or column."
+          "label": "Zeile oder Spalte vervollständigt",
+          "description": "Ton, der abgespielt werden soll, wenn eine Zeile oder Spalte vervollständigt wurde."
         }
       ]
     },
