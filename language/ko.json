@@ -50,13 +50,14 @@
         },
         {
           "label": "배경색깔",
-          "description": "보드 배경색"
+          "description": "보드 배경색",
+          "default": ""
         }
       ]
     },
     {
       "label": "Audio",
-      "description": "You can customize the audio appearance here.",
+      "description": "You can customize audio here.",
       "fields": [
         {
           "label": "Selected/unselected a field",

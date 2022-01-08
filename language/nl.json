@@ -50,13 +50,14 @@
         },
         {
           "label": "Achtergrondkleur",
-          "description": "Achtergrondkleur van het speelbord."
+          "description": "Achtergrondkleur van het speelbord.",
+          "default": ""
         }
       ]
     },
     {
       "label": "Audio",
-      "description": "You can customize the audio appearance here.",
+      "description": "You can customize audio here.",
       "fields": [
         {
           "label": "Selected/unselected a field",

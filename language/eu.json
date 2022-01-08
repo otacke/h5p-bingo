@@ -50,13 +50,14 @@
         },
         {
           "label": "Atzeko planoko Kolorea",
-          "description": "Arbelaren atzeko planorako kolorea."
+          "description": "Arbelaren atzeko planorako kolorea.",
+          "default": ""
         }
       ]
     },
     {
       "label": "Audio",
-      "description": "You can customize the audio appearance here.",
+      "description": "You can customize audio here.",
       "fields": [
         {
           "label": "Selected/unselected a field",

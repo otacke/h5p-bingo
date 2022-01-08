@@ -145,7 +145,7 @@
     "type": "group",
     "label": "Audio",
     "importance": "low",
-    "description": "You can customize the audio appearance here.",
+    "description": "You can customize audio here.",
     "fields": [
       {
         "name": "soundSelected",

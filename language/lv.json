@@ -1,6 +1,7 @@
 {
   "semantics": [
     {
+      "label": "Multivide",
       "fields": [
         {
           "label": "Tips",
@@ -9,8 +10,7 @@
         {
           "label": "Atspējot attēla tālummaiņu"
         }
-      ],
-      "label": "Multivide"
+      ]
     },
     {
       "label": "Uzdevuma apraksts",
@@ -18,6 +18,7 @@
     },
     {
       "label": "Režīms",
+      "description": "Izvēlieties spēles režīmu. Cipari tiks aizpildīti automātiski, vārdi jānorāda.",
       "options": [
         {
           "label": "Spēlēt ar skaitļiem"
@@ -25,8 +26,7 @@
         {
           "label": "Spēlēt ar vārdiem"
         }
-      ],
-      "description": "Izvēlieties spēles režīmu. Cipari tiks aizpildīti automātiski, vārdi jānorāda."
+      ]
     },
     {
       "label": "Vārdi vai frāzes",
@@ -50,13 +50,14 @@
         },
         {
           "label": "Fona krāsa",
-          "description": "Dēļa fona krāsa."
+          "description": "Dēļa fona krāsa.",
+          "default": ""
         }
       ]
     },
     {
       "label": "Audio",
-      "description": "You can customize the audio appearance here.",
+      "description": "You can customize audio here.",
       "fields": [
         {
           "label": "Selected/unselected a field",
@@ -70,6 +71,7 @@
     },
     {
       "label": "Uzvedības iestatījumi",
+      "description": "Šie iestatījumi ļaus jums kontrolēt uzdevuma uzvedību.",
       "fields": [
         {
           "label": "Atļaut \"Mēģināt vēlreiz\""
@@ -82,8 +84,7 @@
           "label": "Iestatīt džokeru",
           "description": "Novietos neapgriežamu džokeru dēļa centrā, ja tā izmērs ir nepāra."
         }
-      ],
-      "description": "Šie iestatījumi ļaus jums kontrolēt uzdevuma uzvedību."
+      ]
     },
     {
       "label": "Pogas \"Mēģināt vēlreiz\" teksts",

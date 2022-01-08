@@ -50,13 +50,14 @@
         },
         {
           "label": "Color del Fondo",
-          "description": "Color del fondo para el tablero."
+          "description": "Color del fondo para el tablero.",
+          "default": ""
         }
       ]
     },
     {
       "label": "Audio",
-      "description": "You can customize the audio appearance here.",
+      "description": "You can customize audio here.",
       "fields": [
         {
           "label": "Selected/unselected a field",
