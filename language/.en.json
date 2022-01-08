@@ -50,9 +50,21 @@
         },
         {
           "label": "Background Color",
-          "description": "Background color for the board.",
-          "default": "",
-          "spectrum": {}
+          "description": "Background color for the board."
+        }
+      ]
+    },
+    {
+      "label": "Audio",
+      "description": "You can customize the audio appearance here.",
+      "fields": [
+        {
+          "label": "Selected/unselected a field",
+          "description": "Sound to play when a field is selected or unselected."
+        },
+        {
+          "label": "Completed row or column",
+          "description": "Sound to play when the user has selected a complete row or column."
         }
       ]
     },

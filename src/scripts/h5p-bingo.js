@@ -20,6 +20,10 @@ export default class Bingo extends H5P.Question {
         shuffleOnRetry: true,
         joker: false,
       },
+      sound: {
+        soundSelected: [],
+        soundWon: []
+      },
       visuals: {},
       tryAgain: 'Retry',
       a11yTryAgain: 'Retry the task. Reset all responses and start the task over again.'
@@ -28,8 +32,65 @@ export default class Bingo extends H5P.Question {
     this.contentId = contentId;
     this.contentData = contentData;
 
+    // Audio samples
+    this.audios = {};
+
     const defaultLanguage = (this.contentData && this.contentData.metadata) ? this.contentData.metadata.defaultLanguage || 'en' : 'en';
     this.languageTag = Util.formatLanguageCode(defaultLanguage);
+
+    /**
+     * Register audio.
+     * @param {string} id Id.
+     * @param {object} H5P audio parameters.
+     */
+    this.registerAudio = (id, sound) => {
+      if (typeof id !== 'string' || !Array.isArray(sound) || !sound.length || typeof sound[0].path !== 'string' || !H5P.SoundJS.initializeDefaultPlugins()) {
+        return false;
+      }
+
+      H5P.SoundJS.registerSound(H5P.getPath(sound[0].path, this.contentId), id);
+      this.audios[id] = { params: { interrupt: H5P.SoundJS.INTERRUPT_ANY } };
+    };
+
+    /**
+     * Register audios.
+     * @param {object} Audio settings.
+     */
+    this.registerAudios = (sounds) => {
+      if (typeof sounds !== 'object' || !H5P.SoundJS.initializeDefaultPlugins()) {
+        return false; // Sounds already registered or issue with SoundJS
+      }
+
+      H5P.SoundJS.alternateExtensions = ['mp3', 'wav'];
+
+      for (let sound in sounds) {
+        this.registerAudio(sound, sounds[sound]);
+      }
+    };
+
+    /**
+     * Play audio.
+     * @param {string} id Id.
+     */
+    this.playAudio = (id) => {
+      if (typeof id !== 'string' || !this.audios[id]) {
+        return;
+      }
+
+      this.stopAudios(); // Strange, INTERRUPT_ANY doesn't work
+      H5P.SoundJS.play(id, this.audios[id].params);
+    };
+
+    /**
+     * Stop audios.
+     */
+    this.stopAudios = () => {
+      if (Object.keys(this.audios).length) {
+        H5P.SoundJS.stop();
+      }
+    };
+
+    this.registerAudios(this.params.sound);
 
     /**
      * Build all winning patterns for a Bingo sheet.
@@ -63,12 +124,17 @@ export default class Bingo extends H5P.Question {
     /**
      * Check if game has been won.
      */
-    this.checkWon = () => {
+    this.checkWon = (params = {}) => {
       const winners = this.board.getMatches(this.winningPatterns);
 
       if (winners.length !== 0) {
         this.board.blockButtons();
         this.board.animatePatterns(winners);
+
+        if (!params.silent) {
+          this.playAudio('soundCompleted');
+        }
+
         this.bingoState = true;
 
         // Trigger xAPI statement
@@ -77,6 +143,11 @@ export default class Bingo extends H5P.Question {
 
         if (this.params.behaviour.enableRetry) {
           this.showButton('try-again');
+        }
+      }
+      else {
+        if (!params.silent) {
+          this.playAudio('soundSelected');
         }
       }
     };
@@ -146,7 +217,7 @@ export default class Bingo extends H5P.Question {
 
       // Check after resize slack time because of previous content state
       setTimeout(() => {
-        this.checkWon();
+        this.checkWon({ silent: true });
       }, 50);
 
       this.on('resize', () => {
@@ -198,6 +269,7 @@ export default class Bingo extends H5P.Question {
      * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-5}
      */
     this.resetTask = () => {
+      this.stopAudios();
       this.bingoState = false;
       this.hideButton('try-again');
       this.board.reset();

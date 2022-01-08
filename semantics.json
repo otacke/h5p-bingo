@@ -141,6 +141,37 @@
     ]
   },
   {
+    "name": "sound",
+    "type": "group",
+    "label": "Audio",
+    "importance": "low",
+    "description": "You can customize the audio appearance here.",
+    "fields": [
+      {
+        "name": "soundSelected",
+        "type": "audio",
+        "label": "Selected/unselected a field",
+        "description": "Sound to play when a field is selected or unselected.",
+        "importance": "low",
+        "optional": true,
+        "widgetExtensions": [
+          "AudioRecorder"
+        ]
+      },
+      {
+        "name": "soundCompleted",
+        "type": "audio",
+        "label": "Completed row or column",
+        "description": "Sound to play when the user has selected a complete row or column.",
+        "importance": "low",
+        "optional": true,
+        "widgetExtensions": [
+          "AudioRecorder"
+        ]
+      }
+    ]
+  },
+  {
     "name": "behaviour",
     "type": "group",
     "label": "Behavioural settings",

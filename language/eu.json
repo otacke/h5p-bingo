@@ -55,6 +55,20 @@
       ]
     },
     {
+      "label": "Audio",
+      "description": "You can customize the audio appearance here.",
+      "fields": [
+        {
+          "label": "Selected/unselected a field",
+          "description": "Sound to play when a field is selected or unselected."
+        },
+        {
+          "label": "Completed row or column",
+          "description": "Sound to play when the user has selected a complete row or column."
+        }
+      ]
+    },
+    {
       "label": "Portaeraren ezarpenak",
       "description": "Aukera hauek lanaren portaera kontrolatzea ahalbidetzen dizute.",
       "fields": [
