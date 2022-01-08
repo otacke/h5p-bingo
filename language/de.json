@@ -111,6 +111,14 @@
     {
       "label": "Beschreibung des \"Wiederholen\"-Buttons (für Hilfsmittel zur Barrierefreiheit)",
       "default": "Die Aufgabe wiederholen. Alle Eingaben werden zurückgesetzt und die Aufgabe wird erneut gestartet."
+    },
+    {
+      "label": "Assistive technology description for \"Mute\" button",
+      "default": "Mute audio, currently unmuted"
+    },
+    {
+      "label": "Assistive technology description for \"Unmute\" button",
+      "default": "Unmute audio, currently muted"
     }
   ]
 }

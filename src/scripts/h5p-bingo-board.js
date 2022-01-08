@@ -68,8 +68,17 @@ class Board extends H5P.EventDispatcher {
     if (this.params.hasSound) {
       const toggleSound = document.createElement('button');
       toggleSound.classList.add('h5p-bingo-toggle-sound-button');
+      toggleSound.setAttribute('aria-label', this.params.a11y.mute);
       toggleSound.addEventListener('click', () => {
         toggleSound.classList.toggle('muted');
+
+        if (toggleSound.classList.contains('muted')) {
+          toggleSound.setAttribute('aria-label', this.params.a11y.unmute);
+        }
+        else {
+          toggleSound.setAttribute('aria-label', this.params.a11y.mute);
+        }
+
         this.params.onSoundToggled();
       });
       this.board.appendChild(toggleSound);

@@ -29,7 +29,9 @@ export default class Bingo extends H5P.Question {
         backgroundColor: ''
       },
       tryAgain: 'Retry',
-      a11yTryAgain: 'Retry the task. Reset all responses and start the task over again.'
+      a11yTryAgain: 'Retry the task. Reset all responses and start the task over again.',
+      a11yMute: 'Mute audio, currently unmuted',
+      a11yUnmute: 'Unmute audio, currently muted'
     }, params);
 
     this.contentId = contentId;
@@ -228,6 +230,10 @@ export default class Bingo extends H5P.Question {
       hasSound: Object.keys(this.audios).length > 0,
       onSoundToggled: () => {
         this.handleSoundToggled();
+      },
+      a11y: {
+        mute: this.params.a11yMute,
+        unmute: this.params.a11yUnmute
       }
     }, this.contentId, this.contentData.previousState || []);
 

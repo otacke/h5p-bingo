@@ -111,6 +111,14 @@
     {
       "label": "Assistive technology description for \"Retry\" button",
       "default": "Retry the task. Reset all responses and start the task over again."
+    },
+    {
+      "label": "Assistive technology description for \"Mute\" button",
+      "default": "Mute audio, currently unmuted"
+    },
+    {
+      "label": "Assistive technology description for \"Unmute\" button",
+      "default": "Unmute audio, currently muted"
     }
   ]
 }

@@ -267,5 +267,21 @@
     "importance": "low",
     "default": "Retry the task. Reset all responses and start the task over again.",
     "common": true
+  },
+  {
+    "name": "a11yMute",
+    "type": "text",
+    "label": "Assistive technology description for \"Mute\" button",
+    "importance": "low",
+    "default": "Mute audio, currently unmuted",
+    "common": true
+  },
+  {
+    "name": "a11yUnmute",
+    "type": "text",
+    "label": "Assistive technology description for \"Unmute\" button",
+    "importance": "low",
+    "default": "Unmute audio, currently muted",
+    "common": true
   }
 ]
