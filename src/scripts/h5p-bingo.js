@@ -34,344 +34,357 @@ export default class Bingo extends H5P.Question {
     this.contentId = contentId;
     this.contentData = contentData;
 
-    // Audio samples
-    this.audios = {};
-
     const defaultLanguage = (this.contentData && this.contentData.metadata) ? this.contentData.metadata.defaultLanguage || 'en' : 'en';
     this.languageTag = Util.formatLanguageCode(defaultLanguage);
 
-    /**
-     * Register audio.
-     * @param {string} id Id.
-     * @param {object} H5P audio parameters.
-     */
-    this.registerAudio = (id, sound) => {
-      if (typeof id !== 'string' || !Array.isArray(sound) || !sound.length || typeof sound[0].path !== 'string' || !H5P.SoundJS.initializeDefaultPlugins()) {
-        return false;
-      }
-
-      H5P.SoundJS.registerSound(H5P.getPath(sound[0].path, this.contentId), id);
-      this.audios[id] = { params: { interrupt: H5P.SoundJS.INTERRUPT_ANY } };
-    };
-
-    /**
-     * Register audios.
-     * @param {object} Audio settings.
-     */
-    this.registerAudios = (sounds) => {
-      if (typeof sounds !== 'object' || !H5P.SoundJS.initializeDefaultPlugins()) {
-        return false; // Sounds already registered or issue with SoundJS
-      }
-
-      H5P.SoundJS.alternateExtensions = ['mp3', 'wav'];
-
-      for (let sound in sounds) {
-        this.registerAudio(sound, sounds[sound]);
-      }
-    };
-
-    /**
-     * Play audio.
-     * @param {string} id Id.
-     */
-    this.playAudio = (id) => {
-      if (typeof id !== 'string' || !this.audios[id]) {
-        return;
-      }
-
-      this.stopAudios(); // Strange, INTERRUPT_ANY doesn't work
-      H5P.SoundJS.play(id, this.audios[id].params);
-    };
-
-    /**
-     * Stop audios.
-     */
-    this.stopAudios = () => {
-      if (Object.keys(this.audios).length) {
-        H5P.SoundJS.stop();
-      }
-    };
-
+    // Audio samples
+    this.audios = {};
     this.registerAudios(this.params.sound);
 
-    /**
-     * Build all winning patterns for a Bingo sheet.
-     * @param {number} size Sheet size.
-     * @return {object[]} Arrays containing patterns.
-     */
-    this.buildWinningPatterns = (size) => {
-      const patterns = [];
-      const diagonal1 = [];
-      const diagonal2 = [];
-      for (let i = 0; i < size; i++) {
-        const col = [];
-        const row = [];
-        for (let j = 0; j < size; j++) {
-          col.push(i * size + j);
-          row.push(j * size + i);
-        }
-        patterns.push(col);
-        patterns.push(row);
-
-        diagonal1.push(i * (size + 1));
-        diagonal2.push((i + 1) * (size - 1));
-      }
-      patterns.push(diagonal1);
-      patterns.push(diagonal2);
-      return patterns;
-    };
-
     this.winningPatterns = this.buildWinningPatterns(this.params.size);
+  }
 
-    /**
-     * Check if game has been won.
-     */
-    this.checkWon = (params = {}) => {
-      const winners = this.board.getMatches(this.winningPatterns);
+  /**
+   * Register audio.
+   * @param {string} id Id.
+   * @param {object} H5P audio parameters.
+   */
+  registerAudio(id, sound) {
+    if (typeof id !== 'string' || !Array.isArray(sound) || !sound.length || typeof sound[0].path !== 'string' || !H5P.SoundJS.initializeDefaultPlugins()) {
+      return false;
+    }
 
-      if (winners.length !== 0) {
-        this.board.blockButtons();
-        this.board.animatePatterns(winners);
+    H5P.SoundJS.registerSound(H5P.getPath(sound[0].path, this.contentId), id);
+    this.audios[id] = { params: { interrupt: H5P.SoundJS.INTERRUPT_ANY } };
+  }
 
-        if (!params.silent) {
-          this.playAudio('soundCompleted');
-        }
+  /**
+   * Register audios.
+   * @param {object} Audio settings.
+   */
+  registerAudios(sounds) {
+    if (typeof sounds !== 'object' || !H5P.SoundJS.initializeDefaultPlugins()) {
+      return false; // Sounds already registered or issue with SoundJS
+    }
 
-        this.bingoState = true;
+    H5P.SoundJS.alternateExtensions = ['mp3', 'wav'];
 
-        // Trigger xAPI statement
-        // Removed until "choice" processor of reporting can handle an empty correct responses pattern correctly
-        // this.trigger(this.getXAPIAnswerEvent());
+    for (let sound in sounds) {
+      this.registerAudio(sound, sounds[sound]);
+    }
+  }
 
-        if (this.params.behaviour.enableRetry) {
-          this.showButton('try-again');
+  /**
+   * Play audio.
+   * @param {string} id Id.
+   */
+  playAudio(id) {
+    if (typeof id !== 'string' || !this.audios[id]) {
+      return;
+    }
+
+    this.stopAudios(); // Strange, INTERRUPT_ANY doesn't work
+    H5P.SoundJS.play(id, this.audios[id].params);
+  }
+
+  /**
+   * Stop audios.
+   */
+  stopAudios() {
+    if (Object.keys(this.audios).length) {
+      H5P.SoundJS.stop();
+    }
+  }
+
+  /**
+   * Build all winning patterns for a Bingo sheet.
+   * @param {number} size Sheet size.
+   * @return {object[]} Arrays containing patterns.
+   */
+  buildWinningPatterns(size) {
+    const patterns = [];
+    const diagonal1 = [];
+    const diagonal2 = [];
+    for (let i = 0; i < size; i++) {
+      const col = [];
+      const row = [];
+      for (let j = 0; j < size; j++) {
+        col.push(i * size + j);
+        row.push(j * size + i);
+      }
+      patterns.push(col);
+      patterns.push(row);
+
+      diagonal1.push(i * (size + 1));
+      diagonal2.push((i + 1) * (size - 1));
+    }
+    patterns.push(diagonal1);
+    patterns.push(diagonal2);
+    return patterns;
+  }
+
+  /**
+   * Check if game has been won.
+   */
+  checkWon(params = {}) {
+    const winners = this.board.getMatches(this.winningPatterns);
+
+    if (winners.length !== 0) {
+      this.board.blockButtons();
+      this.board.animatePatterns(winners);
+
+      if (!params.silent) {
+        this.playAudio('soundCompleted');
+      }
+
+      this.bingoState = true;
+
+      // Trigger xAPI statement
+      // Removed until "choice" processor of reporting can handle an empty correct responses pattern correctly
+      // this.trigger(this.getXAPIAnswerEvent());
+
+      if (this.params.behaviour.enableRetry) {
+        this.showButton('try-again');
+      }
+    }
+    else {
+      if (!params.silent) {
+        this.playAudio('soundSelected');
+      }
+    }
+  }
+
+  /**
+   * Register the DOM elements with H5P.Question.
+   */
+  registerDomElements() {
+    // Set optional media
+    var media = this.params.media.type;
+    if (media && media.library) {
+      var type = media.library.split(' ')[0];
+
+      // Image
+      if (type === 'H5P.Image') {
+        if (media.params.file) {
+          this.setImage(media.params.file.path, {
+            disableImageZooming: this.params.media.disableImageZooming,
+            alt: media.params.alt,
+            title: media.params.title
+          });
         }
       }
-      else {
-        if (!params.silent) {
-          this.playAudio('soundSelected');
-        }
-      }
-    };
 
-    /**
-     * Register the DOM elements with H5P.Question.
-     */
-    this.registerDomElements = () => {
-      // Set optional media
-      var media = this.params.media.type;
-      if (media && media.library) {
-        var type = media.library.split(' ')[0];
-
-        // Image
-        if (type === 'H5P.Image') {
-          if (media.params.file) {
-            this.setImage(media.params.file.path, {
-              disableImageZooming: this.params.media.disableImageZooming,
-              alt: media.params.alt,
-              title: media.params.title
-            });
-          }
-        }
-
-        // Video
-        else if (type === 'H5P.Video') {
-          if (media.params.sources) {
-            this.setVideo(media);
-          }
-        }
-
-        // Audio
-        else if (media.library.includes('H5P.Audio')) {
-          if (media.params.files) {
-            // Register task audio
-            this.setAudio(media);
-          }
+      // Video
+      else if (type === 'H5P.Video') {
+        if (media.params.sources) {
+          this.setVideo(media);
         }
       }
 
-      // Register optional task introduction text
-      if (this.params.taskDescription) {
-        this.introduction = document.createElement('div');
-        this.introduction.innerHTML = this.params.taskDescription;
-        this.setIntroduction(this.introduction);
+      // Audio
+      else if (media.library.includes('H5P.Audio')) {
+        if (media.params.files) {
+          // Register task audio
+          this.setAudio(media);
+        }
       }
+    }
 
-      // Register content
-      this.board = new Board({
-        mode: this.params.mode,
-        words: this.params.words,
-        size: this.params.size,
-        shuffleOnRetry: this.params.behaviour.shuffleOnRetry,
-        joker: this.params.behaviour.joker,
-        buttonClicked: this.checkWon,
-        visuals: this.params.visuals
-      }, this.contentId, this.contentData.previousState || []);
+    // Register optional task introduction text
+    if (this.params.taskDescription) {
+      this.introduction = document.createElement('div');
+      this.introduction.innerHTML = this.params.taskDescription;
+      this.setIntroduction(this.introduction);
+    }
 
-      this.setContent(this.board.getDOM());
+    // Register content
+    this.board = new Board({
+      mode: this.params.mode,
+      words: this.params.words,
+      size: this.params.size,
+      shuffleOnRetry: this.params.behaviour.shuffleOnRetry,
+      joker: this.params.behaviour.joker,
+      buttonClicked: this.checkWon,
+      visuals: this.params.visuals
+    }, this.contentId, this.contentData.previousState || []);
 
-      // Add buttons
-      this.addButtons();
+    this.setContent(this.board.getDOM());
 
-      setTimeout(() => {
-        this.board.trigger('resize');
-      }, 0);
+    // Add buttons
+    this.addButtons();
 
-      // Check after resize slack time because of previous content state
-      setTimeout(() => {
-        this.checkWon({ silent: true });
-      }, 50);
+    setTimeout(() => {
+      this.board.trigger('resize');
+    }, 0);
 
-      this.on('resize', () => {
-        this.board.trigger('resize');
-      });
-    };
+    // Check after resize slack time because of previous content state
+    setTimeout(() => {
+      this.checkWon({ silent: true });
+    }, 50);
 
-    /**
-     * Add all the buttons that shall be passed to H5P.Question
-     */
-    this.addButtons = () => {
-      // Retry button
-      this.addButton('try-again', this.params.tryAgain, () => {
-        this.resetTask();
-      }, false, {
-        'aria-label': this.params.a11yTryAgain
-      }, {});
-    };
+    this.on('resize', () => {
+      this.board.trigger('resize');
+    });
+  }
 
-    /**
-     * Check if some kind of answer was given -- not applicable.
-     * @return {boolean} True, if answer was given.
-     * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-1}
-     */
-    this.getAnswerGiven = () => true;
+  /**
+   * Add all the buttons that shall be passed to H5P.Question
+   */
+  addButtons() {
+    // Retry button
+    this.addButton('try-again', this.params.tryAgain, () => {
+      this.resetTask();
+    }, false, {
+      'aria-label': this.params.a11yTryAgain
+    }, {});
+  }
 
-    /**
-     * Get latest score -- not applicable.
-     * @return {number} Latest score.
-     * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-2}
-     */
-    this.getScore = () => null;
+  /**
+   * Check if some kind of answer was given -- not applicable.
+   * @return {boolean} True, if answer was given.
+   * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-1}
+   */
+  getAnswerGiven() {
+    return true;
+  }
 
-    /**
-     * Get maximum possible score -- not applicable.
-     * @return {number} Score necessary for mastering.
-     * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-3}
-     */
-    this.getMaxScore = () => null;
+  /**
+   * Get latest score -- not applicable.
+   * @return {number} Latest score.
+   * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-2}
+   */
+  getScore() {
+    return null;
+  }
 
-    /**
-     * Show solution -- not applicable.
-     * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-4}
-     */
-    this.showSolutions = () => undefined;
+  /**
+   * Get maximum possible score -- not applicable.
+   * @return {number} Score necessary for mastering.
+   * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-3}
+   */
+  getMaxScore() {
+    return null;
+  }
 
-    /**
-     * Reset task.
-     * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-5}
-     */
-    this.resetTask = () => {
-      this.stopAudios();
-      this.bingoState = false;
-      this.hideButton('try-again');
-      this.board.reset();
-    };
+  /**
+   * Show solution -- not applicable.
+   * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-4}
+   */
+  showSolutions() {
+  }
 
-    /**
-     * Get xAPI data.
-     * @return {Object} xAPI statement.
-     * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-6}
-     */
-    // Removed until "choice" processor of reporting can handle an empty correct responses pattern correctly
-    // this.getXAPIData = () => ({statement: this.getXAPIAnswerEvent().data.statement});
+  /**
+   * Reset task.
+   * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-5}
+   */
+  resetTask() {
+    this.stopAudios();
+    this.bingoState = false;
+    this.hideButton('try-again');
+    this.board.reset();
+  }
 
-    /**
-     * Build xAPI answer event.
-     * @return {H5P.XAPIEvent} XAPI answer event.
-     */
-    this.getXAPIAnswerEvent = () => {
-      const xAPIEvent = this.createBingoXAPIEvent('answered');
+  /**
+   * Get xAPI data.
+   * @return {Object} xAPI statement.
+   * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-6}
+   */
+  // Removed until "choice" processor of reporting can handle an empty correct responses pattern correctly
+  // getXAPIData() {
+  //   return ({statement: this.getXAPIAnswerEvent().data.statement});
+  // }
 
-      xAPIEvent.setScoredResult(this.getScore(), this.getMaxScore(), this, true, this.hasBingo());
-      xAPIEvent.data.statement.result.response = this.board
-        .getActivatedButtonsIDs()
-        .join('[,]');
+  /**
+   * Build xAPI answer event.
+   * @return {H5P.XAPIEvent} XAPI answer event.
+   */
+  getXAPIAnswerEvent() {
+    const xAPIEvent = this.createBingoXAPIEvent('answered');
 
-      return xAPIEvent;
-    };
+    xAPIEvent.setScoredResult(this.getScore(), this.getMaxScore(), this, true, this.hasBingo());
+    xAPIEvent.data.statement.result.response = this.board
+      .getActivatedButtonsIDs()
+      .join('[,]');
 
-    /**
-     * Create an xAPI event for Bingo.
-     * @param {string} verb Short id of the verb we want to trigger.
-     * @return {H5P.XAPIEvent} Event template.
-     */
-    this.createBingoXAPIEvent = (verb) => {
-      const xAPIEvent = this.createXAPIEventTemplate(verb);
-      Util.extend(
-        xAPIEvent.getVerifiedStatementValue(['object', 'definition']),
-        this.getxAPIDefinition());
-      return xAPIEvent;
-    };
+    return xAPIEvent;
+  }
 
-    /**
-     * Get the xAPI definition for the xAPI object.
-     * @return {object} XAPI definition.
-     */
-    this.getxAPIDefinition = () => {
-      const definition = {};
-      definition.name = {};
-      definition.name[this.languageTag] = this.getTitle();
-      // Fallback for h5p-php-reporting, expects en-US
-      definition.name['en-US'] = definition.name[this.languageTag];
-      definition.description = {};
-      definition.description[this.languageTag] = this.getDescription();
-      // Fallback for h5p-php-reporting, expects en-US
-      definition.description['en-US'] = definition.description[this.languageTag];
-      definition.type = 'http://adlnet.gov/expapi/activities/cmi.interaction';
-      definition.interactionType = 'choice';
-      definition.choices = this.board.getXAPIChoices();
-      // There's no right or wrong, but reporting expects a pattern; all correct is better
-      definition.correctResponsesPattern = [
-        Array.apply(null, {length: this.params.size * this.params.size})
-          .map(Number.call, Number)
-          .join('[,]')
-      ];
+  /**
+   * Create an xAPI event for Bingo.
+   * @param {string} verb Short id of the verb we want to trigger.
+   * @return {H5P.XAPIEvent} Event template.
+   */
+  createBingoXAPIEvent(verb) {
+    const xAPIEvent = this.createXAPIEventTemplate(verb);
+    Util.extend(
+      xAPIEvent.getVerifiedStatementValue(['object', 'definition']),
+      this.getxAPIDefinition());
+    return xAPIEvent;
+  }
 
-      return definition;
-    };
+  /**
+   * Get the xAPI definition for the xAPI object.
+   * @return {object} XAPI definition.
+   */
+  getxAPIDefinition() {
+    const definition = {};
+    definition.name = {};
+    definition.name[this.languageTag] = this.getTitle();
+    // Fallback for h5p-php-reporting, expects en-US
+    definition.name['en-US'] = definition.name[this.languageTag];
+    definition.description = {};
+    definition.description[this.languageTag] = this.getDescription();
+    // Fallback for h5p-php-reporting, expects en-US
+    definition.description['en-US'] = definition.description[this.languageTag];
+    definition.type = 'http://adlnet.gov/expapi/activities/cmi.interaction';
+    definition.interactionType = 'choice';
+    definition.choices = this.board.getXAPIChoices();
+    // There's no right or wrong, but reporting expects a pattern; all correct is better
+    definition.correctResponsesPattern = [
+      Array.apply(null, {length: this.params.size * this.params.size})
+        .map(Number.call, Number)
+        .join('[,]')
+    ];
 
-    /**
-     * Detect winning/completion state.
-     * @return {boolean} True, if Bingo.
-     */
-    this.hasBingo = () => this.bingoState;
+    return definition;
+  }
 
-    /**
-     * Get tasks title.
-     * @return {string} Title.
-     */
-    this.getTitle = () => {
-      let raw;
-      if (this.contentData && this.contentData.metadata) {
-        raw = this.contentData.metadata.title;
-      }
-      raw = raw || Bingo.DEFAULT_DESCRIPTION;
+  /**
+   * Detect winning/completion state.
+   * @return {boolean} True, if Bingo.
+   */
+  hasBingo() {
+    return this.bingoState;
+  }
 
-      return H5P.createTitle(raw);
-    };
+  /**
+   * Get tasks title.
+   * @return {string} Title.
+   */
+  getTitle() {
+    let raw;
+    if (this.contentData && this.contentData.metadata) {
+      raw = this.contentData.metadata.title;
+    }
+    raw = raw || Bingo.DEFAULT_DESCRIPTION;
 
-    /**
-     * Get tasks description.
-     * @return {string} Description.
-     */
-    this.getDescription = () => this.params.taskDescription || Bingo.DEFAULT_DESCRIPTION;
+    return H5P.createTitle(raw);
+  }
 
-    /**
-     * Answer call to return the current state.
-     *
-     * @return {object[]} Current state.
-     */
-    this.getCurrentState = () => this.board.getCurrentState();
+  /**
+   * Get tasks description.
+   * @return {string} Description.
+   */
+  getDescription() {
+    return this.params.taskDescription || Bingo.DEFAULT_DESCRIPTION;
+  }
+
+  /**
+   * Answer call to return the current state.
+   * @return {object[]} Current state.
+   */
+  getCurrentState() {
+    return this.board.getCurrentState();
   }
 }
 
