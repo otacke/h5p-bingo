@@ -84,23 +84,23 @@
           "description": "Wenn gewählt, wird ein nicht anwählbarer Joker in die Mitte des Spielfelds gesetzt, wenn es eine ungerade Größe hat."
         },
         {
-          "label": "Height limit mode",
-          "description": "Decide if you want to limit the board height to fit the visible area. Automatic detection may not be perfect depending on your website's setup, e.g. if it has sticky top navigation bars. Good custom values are hard to set manually.",
+          "label": "Höhenbegrenzungsmodus",
+          "description": "Du kannst hier die Höhe des Bingobretts begrenzen, um in den sichtbaren Teil des Bildschirms zu passen. Die Automatische Begrenzung wird unter Umständen nicht perfekt funktionieren. Das kann von der Website abhängen, zum Beispiel bei solchen mit festen Navigationsleisten. Gute eigene Werte sind manuell nur schwer zu setzen.",
           "options": [
             {
-              "label": "No limit"
+              "label": "Keine Begrenzung"
             },
             {
-              "label": "Automatic"
+              "label": "Automatisch"
             },
             {
-              "label": "Custom"
+              "label": "Eigener Wert"
             }
           ]
         },
         {
-          "label": "Height limit",
-          "description": "Maximum height of the board in pixels."
+          "label": "Höhenbegrenzung",
+          "description": "Maximale Höhe des Bingobretts in Pixeln."
         }
       ]
     },
