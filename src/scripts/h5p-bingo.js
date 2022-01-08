@@ -49,6 +49,13 @@ export default class Bingo extends H5P.Question {
     this.registerAudios(this.params.sound);
     this.isMuted = false;
 
+    if (this.contentData.previousState && Object.keys(this.contentData.previousState).length) {
+      this.isAnswerGiven = this.contentData.previousState.isAnswerGiven;
+    }
+    else {
+      this.isAnswerGiven = false;
+    }
+
     this.winningPatterns = this.buildWinningPatterns(this.params.size);
   }
 
@@ -224,6 +231,7 @@ export default class Bingo extends H5P.Question {
       shuffleOnRetry: this.params.behaviour.shuffleOnRetry,
       joker: this.params.behaviour.joker,
       buttonClicked: () => {
+        this.isAnswerGiven = true;
         this.checkWon();
       },
       visuals: this.params.visuals,
@@ -235,7 +243,7 @@ export default class Bingo extends H5P.Question {
         mute: this.params.a11yMute,
         unmute: this.params.a11yUnmute
       }
-    }, this.contentId, this.contentData.previousState || []);
+    }, this.contentId, this.contentData?.previousState?.board || [] );
 
     this.setContent(this.board.getDOM());
 
@@ -247,9 +255,11 @@ export default class Bingo extends H5P.Question {
     }, 0);
 
     // Check after resize slack time because of previous content state
-    setTimeout(() => {
-      this.checkWon({ silent: true });
-    }, 50);
+    if (this.contentData.previousState && Object.keys(this.contentData.previousState).length) {
+      setTimeout(() => {
+        this.checkWon({ silent: true });
+      }, 50);
+    }
 
     this.on('resize', () => {
       // Limit board height
@@ -308,7 +318,7 @@ export default class Bingo extends H5P.Question {
    * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-1}
    */
   getAnswerGiven() {
-    return true;
+    return this.isAnswerGiven;
   }
 
   /**
@@ -317,7 +327,7 @@ export default class Bingo extends H5P.Question {
    * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-2}
    */
   getScore() {
-    return null;
+    return this.hasBingo() ? 1 : 0;
   }
 
   /**
@@ -326,7 +336,7 @@ export default class Bingo extends H5P.Question {
    * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-3}
    */
   getMaxScore() {
-    return null;
+    return 1;
   }
 
   /**
@@ -334,6 +344,7 @@ export default class Bingo extends H5P.Question {
    * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-4}
    */
   showSolutions() {
+    // Not applicable
   }
 
   /**
@@ -345,6 +356,7 @@ export default class Bingo extends H5P.Question {
     this.bingoState = false;
     this.hideButton('try-again');
     this.board.reset();
+    this.isAnswerGiven = false;
   }
 
   /**
@@ -362,7 +374,7 @@ export default class Bingo extends H5P.Question {
    * @return {H5P.XAPIEvent} XAPI answer event.
    */
   getXAPIAnswerEvent() {
-    const xAPIEvent = this.createBingoXAPIEvent('answered');
+    const xAPIEvent = this.createBingoXAPIEvent('completed');
 
     xAPIEvent.setScoredResult(this.getScore(), this.getMaxScore(), this, true, this.hasBingo());
     xAPIEvent.data.statement.result.response = this.board
@@ -447,7 +459,10 @@ export default class Bingo extends H5P.Question {
    * @return {object[]} Current state.
    */
   getCurrentState() {
-    return this.board.getCurrentState();
+    return {
+      isAnswerGiven: this.isAnswerGiven,
+      board: this.board.getCurrentState()
+    };
   }
 }
 
