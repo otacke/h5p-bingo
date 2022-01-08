@@ -22,7 +22,7 @@ export default class Bingo extends H5P.Question {
       },
       sound: {
         soundSelected: [],
-        soundWon: []
+        soundCompleted: []
       },
       visuals: {
         backgroundColor: ''
