@@ -57,7 +57,7 @@ class Util {
     let topWindow = Util.getTopWindow();
 
     // iOS doesn't change screen dimensions on rotation
-    let screenSize = (Util.isIOS() && window.orientation === 90) ?
+    let screenSize = (Util.isIOS() && Util.getOrientation() === 'landscape') ?
       { height: screen.width, width: screen.height } :
       { height: screen.height, width: screen.width };
 
@@ -82,6 +82,33 @@ class Util {
       ['iPad Simulator', 'iPhone Simulator', 'iPod Simulator', 'iPad', 'iPhone', 'iPod'].includes(navigator.platform) ||
       (navigator.userAgent.includes('Mac') && 'ontouchend' in document)
     );
+  }
+
+  /**
+   * Get device orientation.
+   * @return {string} 'portrait' or 'landscape'.
+   */
+  static getOrientation() {
+    if (screen.orientation && screen.orientation.type) {
+      if (screen.orientation.type.includes('portrait')) {
+        return 'portrait';
+      }
+      else if (screen.orientation.type.includes('landscape')) {
+        return 'landscape';
+      }
+    }
+
+    // Unreliable, as not clear what device's natural orientation is
+    if (typeof window.orientation === 'number') {
+      if (window.orientation === 0 || window.orientation === 180) {
+        return 'portrait';
+      }
+      else if (window.orientation === 90 || window.orientation === -90 || window.orientation === 270) {
+        return 'landscape';
+      }
+    }
+
+    return 'landscape'; // Assume default
   }
 
   /**
