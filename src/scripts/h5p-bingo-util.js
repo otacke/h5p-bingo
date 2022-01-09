@@ -69,7 +69,7 @@ class Util {
     // Smallest value of viewport and container wins
     return {
       height: Math.min(topWindow.innerHeight, screenSize.height),
-      width: Math.min(topWindow.innerWidth, container.offsetWidth || Infinity)
+      width: Math.min(topWindow.innerWidth, screenSize.width, container.offsetWidth || Infinity)
     };
   }
 
