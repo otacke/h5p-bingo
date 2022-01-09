@@ -56,15 +56,15 @@
     },
     {
       "label": "Audio",
-      "description": "You can customize audio here.",
+      "description": "Usted puede personalizar aquí el audio.",
       "fields": [
         {
-          "label": "Selected/unselected a field",
-          "description": "Sound to play when a field is selected or unselected."
+          "label": "Seleccionó/des-seleccionó un campo",
+          "description": "Sonido a reproducir cuando un campo es seleccionado o des-seleccionado."
         },
         {
-          "label": "Completed row or column",
-          "description": "Sound to play when the user has selected a complete row or column."
+          "label": "Fila o columna completada",
+          "description": "Sonido a reproducir cuando el usuario ha seleccionado una fila o columna completa."
         }
       ]
     },
@@ -84,23 +84,23 @@
           "description": "Colocará un guasón (comodín) no-volteable en el centro del tablero si su tamaño es impar."
         },
         {
-          "label": "Height limit mode",
-          "description": "Decide if you want to limit the board height to fit the visible area. Automatic detection may not be perfect depending on your website's setup, e.g. if it has sticky top navigation bars. Good custom values are hard to set manually.",
+          "label": "Modo de límite de altura",
+          "description": "Decida si quiere limitar la altura del tablero para que quepa en el área visible. La detección automática puede no ser perfecta dependiendo de la configuración de su sitio web; por ejemplo, si tiene barras pegajosas superiores de navegación. Buenos valores personalizados son difíciles de configurar manualmente.",
           "options": [
             {
-              "label": "No limit"
+              "label": "Sin límite"
             },
             {
-              "label": "Automatic"
+              "label": "Automático"
             },
             {
-              "label": "Custom"
+              "label": "Personalizado"
             }
           ]
         },
         {
-          "label": "Height limit",
-          "description": "Maximum height of the board in pixels."
+          "label": "Límite de altura",
+          "description": "Altura máxima del tablero en pixeles."
         }
       ]
     },
@@ -109,8 +109,8 @@
       "default": "Reintentar"
     },
     {
-      "label": "Assistive technology description for \"Retry\" button",
-      "default": "Retry the task. Reset all responses and start the task over again."
+      "label": "Descripción de tecnología asistiva para botón \"Reintentar\"",
+      "default": "Reintentar el trabajo. Reiniciar todas las respuestas e iniciar el trabajo de nuevo."
     },
     {
       "label": "Assistive technology description for \"Mute\" button",
