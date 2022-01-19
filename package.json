@@ -3,8 +3,8 @@
   "version": "0.3.2",
   "description": "Game for boring conferences or meetings ;-)",
   "scripts": {
-    "build": "cross-env NODE_ENV=production ./node_modules/.bin/webpack",
-    "watch": "./node_modules/.bin/webpack --watch"
+    "build": "cross-env NODE_ENV=production webpack",
+    "watch": "webpack --watch"
   },
   "repository": {
     "type": "git",
@@ -22,19 +22,19 @@
   },
   "homepage": "https://github.com/otacke/h5p-bingo#readme",
   "devDependencies": {
-    "@babel/cli": "^7.16.7",
-    "@babel/core": "^7.16.7",
-    "@babel/preset-env": "^7.16.7",
+    "@babel/cli": "^7.16.8",
+    "@babel/core": "^7.16.10",
+    "@babel/preset-env": "^7.16.10",
     "babel-loader": "^8.2.3",
     "cross-env": "^7.0.3",
     "css-loader": "^6.5.1",
-    "eslint": "^8.6.0",
-    "mini-css-extract-plugin": "^2.4.6",
+    "eslint": "^8.7.0",
+    "mini-css-extract-plugin": "^2.5.2",
     "regenerator-runtime": "^0.13.9",
-    "resolve-url-loader": "^4.0.0",
-    "sass": "^1.47.0",
+    "resolve-url-loader": "^5.0.0",
+    "sass": "^1.49.0",
     "sass-loader": "^12.4.0",
-    "webpack": "^5.65.0",
+    "webpack": "^5.66.0",
     "webpack-cli": "^4.9.1"
   }
 }
