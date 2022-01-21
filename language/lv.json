@@ -56,15 +56,15 @@
     },
     {
       "label": "Audio",
-      "description": "You can customize audio here.",
+      "description": "Šeit varat pielāgot audio.",
       "fields": [
         {
-          "label": "Selected/unselected a field",
-          "description": "Sound to play when a field is selected or unselected."
+          "label": "Atlasīt/atcelt lauka atlasi",
+          "description": "Skaņa, kas jāatskaņo, kad lauks tiek atlasīts vai atlase tiek noņemta."
         },
         {
-          "label": "Completed row or column",
-          "description": "Sound to play when the user has selected a complete row or column."
+          "label": "Pabeigta rinda vai kolonna",
+          "description": "Skaņa, kas jāatskaņo, kad lietotājs ir atlasījis visu rindu vai kolonnu."
         }
       ]
     },
@@ -84,23 +84,23 @@
           "description": "Novietos neapgriežamu džokeru dēļa centrā, ja tā izmērs ir nepāra."
         },
         {
-          "label": "Height limit mode",
-          "description": "Decide if you want to limit the board height to fit the visible area. Automatic detection may not be perfect depending on your website's setup, e.g. if it has sticky top navigation bars. Good custom values are hard to set manually.",
+          "label": "Augstuma ierobežojuma režīms",
+          "description": "Izlemiet, vai vēlaties ierobežot dēļa augstumu, lai tas atbilstu redzamajā laukumā. Automātiskā noteikšana var nebūt ideāla atkarībā no jūsu vietnes iestatījumiem, piemēram, ja tai ir lipīgas augšējās navigācijas joslas. Labas pielāgotās vērtības ir grūti iestatīt manuāli.",
           "options": [
             {
-              "label": "No limit"
+              "label": "Nav ierobežojumu"
             },
             {
-              "label": "Automatic"
+              "label": "Automātiski"
             },
             {
-              "label": "Custom"
+              "label": "Pielāgoti"
             }
           ]
         },
         {
-          "label": "Height limit",
-          "description": "Maximum height of the board in pixels."
+          "label": "Augstuma ierobežojums",
+          "description": "Maksimālais dēļa augstums pikseļos."
         }
       ]
     },
@@ -109,8 +109,8 @@
       "default": "Mēģināt vēlreiz"
     },
     {
-      "label": "Assistive technology description for \"Retry\" button",
-      "default": "Retry the task. Reset all responses and start the task over again."
+      "label": "Pogas \"Mēģināt vēlreiz\" apraksts priekš asistējošām tehnoloģijām",
+      "default": "Mēģināt uzdevumu vēlreiz. Dzēst visas sniegtās atbildes un sākt uzdevumu vēlreiz."
     },
     {
       "label": "Assistive technology description for \"Mute\" button",
