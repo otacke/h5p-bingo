@@ -42,29 +42,29 @@
     },
     {
       "label": "Itxura",
-      "description": "Hemen itxura bisuala pertsonalizatu dezakezu.",
+      "description": "Hemen itxura pertsonalizatu dezakezu.",
       "fields": [
         {
           "label": "Irudia",
           "description": "Jokerraren (komodina) botoientzako irudia."
         },
         {
-          "label": "Atzeko planoko Kolorea",
+          "label": "Atzeko planoko kolorea",
           "description": "Arbelaren atzeko planorako kolorea."
         }
       ]
     },
     {
       "label": "Audio",
-      "description": "You can customize audio here.",
+      "description": "Audioa pertsonaliza dezakezu hemen.",
       "fields": [
         {
-          "label": "Selected/unselected a field",
-          "description": "Sound to play when a field is selected or unselected."
+          "label": "Hautatu/desautatu eremu bat",
+          "description": "Eremu bat hautatu edo desautatzen denean erreproduzitzeko soinua."
         },
         {
-          "label": "Completed row or column",
-          "description": "Sound to play when the user has selected a complete row or column."
+          "label": "Osatutako errenkada edo zutabea",
+          "description": "Erabiltzaileak errenkada edo zutabe osoa hautatu duenean erreproduzitzeko soinua."
         }
       ]
     },
@@ -84,23 +84,23 @@
           "description": "Arbelaren erdian buelta eman ezin den joker (komodin) bat kokatuko du tamaina bakoitia bada."
         },
         {
-          "label": "Height limit mode",
-          "description": "Decide if you want to limit the board height to fit the visible area. Automatic detection may not be perfect depending on your website's setup, e.g. if it has sticky top navigation bars. Good custom values are hard to set manually.",
+          "label": "Altuera mugatuko modua",
+          "description": "Erabaki taularen altuera mugatu nahi duzun eremu ikusgaira egokitzeko. Baliteke detekzio automatikoa ez izatea perfektua zure webgunearen konfigurazioaren arabera, adibidez, goiko nabigazio-barra itsaskorrak baditu. Balio pertsonalizatu onak eskuz ezartzea zaila da.",
           "options": [
             {
-              "label": "No limit"
+              "label": "Mugarik gabe"
             },
             {
-              "label": "Automatic"
+              "label": "Automatikoa"
             },
             {
-              "label": "Custom"
+              "label": "Pertsonalizatua"
             }
           ]
         },
         {
-          "label": "Height limit",
-          "description": "Maximum height of the board in pixels."
+          "label": "Altuera muga",
+          "description": "Arbelaren gehieneko altuera pixeletan."
         }
       ]
     },
@@ -109,8 +109,8 @@
       "default": "Saiatu berriro"
     },
     {
-      "label": "Assistive technology description for \"Retry\" button",
-      "default": "Retry the task. Reset all responses and start the task over again."
+      "label": "\"Saiatu berriro\" botoiaren laguntza-teknologiaren deskribapena",
+      "default": "Saiatu berriro zeregina. Berrezarri erantzun guztiak eta hasi berriro zeregina."
     },
     {
       "label": "Assistive technology description for \"Mute\" button",
