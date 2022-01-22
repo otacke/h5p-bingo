@@ -56,15 +56,15 @@
     },
     {
       "label": "Audio",
-      "description": "You can customize audio here.",
+      "description": "Je kunt de audio hier aanpassen.",
       "fields": [
         {
-          "label": "Selected/unselected a field",
-          "description": "Sound to play when a field is selected or unselected."
+          "label": "Veld geselecteerd/niet-geselecteerd",
+          "description": "Geluid om af te spelen wanneer een veld is geselecteerd/gedeselecteerd."
         },
         {
-          "label": "Completed row or column",
-          "description": "Sound to play when the user has selected a complete row or column."
+          "label": "Rij of kolom voltooid",
+          "description": "Geluid om af te spelen wanneer gebruiker een rij of kolom heeft voltooid."
         }
       ]
     },
@@ -84,23 +84,23 @@
           "description": "Plaatst een niet-omkeerbare joker in het midden van het speelbord als je een afwijkende grootte gebruikt."
         },
         {
-          "label": "Height limit mode",
-          "description": "Decide if you want to limit the board height to fit the visible area. Automatic detection may not be perfect depending on your website's setup, e.g. if it has sticky top navigation bars. Good custom values are hard to set manually.",
+          "label": "Hoogtebeperkingsmodus",
+          "description": "Bepaal of je de hoogte van het bord wil  begrenzen zodat het binnen het zichtbare schermgedeelte valt. Automatische beperking is mogelijk niet perfect afhankelijk van de instellingen van je website, b.v. als het vaste navigatiebalken heeft aan de bovenzijde. Goede aangepaste waardes zijn lastig handmatig in te stellen.",
           "options": [
             {
-              "label": "No limit"
+              "label": "Geen beperking"
             },
             {
-              "label": "Automatic"
+              "label": "Automatisch"
             },
             {
-              "label": "Custom"
+              "label": "Aangepast"
             }
           ]
         },
         {
-          "label": "Height limit",
-          "description": "Maximum height of the board in pixels."
+          "label": "Hoogtebeperking",
+          "description": "Maximumhoogte van het bord in pixels."
         }
       ]
     },
@@ -109,8 +109,8 @@
       "default": "Opnieuw"
     },
     {
-      "label": "Assistive technology description for \"Retry\" button",
-      "default": "Retry the task. Reset all responses and start the task over again."
+      "label": "Ondersteunende technologie beschrijving voor \"Opnieuw\"-knop",
+      "default": "Probeer de taak opnieuw. Reset alle antwoorden en start de taak opnieuw."
     },
     {
       "label": "Assistive technology description for \"Mute\" button",
