@@ -113,12 +113,12 @@
       "default": "Reintentar el trabajo. Reiniciar todas las respuestas e iniciar el trabajo de nuevo."
     },
     {
-      "label": "Assistive technology description for \"Mute\" button",
-      "default": "Mute audio, currently unmuted"
+      "label": "Descripción de tecnología asistiva para botón \"Enmudecer\"",
+      "default": "Enmudecer audio, actualmente sonando"
     },
     {
-      "label": "Assistive technology description for \"Unmute\" button",
-      "default": "Unmute audio, currently muted"
+      "label": "Descripción de tecnología asistiva para botón \"Enmudecer\"",
+      "default": "Habilitar audio, actualmente enmudecido"
     }
   ]
 }
