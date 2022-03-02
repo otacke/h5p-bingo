@@ -64,7 +64,7 @@
         },
         {
           "label": "Rij of kolom voltooid",
-          "description": "Geluid om af te spelen wanneer gebruiker een rij of kolom heeft voltooid."
+          "description": "Geluid om af te spelen wanneer gebruiker een rij of kolom heeft gecompleteerd."
         }
       ]
     },
@@ -85,7 +85,7 @@
         },
         {
           "label": "Hoogtebeperkingsmodus",
-          "description": "Bepaal of je de hoogte van het bord wil  begrenzen zodat het binnen het zichtbare schermgedeelte valt. Automatische beperking is mogelijk niet perfect afhankelijk van de instellingen van je website, b.v. als het vaste navigatiebalken heeft aan de bovenzijde. Goede aangepaste waardes zijn lastig handmatig in te stellen.",
+          "description": "Bepaal of je de hoogte van het bord wil begrenzen zodat het binnen het zichtbare schermgedeelte valt. Automatische beperking is mogelijk niet perfect afhankelijk van de instellingen van je website, b.v. als het vaste navigatiebalken heeft aan de bovenzijde. Goede aangepaste waardes zijn lastig handmatig in te stellen.",
           "options": [
             {
               "label": "Geen beperking"

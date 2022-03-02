@@ -113,12 +113,12 @@
       "default": "Mēģināt uzdevumu vēlreiz. Dzēst visas sniegtās atbildes un sākt uzdevumu vēlreiz."
     },
     {
-      "label": "Assistive technology description for \"Mute\" button",
-      "default": "Mute audio, currently unmuted"
+      "label": "Pogas \"Izslēgt skaņu\" apraksts priekš asistīvajām tehnoloģijām",
+      "default": "Izslēgt skaņu, pašlaik skaņa ieslēgta"
     },
     {
-      "label": "Assistive technology description for \"Unmute\" button",
-      "default": "Unmute audio, currently muted"
+      "label": "Pogas \"Ieslēgt skaņu\" apraksts priekš asistējošās tehnoloģijas",
+      "default": "Ieslēgt skaņu, pašlaik skaņa izslēgta"
     }
   ]
 }
