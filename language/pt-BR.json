@@ -1,0 +1,124 @@
+{
+  "semantics": [
+    {
+      "label": "Mídia",
+      "fields": [
+        {
+          "label": "Tipo",
+          "description": "Mídia opcional para exibir acima da pergunta."
+        },
+        {
+          "label": "Desativar o zoom da imagem"
+        }
+      ]
+    },
+    {
+      "label": "Descrição da tarefa",
+      "description": "Opcionalmente, dê uma descrição aqui."
+    },
+    {
+      "label": "Modo",
+      "description": "Escolha o modo para jogar. Os números serão preenchidos automaticamente, as palavras precisam ser dadas.",
+      "options": [
+        {
+          "label": "Jogar com números"
+        },
+        {
+          "label": "Jogar com palavras"
+        }
+      ]
+    },
+    {
+      "label": "Palavras ou frases",
+      "fields": [
+        {
+          "label": "Palavras ou frases",
+          "description": "Use uma linha para cada palavra e frase."
+        }
+      ]
+    },
+    {
+      "label": "Tamanho do tabuleiro"
+    },
+    {
+      "label": "Visuais",
+      "description": "Você pode personalizar a aparência visual aqui.",
+      "fields": [
+        {
+          "label": "Imagem",
+          "description": "Imagem do Coringa para os botões."
+        },
+        {
+          "label": "Cor de fundo",
+          "description": "Cor de fundo para o tabuleiro."
+        }
+      ]
+    },
+    {
+      "label": "Áudio",
+      "description": "Você pode personalizar o áudio aqui.",
+      "fields": [
+        {
+          "label": "Campo marcado/desmarcado",
+          "description": "Som a ser reproduzido quando um campo é marcado ou desmarcado."
+        },
+        {
+          "label": "Linha ou coluna concluída",
+          "description": "Som a ser reproduzido quando o usuário seleciona uma linha ou coluna completa."
+        }
+      ]
+    },
+    {
+      "label": "Configurações comportamentais",
+      "description": "Essas opções permitem controlar como a tarefa se comporta.",
+      "fields": [
+        {
+          "label": "Ativar \"Tentar Novamente\""
+        },
+        {
+          "label": "Embaralhar ao tentar novamente",
+          "description": "Se marcado, as palavras/frases/números serão embaralhadas na nova tentativa."
+        },
+        {
+          "label": "Definir o Coringa",
+          "description": "Colocará um curinga que não pode ser girado no centro do tabuleiro se seu tamanho for ímpar."
+        },
+        {
+          "label": "Modo de limite de altura",
+          "description": "Decidir se deseja limitar a altura do tabuleiro para caber na área visível. A detecção automática pode não ser perfeita dependendo da configuração do seu site, por exemplo, se tiver barras de navegação superiores aderentes. Bons valores personalizados são difíceis de definir manualmente.",
+          "options": [
+            {
+              "label": "Sem limite"
+            },
+            {
+              "label": "Automático"
+            },
+            {
+              "label": "Personalizado"
+            }
+          ]
+        },
+        {
+          "label": "Limite de altura",
+          "description": "Altura máxima do tabuleiro em pixels."
+        }
+      ]
+    },
+    {
+      "label": "Texto do botão \"Tentar Novamente\"",
+      "default": "Tentar Novamente"
+    },
+    {
+      "label": "Descrição da tecnologia de assistência para o botão \"Tentar Novamente\"",
+      "default": "Repita a tarefa. Redefina todas as respostas e inicie a tarefa novamente."
+    },
+    {
+      "label": "Descrição da tecnologia de assistência para o botão \"Mudo\"",
+      "default": "Silenciar áudio, atualmente sem som"
+    },
+    {
+      "label": "Descrição da tecnologia de assistência para o botão \"Ativar som\"",
+      "default": "Ativar áudio, atualmente desativado"
+    }
+  ]
+}
