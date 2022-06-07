@@ -1,0 +1,124 @@
+{
+  "semantics": [
+    {
+      "label": "Medios",
+      "fields": [
+        {
+          "label": "Tipo",
+          "description": "Medios adicionais amosados enriba da pregunta."
+        },
+        {
+          "label": "Desactivar zoom da imaxe"
+        }
+      ]
+    },
+    {
+      "label": "Descrición da tarefa",
+      "description": "Fornece unha descrición opcional aquí."
+    },
+    {
+      "label": "Modo",
+      "description": "Escolle o modo para xogar. Os números encheranse automaticamente e hai que fornecer palabras.",
+      "options": [
+        {
+          "label": "Xogar con números"
+        },
+        {
+          "label": "Xogar con palabras"
+        }
+      ]
+    },
+    {
+      "label": "Palabras ou frases",
+      "fields": [
+        {
+          "label": "Palabras ou frases",
+          "description": "Usa unha liña para cada palabra e frase."
+        }
+      ]
+    },
+    {
+      "label": "Tamaño do taboleiro"
+    },
+    {
+      "fields": [
+        {
+          "label": "Imaxe",
+          "description": "Imaxe de comodín para os botóns."
+        },
+        {
+          "label": "Color do fondo",
+          "description": "Cor de fondo para o taboleiro."
+        }
+      ],
+      "label": "Visuais",
+      "description": "Aquí podes personalizar a aparencia visual."
+    },
+    {
+      "label": "Son",
+      "description": "Aquí podes personalizar o son.",
+      "fields": [
+        {
+          "label": "Selecciona/desfai selección dun campo",
+          "description": "Son para reproducir cando se selecciona ou desfai a selección dun campo."
+        },
+        {
+          "label": "Fila ou columna completada",
+          "description": "Son para reproducir cando o usuario seleccionou unha fila ou columna completa."
+        }
+      ]
+    },
+    {
+      "label": "Configuración do comportamento",
+      "description": "Estas opcións permitiranche controlar o comportamento da tarefa.",
+      "fields": [
+        {
+          "label": "Activar \"Tentar de novo\""
+        },
+        {
+          "label": "Barallar ao tentar de novo",
+          "description": "Se está marcado, as palabras/frases/números barallaranse ao tentalo de novo."
+        },
+        {
+          "label": "Establecer comodín",
+          "description": "Colocará un comodín que non se poder xirar no centro do taboleiro se o seu tamaño é impar."
+        },
+        {
+          "label": "Modo de límite de altura",
+          "description": "Decide se queres limitar a altura do taboleiro para que se axuste á zona visible. A detección automática podería non ser perfecta dependendo da configuración do teu sitio web. Por exemplo, se ten barras de navegación superiores pegañentas. É difícil establecer bos valores personalizados manualmente.",
+          "options": [
+            {
+              "label": "Sen límite"
+            },
+            {
+              "label": "Automático"
+            },
+            {
+              "label": "Personalizado"
+            }
+          ]
+        },
+        {
+          "label": "Límite de altura",
+          "description": "Altura máxima do taboleiro en píxeles."
+        }
+      ]
+    },
+    {
+      "label": "Texto para o botón \"Tentar de novo\"",
+      "default": "Tentar de novo"
+    },
+    {
+      "label": "Descrición para as tecnoloxías de asistencia do botón \"Tentar de novo\"",
+      "default": "Tenta de novo a tarefa. Borra todas as respostas e empeza a tarefa de novo."
+    },
+    {
+      "label": "Descrición para as tecnoloxías de asistencia do botón \"Silenciar\"",
+      "default": "Silenciar o son, actualmente activado"
+    },
+    {
+      "label": "Descrición para as tecnoloxías de asistencia do botón \"Activar son\"",
+      "default": "Activar o son, actualmente silenciado"
+    }
+  ]
+}
