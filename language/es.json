@@ -1,11 +1,11 @@
 {
   "semantics": [
     {
-      "label": "Medio",
+      "label": "Medios",
       "fields": [
         {
           "label": "Tipo",
-          "description": "Medio opcional a mostrar arriba de la pregunta."
+          "description": "Medios opcionales mostrados encima de la pregunta."
         },
         {
           "label": "Deshabilitar acercamiento de imagen"
@@ -14,11 +14,11 @@
     },
     {
       "label": "Descripción del trabajo",
-      "description": "Opcionalmente dar aquí una descripción."
+      "description": "Opcionalmente, dar aquí una descripción."
     },
     {
       "label": "Modo",
-      "description": "Elegir el modo para jugar. Los números pueden ser llenados automáticamente, las palabras necesitan ser dadas.",
+      "description": "Elegir el modo de juego. Los números pueden completarse automáticamente, las palabras hay que proporcionarlas.",
       "options": [
         {
           "label": "Jugar con números"
@@ -42,25 +42,25 @@
     },
     {
       "label": "Visuales",
-      "description": "Usted puede personalizar aquí la apariencia visual.",
+      "description": "Puedes personalizar aquí la apariencia visual.",
       "fields": [
         {
           "label": "Imagen",
-          "description": "Imagen de guasón (comodín) para los botones."
+          "description": "Imagen de comodín para los botones."
         },
         {
-          "label": "Color del Fondo",
+          "label": "Color del fondo",
           "description": "Color del fondo para el tablero."
         }
       ]
     },
     {
       "label": "Audio",
-      "description": "Usted puede personalizar aquí el audio.",
+      "description": "Puedes personalizar aquí el audio.",
       "fields": [
         {
-          "label": "Seleccionó/des-seleccionó un campo",
-          "description": "Sonido a reproducir cuando un campo es seleccionado o des-seleccionado."
+          "label": "Has seleccionado/dejado de seleccionar un campo",
+          "description": "Sonido a reproducir cuando un campo es seleccionado o dejado de seleccionar."
         },
         {
           "label": "Fila o columna completada",
@@ -70,22 +70,22 @@
     },
     {
       "label": "Configuraciones del comportamiento",
-      "description": "Estas opciones le permitirán controlar como se comporta el trabajo.",
+      "description": "Estas opciones te permitirán controlar cómo se comporta la tarea.",
       "fields": [
         {
-          "label": "Habilitar \"Reintentar\""
+          "label": "Habilitar \"Intentar de nuevo\""
         },
         {
-          "label": "Barajear en reintento",
-          "description": "Si se activa, las palabras/frases/números serán barajeados al reintentar."
+          "label": "Barajar al intentar de nuevo",
+          "description": "Si se activa, las palabras/frases/números serán barajados al intentar de nuevo."
         },
         {
-          "label": "Configurar guasón (comodín)",
-          "description": "Colocará un guasón (comodín) no-volteable en el centro del tablero si su tamaño es impar."
+          "label": "Configurar comodín",
+          "description": "Colocará un comodín que no se puede girar en el centro del tablero si su tamaño es impar."
         },
         {
           "label": "Modo de límite de altura",
-          "description": "Decida si quiere limitar la altura del tablero para que quepa en el área visible. La detección automática puede no ser perfecta dependiendo de la configuración de su sitio web; por ejemplo, si tiene barras pegajosas superiores de navegación. Buenos valores personalizados son difíciles de configurar manualmente.",
+          "description": "Decide si quieres limitar la altura del tablero para que quepa en el área visible. La detección automática puede no ser perfecta dependiendo de la configuración de tu sitio web; por ejemplo, si tiene barras pegajosas superiores de navegación. Los valores personalizados correctos son difíciles de configurar manualmente.",
           "options": [
             {
               "label": "Sin límite"
@@ -105,20 +105,20 @@
       ]
     },
     {
-      "label": "Texto para botón \"Reintentar\"",
-      "default": "Reintentar"
+      "label": "Texto para el botón \"Intentar de nuevo\"",
+      "default": "Intentar de nuevo"
     },
     {
-      "label": "Descripción de tecnología asistiva para botón \"Reintentar\"",
-      "default": "Reintentar el trabajo. Reiniciar todas las respuestas e iniciar el trabajo de nuevo."
+      "label": "Descripción para las tecnologías de asistencia del botón \"Intentar de nuevo\"",
+      "default": "Vuelve a intentar la tarea. Borra todas tus respuestas y empieza de nuevo."
     },
     {
-      "label": "Descripción de tecnología asistiva para botón \"Enmudecer\"",
-      "default": "Enmudecer audio, actualmente sonando"
+      "label": "Descripción para las tecnologías de asistencia del botón \"Silenciar\"",
+      "default": "Silenciar audio, actualmente activado"
     },
     {
-      "label": "Descripción de tecnología asistiva para botón \"Enmudecer\"",
-      "default": "Habilitar audio, actualmente enmudecido"
+      "label": "Descripción para las tecnologías de asistencia del botón \"Activar audio\"",
+      "default": "Activar audio, actualmente silenciado"
     }
   ]
 }
