@@ -1,0 +1,124 @@
+{
+  "semantics": [
+    {
+      "label": "Media",
+      "fields": [
+        {
+          "label": "Type",
+          "description": "Optional media to display above the question."
+        },
+        {
+          "label": "Disable image zooming"
+        }
+      ]
+    },
+    {
+      "label": "Task description",
+      "description": "Optionally give a description here."
+    },
+    {
+      "label": "Mode",
+      "description": "Choose the mode for playing. Numbers will be filled in automatically, words need to be given.",
+      "options": [
+        {
+          "label": "Play with numbers"
+        },
+        {
+          "label": "Play with words"
+        }
+      ]
+    },
+    {
+      "label": "Words or phrases",
+      "fields": [
+        {
+          "label": "Words or phrases",
+          "description": "Use one line for each word and phrase."
+        }
+      ]
+    },
+    {
+      "label": "Board size"
+    },
+    {
+      "label": "Visuals",
+      "description": "You can customize the visual appearance here.",
+      "fields": [
+        {
+          "label": "Image",
+          "description": "Joker image for the buttons."
+        },
+        {
+          "label": "Background Color",
+          "description": "Background color for the board."
+        }
+      ]
+    },
+    {
+      "label": "Audio",
+      "description": "You can customize audio here.",
+      "fields": [
+        {
+          "label": "Selected/unselected a field",
+          "description": "Sound to play when a field is selected or unselected."
+        },
+        {
+          "label": "Completed row or column",
+          "description": "Sound to play when the user has selected a complete row or column."
+        }
+      ]
+    },
+    {
+      "label": "Behavioural settings",
+      "description": "These options will let you control how the task behaves.",
+      "fields": [
+        {
+          "label": "Enable \"Retry\""
+        },
+        {
+          "label": "Shuffle on retry",
+          "description": "If checked, the words/phrases/numbers will be shuffled on retry."
+        },
+        {
+          "label": "Set joker",
+          "description": "Will place an unturnable joker in the center of the board if its size is odd."
+        },
+        {
+          "label": "Height limit mode",
+          "description": "Decide if you want to limit the board height to fit the visible area. Automatic detection may not be perfect depending on your website's setup, e.g. if it has sticky top navigation bars. Good custom values are hard to set manually.",
+          "options": [
+            {
+              "label": "No limit"
+            },
+            {
+              "label": "Automatic"
+            },
+            {
+              "label": "Custom"
+            }
+          ]
+        },
+        {
+          "label": "Height limit",
+          "description": "Maximum height of the board in pixels."
+        }
+      ]
+    },
+    {
+      "label": "Text for \"Retry\" button",
+      "default": "Retry"
+    },
+    {
+      "label": "Assistive technology description for \"Retry\" button",
+      "default": "Retry the task. Reset all responses and start the task over again."
+    },
+    {
+      "label": "Assistive technology description for \"Mute\" button",
+      "default": "Mute audio, currently unmuted"
+    },
+    {
+      "label": "Assistive technology description for \"Unmute\" button",
+      "default": "Unmute audio, currently muted"
+    }
+  ]
+}
