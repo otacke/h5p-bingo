@@ -1,0 +1,124 @@
+{
+  "semantics": [
+    {
+      "label": "Medija",
+      "fields": [
+        {
+          "label": "Tipas",
+          "description": "Pasirenkama medija, rodoma virš klausimo."
+        },
+        {
+          "label": "Išjungti paveikslėlio mastelio keitimą"
+        }
+      ]
+    },
+    {
+      "label": "Užduoties aprašymas",
+      "description": "Pasirinktinai pateikite aprašymą čia."
+    },
+    {
+      "label": "Režimas",
+      "description": "Choose the mode for playing. Numbers will be filled in automatically, words need to be given.",
+      "options": [
+        {
+          "label": "Žaisti su skaičiais"
+        },
+        {
+          "label": "Žaisti su žodžiais"
+        }
+      ]
+    },
+    {
+      "label": "Žodžiai ar frazės",
+      "fields": [
+        {
+          "label": "Žodžiai ar frazės",
+          "description": "Kiekvienam žodžiui ir frazei naudokite vieną eilutę."
+        }
+      ]
+    },
+    {
+      "label": "Board size"
+    },
+    {
+      "label": "Vaizdas",
+      "description": "Čia galite pritaikyti vizualinę išvaizdą.",
+      "fields": [
+        {
+          "label": "Paveiksliukas",
+          "description": "Joker image for the buttons."
+        },
+        {
+          "label": "Fono spalva",
+          "description": "Background color for the board."
+        }
+      ]
+    },
+    {
+      "label": "Garsas",
+      "description": "Čia galite tinkinti garsą.",
+      "fields": [
+        {
+          "label": "Pasirinktas/nepasirinktas laukas",
+          "description": "Garsas, skambantis, kai laukas pasirinktas arba nepasirinktas."
+        },
+        {
+          "label": "Užbaigta eilutė arba stulpelis",
+          "description": "Garsas grojamas, kai naudotojas pasirenka visą eilutę arba stulpelį."
+        }
+      ]
+    },
+    {
+      "label": "Veikimo nustatymai",
+      "description": "Šios parinktys leis jums valdyti, kaip veikia užduotis.",
+      "fields": [
+        {
+          "label": "Įjungti „Bandyti dar kartą“"
+        },
+        {
+          "label": "Shuffle on retry",
+          "description": "If checked, the words/phrases/numbers will be shuffled on retry."
+        },
+        {
+          "label": "Set joker",
+          "description": "Will place an unturnable joker in the center of the board if its size is odd."
+        },
+        {
+          "label": "Height limit mode",
+          "description": "Decide if you want to limit the board height to fit the visible area. Automatic detection may not be perfect depending on your website's setup, e.g. if it has sticky top navigation bars. Good custom values are hard to set manually.",
+          "options": [
+            {
+              "label": "Nėra limito"
+            },
+            {
+              "label": "Automatinis"
+            },
+            {
+              "label": "Pasirenkamas"
+            }
+          ]
+        },
+        {
+          "label": "Height limit",
+          "description": "Maximum height of the board in pixels."
+        }
+      ]
+    },
+    {
+      "label": "Tekstas mygtukui „Bandyti dar kartą“.",
+      "default": "Bandyti dar kartą"
+    },
+    {
+      "label": "Assistive technology description for \"Retry\" button",
+      "default": "Bandyti atlikti užduotį dar kartą. Iš naujo nustatyti visus atsakymus ir pradėti užduotį iš naujo."
+    },
+    {
+      "label": "Assistive technology description for \"Mute\" button",
+      "default": "Mute audio, currently unmuted"
+    },
+    {
+      "label": "Assistive technology description for \"Unmute\" button",
+      "default": "Unmute audio, currently muted"
+    }
+  ]
+}
