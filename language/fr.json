@@ -1,0 +1,124 @@
+{
+  "semantics": [
+    {
+      "label": "Média",
+      "fields": [
+        {
+          "label": "Type",
+          "description": "Média facultatif pour afficher au-dessus de la question."
+        },
+        {
+          "label": "Bloquer le zoom d’image"
+        }
+      ]
+    },
+    {
+      "label": "Description de la tâche",
+      "description": "Donner éventuellement une description ici."
+    },
+    {
+      "label": "Mode",
+      "description": "Choisir le mode de jeu. Les chiffres seront remplis automatiquement, les mots doivent être donnés.",
+      "options": [
+        {
+          "label": "Jouer avec les chiffres"
+        },
+        {
+          "label": "Jouer avec les mots"
+        }
+      ]
+    },
+    {
+      "label": "Mots ou phrases",
+      "fields": [
+        {
+          "label": "Mots ou phrases",
+          "description": "Utiliser une ligne pour chaque mot et expression."
+        }
+      ]
+    },
+    {
+      "label": "Dimensions du tableau"
+    },
+    {
+      "label": "Visuels",
+      "description": "Vous pouvez personnaliser l'apparence visuelle ici.",
+      "fields": [
+        {
+          "label": "Image",
+          "description": "Image de joker pour les touches."
+        },
+        {
+          "label": "Couleur de fond",
+          "description": "Couleur de fond pour le tableau."
+        }
+      ]
+    },
+    {
+      "label": "Audio",
+      "description": "Vous pouvez personnaliser l'audio ici.",
+      "fields": [
+        {
+          "label": "Champ sélectionné/désélectionné",
+          "description": "Son à jouer lorsqu'un champ est sélectionné ou désélectionné."
+        },
+        {
+          "label": "Ligne ou colonne complétée",
+          "description": "Son à jouer lorsque l'utilisateur a sélectionné une ligne ou une colonne complète."
+        }
+      ]
+    },
+    {
+      "label": "Paramètres comportementaux",
+      "description": "Ces options vous permettront de contrôler le déroulement de la tâche.",
+      "fields": [
+        {
+          "label": "Activer « Réessayer »"
+        },
+        {
+          "label": "Mélanger au moment de réessayer",
+          "description": "Si cette case est cochée, les mots/phrases/chiffres seront mélangés pour pouvoir réessayer."
+        },
+        {
+          "label": "Définir un joker",
+          "description": "Placera un joker impossible à retourner au centre du plateau si sa taille est impaire."
+        },
+        {
+          "label": "Mode limite de hauteur",
+          "description": "Décidez si vous souhaitez limiter la hauteur du tableau pour l'adapter à la zone visible. Il se peut que la détection automatique ne soit pas parfaite en fonction de la configuration de votre site Web, par exemple s'il comporte des barres de navigation supérieures fixes. De bonnes valeurs personnalisées sont difficiles à définir manuellement.",
+          "options": [
+            {
+              "label": "Pas de limite"
+            },
+            {
+              "label": "Automatique"
+            },
+            {
+              "label": "Personnalisé"
+            }
+          ]
+        },
+        {
+          "label": "Limite de l’hauteur",
+          "description": "Hauteur maximale du tableau en pixels."
+        }
+      ]
+    },
+    {
+      "label": "Texte pour la touche « Réessayer »",
+      "default": "Réessayer"
+    },
+    {
+      "label": "Description de la technologie fonctionnelle pour la touche « Réessayer »",
+      "default": "Réessayer la tâche. Réinitialiser toutes les réponses et recommencer la tâche."
+    },
+    {
+      "label": "Description de la technologie fonctionnelle pour la touche « Silencieux »",
+      "default": "Désactiver le son, actuellement activé"
+    },
+    {
+      "label": "Description de la technologie fonctionnelle pour la touche « Activer »",
+      "default": "Activer l’audio, actuellement désactivé"
+    }
+  ]
+}
