@@ -1,0 +1,124 @@
+{
+  "semantics": [
+    {
+      "label": "Vyombo vya habari",
+      "fields": [
+        {
+          "label": "Aina",
+          "description": "Vyombo vya habari vya hiari vya kuonyesha juu ya swali."
+        },
+        {
+          "label": "Zima ukuzaji wa picha"
+        }
+      ]
+    },
+    {
+      "label": "Maelezo ya kazi",
+      "description": "Kwa hiari toa maelezo hapa."
+    },
+    {
+      "label": "Njia",
+      "description": "Chagua njia ya kucheza. Hesabu zitajazwa kiotomatiki, maneno yanahitaji kutolewa.",
+      "options": [
+        {
+          "label": "Cheza na nambari"
+        },
+        {
+          "label": "Cheza na maneno"
+        }
+      ]
+    },
+    {
+      "label": "Maneno au misemo",
+      "fields": [
+        {
+          "label": "Maneno au misemo",
+          "description": "Tumia mstari mmoja kwa kila neno na msemo."
+        }
+      ]
+    },
+    {
+      "label": "Ukubwa wa bodi"
+    },
+    {
+      "label": "Vielelezo",
+      "description": "Unaweza kubinafsisha mwonekano wa kuona hapa.",
+      "fields": [
+        {
+          "label": "Picha",
+          "description": "Picha ya Kicheshi kwa vifungo."
+        },
+        {
+          "label": "Rangi ya mandharinyuma",
+          "description": "Rangi ya mandharinyuma kwa ubao."
+        }
+      ]
+    },
+    {
+      "label": "Sauti",
+      "description": "Unaweza kubinafsisha sauti hapa.",
+      "fields": [
+        {
+          "label": "Umechagua/hujachagua sehemu",
+          "description": "Sauti ya kucheza wakati sehemu imechaguliwa au haijachaguliwa."
+        },
+        {
+          "label": "Mstari au safu mlalo iliyokamilika",
+          "description": "Sauti ya kucheza wakati mtumiaji amechagua safu mlalo au safu wima kamili."
+        }
+      ]
+    },
+    {
+      "label": "Mipangilio ya tabia",
+      "description": "Chaguzi hizi zitakuwezesha kudhibiti jinsi kazi inavyofanya.",
+      "fields": [
+        {
+          "label": "Wezesha \"Jaribu tena\""
+        },
+        {
+          "label": "Changanya wakati wa kujaribu tena",
+          "description": "Ikichaguliwa, maneno/vifungu vya maneno/nambari vitachanganyika wakati wa kujaribu tena."
+        },
+        {
+          "label": "Weka kicheshi",
+          "description": "Itaweka kicheshi kisichobadilika katikati ya ubao ikiwa saizi yake isiyo ya kawaida."
+        },
+        {
+          "label": "Njia ya kikomo cha urefu",
+          "description": "Amua ikiwa unataka kupunguza urefu wa ubao ili kutoshea eneo linaloonekana. Ugunduzi wa kiotomatiki huenda usiwe kamilifu kulingana na usanidi wa tovuti yako, kwa mfano ikiwa ina pau za urambazaji za juu zinazonata. Thamani nzuri maalum ni ngumu kuweka kwa mkono.",
+          "options": [
+            {
+              "label": "Hakuna kikomo"
+            },
+            {
+              "label": "Otomatiki"
+            },
+            {
+              "label": "Geuza kukufaa"
+            }
+          ]
+        },
+        {
+          "label": "Kikomo cha urefu",
+          "description": "Upeo wa urefu wa ubao katika saizi."
+        }
+      ]
+    },
+    {
+      "label": "Maandishi kwa kitufe cha \"Jaribu tena\"",
+      "default": "Jaribu tena"
+    },
+    {
+      "label": "Maelezo ya teknolojia ya usaidizi kwa kitufe cha \"Jaribu tena\"",
+      "default": "Jaribu tena kazi hiyo. Weka upya majibu yote na uanze kazi tena."
+    },
+    {
+      "label": "Maelezo ya teknolojia ya kusaidia kwa kitufe cha \"Nyamaza\"",
+      "default": "Zima sauti, ambayo imerejeshwa kwa sasa"
+    },
+    {
+      "label": "Maelezo ya teknolojia ya kusaidia kwa kitufe cha \"Rejesha\"",
+      "default": "Rejesha sauti, ambayo imezimwa kwa sasa"
+    }
+  ]
+}
