@@ -18,7 +18,7 @@
     },
     {
       "label": "Režimas",
-      "description": "Choose the mode for playing. Numbers will be filled in automatically, words need to be given.",
+      "description": "Parinkite žaidimo režimą. Skaičiai bus įrašyti automatiškai, žodžius reikia pasiūlyti.",
       "options": [
         {
           "label": "Žaisti su skaičiais"
