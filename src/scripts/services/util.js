@@ -8,7 +8,10 @@ class Util {
     for (let i = 1; i < arguments.length; i++) {
       for (let key in arguments[i]) {
         if (Object.prototype.hasOwnProperty.call(arguments[i], key)) {
-          if (typeof arguments[0][key] === 'object' && typeof arguments[i][key] === 'object') {
+          if (
+            typeof arguments[0][key] === 'object' &&
+            typeof arguments[i][key] === 'object'
+          ) {
             this.extend(arguments[0][key], arguments[i][key]);
           }
           else {
@@ -68,7 +71,10 @@ class Util {
     // Smallest value of viewport and container wins
     return {
       height: Math.min(topWindow.innerHeight, screenSize.height),
-      width: Math.min(topWindow.innerWidth, screenSize.width, container.offsetWidth || Infinity)
+      width: Math.min(
+        topWindow.innerWidth, screenSize.width, container.offsetWidth ||
+        Infinity
+      )
     };
   }
 
@@ -78,7 +84,8 @@ class Util {
    */
   static isIOS() {
     return (
-      ['iPad Simulator', 'iPhone Simulator', 'iPod Simulator', 'iPad', 'iPhone', 'iPod'].includes(navigator.platform) ||
+      ['iPad Simulator', 'iPhone Simulator', 'iPod Simulator', 'iPad', 'iPhone',
+        'iPod'].includes(navigator.platform) ||
       (navigator.userAgent.includes('Mac') && 'ontouchend' in document)
     );
   }
@@ -102,7 +109,11 @@ class Util {
       if (window.orientation === 0 || window.orientation === 180) {
         return 'portrait';
       }
-      else if (window.orientation === 90 || window.orientation === -90 || window.orientation === 270) {
+      else if (
+        window.orientation === 90 ||
+        window.orientation === -90 ||
+        window.orientation === 270
+      ) {
         return 'landscape';
       }
     }

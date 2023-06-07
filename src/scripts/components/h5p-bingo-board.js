@@ -1,4 +1,4 @@
-import Button from './h5p-bingo-button';
+import Button from '@components/h5p-bingo-button';
 
 /** Class representing a bingo board */
 class Board extends H5P.EventDispatcher {
@@ -27,7 +27,9 @@ class Board extends H5P.EventDispatcher {
       .map((words) => this.addHTMLLineBreaks(words));
 
     // Button image path
-    const imagePath = (params.visuals.buttonImage && params.visuals.buttonImage.path) ?
+    const imagePath = (
+      params.visuals.buttonImage && params.visuals.buttonImage.path
+    ) ?
       H5P.getPath(params.visuals.buttonImage.path, contentId) :
       undefined;
 
@@ -161,12 +163,18 @@ class Board extends H5P.EventDispatcher {
    * @param {number} [arguments.fontSizeMin] Minimum font size in px.
    * @param {number} [arguments.fontSizeMax] Maximum font size in px.
    */
-  resizeButtons({ startFontSize = this.fontSizeBase, fontSizeMin = -Infinity, fontSizeMax = Infinity } = {}) {
+  resizeButtons({
+    startFontSize = this.fontSizeBase,
+    fontSizeMin = -Infinity,
+    fontSizeMax = Infinity
+  } = {}) {
     if (this.preventResize === true) {
       return;
     }
 
-    const fontSize = Math.min(Math.max(startFontSize, fontSizeMin), fontSizeMax);
+    const fontSize = Math.min(
+      Math.max(startFontSize, fontSizeMin), fontSizeMax
+    );
 
     // Determine button with widest label as future reference
     if (!this.widestLabelId) {
@@ -197,8 +205,10 @@ class Board extends H5P.EventDispatcher {
 
     // Fit labels into buttons
     if (fontSize > fontSizeMin) {
-      const longestLabelWidth = this.buttons[this.widestLabelId].getLabelWidth();
-      const highestLabelHeight = this.buttons[this.highestLabelId].getLabelHeight();
+      const longestLabelWidth =
+        this.buttons[this.widestLabelId].getLabelWidth();
+      const highestLabelHeight =
+        this.buttons[this.highestLabelId].getLabelHeight();
 
       if (longestLabelWidth > buttonWidth || highestLabelHeight > buttonWidth) {
         this.resizeButtons({ startFontSize: startFontSize * 0.9 });
@@ -281,8 +291,9 @@ class Board extends H5P.EventDispatcher {
     }
 
     // Make center button a joker
-    const button = this.buttons[Math.floor(this.params.size / 2) * this.params.size +
-      Math.floor(this.params.size / 2)];
+    const button = this.buttons[
+      Math.floor(this.params.size / 2) * (this.params.size + 1)
+    ];
     button.toggleFlipped(true);
     button.toggleBingo(true);
     button.toggleActivated(true);
@@ -367,7 +378,9 @@ class Board extends H5P.EventDispatcher {
 
     if (this.params.shuffleOnRetry) {
       this.previousState = [];
-      this.words = this.generateWords().map((words) => this.addHTMLLineBreaks(words));
+      this.words = this.generateWords().map((words) => {
+        return this.addHTMLLineBreaks(words);
+      });
       this.setButtonLabels(this.words);
     }
 

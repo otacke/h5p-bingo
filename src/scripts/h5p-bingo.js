@@ -1,5 +1,5 @@
-import Board from './h5p-bingo-board';
-import Util from './h5p-bingo-util';
+import Board from '@components/h5p-bingo-board';
+import Util from '@services/util';
 
 /** Class representing a bingo game */
 export default class Bingo extends H5P.Question {
@@ -37,11 +37,16 @@ export default class Bingo extends H5P.Question {
     this.contentId = contentId;
     this.contentData = contentData;
 
-    if (this.params.behaviour.heightLimitMode === 'custom' && !this.params.behaviour.heightLimit) {
+    if (
+      this.params.behaviour.heightLimitMode === 'custom' &&
+      !this.params.behaviour.heightLimit
+    ) {
       this.params.behaviour.heightLimitMode = 'none';
     }
 
-    const defaultLanguage = (this.contentData && this.contentData.metadata) ? this.contentData.metadata.defaultLanguage || 'en' : 'en';
+    const defaultLanguage = (this.contentData && this.contentData.metadata) ?
+      this.contentData.metadata.defaultLanguage || 'en' :
+      'en';
     this.languageTag = Util.formatLanguageCode(defaultLanguage);
 
     // Audio samples
@@ -49,7 +54,10 @@ export default class Bingo extends H5P.Question {
     this.registerAudios(this.params.sound);
     this.isMuted = false;
 
-    if (this.contentData.previousState && Object.keys(this.contentData.previousState).length) {
+    if (
+      this.contentData.previousState &&
+      Object.keys(this.contentData.previousState).length
+    ) {
       this.isAnswerGiven = this.contentData.previousState.isAnswerGiven;
     }
     else {
@@ -66,7 +74,11 @@ export default class Bingo extends H5P.Question {
    * @returns {boolean} False, if registering not possible
    */
   registerAudio(id, sound) {
-    if (typeof id !== 'string' || !Array.isArray(sound) || !sound.length || typeof sound[0].path !== 'string' || !H5P.SoundJS.initializeDefaultPlugins()) {
+    if (
+      typeof id !== 'string' || !Array.isArray(sound) || !sound.length ||
+      typeof sound[0].path !== 'string' ||
+      !H5P.SoundJS.initializeDefaultPlugins()
+    ) {
       return false;
     }
 
@@ -173,7 +185,8 @@ export default class Bingo extends H5P.Question {
       this.bingoState = true;
 
       // Trigger xAPI statement
-      // Removed until "choice" processor of reporting can handle an empty correct responses pattern correctly
+      // Removed until "choice" processor of reporting can handle an empty
+      // correct responses pattern correctly
       // this.trigger(this.getXAPIAnswerEvent());
 
       if (this.params.behaviour.enableRetry) {
@@ -262,7 +275,10 @@ export default class Bingo extends H5P.Question {
     }, 0);
 
     // Check after resize slack time because of previous content state
-    if (this.contentData.previousState && Object.keys(this.contentData.previousState).length) {
+    if (
+      this.contentData.previousState &&
+      Object.keys(this.contentData.previousState).length
+    ) {
       setTimeout(() => {
         this.checkWon({ silent: true });
       }, 50);
@@ -302,7 +318,9 @@ export default class Bingo extends H5P.Question {
     const displayLimits = Util.computeDisplayLimits(h5pContainer);
 
     const contentStyle = window.getComputedStyle(h5pContent);
-    const contentMargin = parseInt(contentStyle.getPropertyValue('margin-left')) + parseInt(contentStyle.getPropertyValue('margin-right'));
+    const contentMargin =
+      parseInt(contentStyle.getPropertyValue('margin-left')) +
+      parseInt(contentStyle.getPropertyValue('margin-right'));
 
     return Math.min(displayLimits.width, displayLimits.height) - contentMargin;
   }
@@ -371,7 +389,8 @@ export default class Bingo extends H5P.Question {
    * @returns {object} xAPI statement.
    * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-6}
    */
-  // Removed until "choice" processor of reporting can handle an empty correct responses pattern correctly
+  // Removed until "choice" processor of reporting can handle an empty correct
+  // responses pattern correctly
   // getXAPIData() {
   //   return ({statement: this.getXAPIAnswerEvent().data.statement});
   // }
@@ -383,7 +402,9 @@ export default class Bingo extends H5P.Question {
   getXAPIAnswerEvent() {
     const xAPIEvent = this.createBingoXAPIEvent('completed');
 
-    xAPIEvent.setScoredResult(this.getScore(), this.getMaxScore(), this, true, this.hasBingo());
+    xAPIEvent.setScoredResult(
+      this.getScore(), this.getMaxScore(), this, true, this.hasBingo()
+    );
     xAPIEvent.data.statement.result.response = this.board
       .getActivatedButtonsIDs()
       .join('[,]');
