@@ -2,8 +2,7 @@
 class Util {
   /**
    * Extend an array just like JQuery's extend.
-   * @param {object} arguments Objects to be merged.
-   * @return {object} Merged objects.
+   * @returns {object} Merged objects.
    */
   static extend() {
     for (let i = 1; i < arguments.length; i++) {
@@ -24,8 +23,8 @@ class Util {
   /**
    * Format language tag (RFC 5646). Assuming "language-coutry". No validation.
    * Cmp. https://tools.ietf.org/html/rfc5646
-   * @param {string} languageTag Language tag.
-   * @return {string} Formatted language tag.
+   * @param {string} languageCode Language tag.
+   * @returns {string} Formatted language tag.
    */
   static formatLanguageCode(languageCode) {
     if (typeof languageCode !== 'string') {
@@ -48,8 +47,8 @@ class Util {
 
   /**
    * Compute display limits.
-   * @param {HTMLElement} [container = {}] Container.
-   * @return {object|null} Height and width in px, fallback screen size.
+   * @param {HTMLElement} [container] Container.
+   * @returns {object|null} Height and width in px, fallback screen size.
    */
   static computeDisplayLimits(container) {
     container = (typeof container === 'object') ? container : {};
@@ -75,7 +74,7 @@ class Util {
 
   /**
    * Detect whether user is running iOS.
-   * @return {boolean} True, if user is running iOS.
+   * @returns {boolean} True, if user is running iOS.
    */
   static isIOS() {
     return (
@@ -86,7 +85,7 @@ class Util {
 
   /**
    * Get device orientation.
-   * @return {string} 'portrait' or 'landscape'.
+   * @returns {string} 'portrait' or 'landscape'.
    */
   static getOrientation() {
     if (screen.orientation && screen.orientation.type) {
@@ -112,10 +111,10 @@ class Util {
   }
 
   /**
-	 * Get top DOM Window object.
-	 * @param {Window} [startWindow=window] Window to start looking from.
-	 * @return {Window|null} Top window.
-	 */
+   * Get top DOM Window object.
+   * @param {Window} [startWindow] Window to start looking from.
+   * @returns {Window|null} Top window.
+   */
   static getTopWindow(startWindow) {
     let sameOrigin;
     startWindow = startWindow || window;

@@ -3,7 +3,7 @@ import Button from './h5p-bingo-button';
 /** Class representing a bingo board */
 class Board extends H5P.EventDispatcher {
   /**
-   * @constructor
+   * @class
    * @param {object} params Parameters from semantics.
    * @param {string} params.words List of words/phrases/numbers.
    * @param {number} params.size Size of the board.
@@ -24,7 +24,7 @@ class Board extends H5P.EventDispatcher {
     // Set words
     this.words = this
       .generateWords(this.previousState)
-      .map(words => this.addHTMLLineBreaks(words));
+      .map((words) => this.addHTMLLineBreaks(words));
 
     // Button image path
     const imagePath = (params.visuals.buttonImage && params.visuals.buttonImage.path) ?
@@ -95,14 +95,14 @@ class Board extends H5P.EventDispatcher {
   /**
    * Generate words.
    * @param {object[]} [previousState] State of previous session.
-   * @return {object[]} Words.
+   * @returns {object[]} Words.
    */
   generateWords(previousState = []) {
     let words = [];
 
     // Use previous if available
     if (previousState.length > 0) {
-      words = previousState.map(button => button.label);
+      words = previousState.map((button) => button.label);
     }
     else {
       // Use numbers
@@ -130,9 +130,9 @@ class Board extends H5P.EventDispatcher {
    *
    * Uses the words' character lengths and the longest word's character length
    * as a heuristic to set a maximum width and line breaks accordingly
-   * @param {string} [words=''] Words.
-   * @params {number} [lengthMax] Maximum character length per line.
-   * @return {string} Sentence with <br />s.
+   * @param {string} [words] Words.
+   * @param {number} [lengthMax] Maximum character length per line.
+   * @returns {string} Sentence with <br />s.
    */
   addHTMLLineBreaks(words = '', lengthMax) {
     // Try to have a width/height ratio of 2:1
@@ -156,13 +156,12 @@ class Board extends H5P.EventDispatcher {
 
   /**
    * Resize buttons.
-   *
    * @param {object} [arguments] Optional arguments.
    * @param {number} [arguments.startFontSize] Shrink factor.
-   * @param {number} [arguments.fontSizeMin=-Infinity] Minimum font size in px.
-   * @param {number} [arguments.fontSizeMax=Infinity] Maximum font size in px.
+   * @param {number} [arguments.fontSizeMin] Minimum font size in px.
+   * @param {number} [arguments.fontSizeMax] Maximum font size in px.
    */
-  resizeButtons({startFontSize = this.fontSizeBase, fontSizeMin = -Infinity, fontSizeMax = Infinity} = {}) {
+  resizeButtons({ startFontSize = this.fontSizeBase, fontSizeMin = -Infinity, fontSizeMax = Infinity } = {}) {
     if (this.preventResize === true) {
       return;
     }
@@ -172,7 +171,7 @@ class Board extends H5P.EventDispatcher {
     // Determine button with widest label as future reference
     if (!this.widestLabelId) {
       this.widestLabelId = this.buttons
-        .map(button => button.getLabelWidth())
+        .map((button) => button.getLabelWidth())
         // Retrieve index of maximum value
         .reduce((max, cur, index, arr) => cur > arr[max] ? index : max, 0);
     }
@@ -180,7 +179,7 @@ class Board extends H5P.EventDispatcher {
     // Determine button with highest label as future reference
     if (!this.highestLabelId) {
       this.highestLabelId = this.buttons
-        .map(button => button.getLabelHeight())
+        .map((button) => button.getLabelHeight())
         // Retrieve index of maximum value
         .reduce((max, cur, index, arr) => cur > arr[max] ? index : max, 0);
     }
@@ -192,7 +191,7 @@ class Board extends H5P.EventDispatcher {
 
     // Workaround for IE11 ...
     const buttonOffsetWidth = this.buttons[this.widestLabelId].getOffsetWidth();
-    this.buttons.forEach(button => {
+    this.buttons.forEach((button) => {
       button.setMinHeight(`${buttonOffsetWidth}px`);
     });
 
@@ -202,14 +201,14 @@ class Board extends H5P.EventDispatcher {
       const highestLabelHeight = this.buttons[this.highestLabelId].getLabelHeight();
 
       if (longestLabelWidth > buttonWidth || highestLabelHeight > buttonWidth) {
-        this.resizeButtons({startFontSize: startFontSize * 0.9});
+        this.resizeButtons({ startFontSize: startFontSize * 0.9 });
       }
     }
   }
 
   /**
    * Get the DOM element for the board.
-   * @return {object} DOM element.
+   * @returns {object} DOM element.
    */
   getDOM() {
     return this.board;
@@ -217,14 +216,14 @@ class Board extends H5P.EventDispatcher {
 
   /**
    * Create a set of buttons.
-   * @param {number} [size=5] Size of the bingo board.
+   * @param {number} [size] Size of the bingo board.
    * @param {string} [imagePath] Path to button image.
-   * @return {object[]} Array as board.
+   * @returns {object[]} Array as board.
    */
   initButtons(size = 5, imagePath) {
     const buttons = [];
     for (let i = 0; i < size * size; i++) {
-      const button = new Button(i, imagePath, {mode: this.params.mode});
+      const button = new Button(i, imagePath, { mode: this.params.mode });
       button.on('click', () => this.params.buttonClicked());
       buttons.push(button);
     }
@@ -234,7 +233,7 @@ class Board extends H5P.EventDispatcher {
 
   /**
    * Set maximum board width (to limit height).
-   * @param {string} CSS width value.
+   * @param {string} width CSS width value.
    */
   setMaximumWidth(width) {
     if (typeof width === 'string') {
@@ -294,12 +293,12 @@ class Board extends H5P.EventDispatcher {
   /**
    * Get matches to a button pattern.
    * @param {object[]} patterns Arrays containing the fields.
-   * @return {object[]} All patterns matching the win condition.
+   * @returns {object[]} All patterns matching the win condition.
    */
   getMatches(patterns) {
     const matches = [];
-    patterns.forEach(pattern => {
-      if (pattern.every(field => this.buttons[field].isActivated())) {
+    patterns.forEach((pattern) => {
+      if (pattern.every((field) => this.buttons[field].isActivated())) {
         matches.push(pattern);
       }
     });
@@ -309,27 +308,27 @@ class Board extends H5P.EventDispatcher {
 
   /**
    * Get labels from all buttons that are activated.
-   * @return {object[]} Label strings.
+   * @returns {object[]} Label strings.
    */
   getActivatedButtonsLabels() {
     return this.buttons
-      .filter(button => button.isActivated() && button.getLabel() !== '')
-      .map(button => button.getLabel());
+      .filter((button) => button.isActivated() && button.getLabel() !== '')
+      .map((button) => button.getLabel());
   }
 
   /**
    * Get IDs from all buttons that are activated.
-   * @return {object[]} IDs.
+   * @returns {object[]} IDs.
    */
   getActivatedButtonsIDs() {
     return this.buttons
-      .filter(button => button.isActivated())
-      .map(button => button.id);
+      .filter((button) => button.isActivated())
+      .map((button) => button.id);
   }
 
   /**
    * Get possible choices for this board.
-   * @return {object} XApi choices object.
+   * @returns {object} XApi choices object.
    */
   getXAPIChoices() {
     return this.buttons.map((button, index) => ({
@@ -344,7 +343,7 @@ class Board extends H5P.EventDispatcher {
    * Block all buttons.
    */
   blockButtons() {
-    this.buttons.forEach(button => {
+    this.buttons.forEach((button) => {
       button.toggleBlocked(true);
     });
   }
@@ -353,7 +352,7 @@ class Board extends H5P.EventDispatcher {
    * Unblock all buttons.
    */
   unblockButtons() {
-    this.buttons.forEach(button => {
+    this.buttons.forEach((button) => {
       button.toggleBlocked(false);
     });
   }
@@ -362,13 +361,13 @@ class Board extends H5P.EventDispatcher {
    * Reset the board.
    */
   reset() {
-    this.buttons.forEach(button => {
+    this.buttons.forEach((button) => {
       button.reset();
     });
 
     if (this.params.shuffleOnRetry) {
       this.previousState = [];
-      this.words = this.generateWords().map(words => this.addHTMLLineBreaks(words));
+      this.words = this.generateWords().map((words) => this.addHTMLLineBreaks(words));
       this.setButtonLabels(this.words);
     }
 
@@ -383,13 +382,13 @@ class Board extends H5P.EventDispatcher {
   /**
    * Animate patterns.
    * @param {object[]} patterns Sets of buttons' IDs to be animated.
-   * @param {number} [delay=100] Optional delay between each animation.
+   * @param {number} [delay] Optional delay between each animation.
    */
   animatePatterns(patterns, delay = 100) {
     /**
      * Animate a pattern.
      * @param {object[]} pattern IDs of buttons to be animated.
-     * @param {number} [delay=100] Optional delay between each animation.
+     * @param {number} [delay] Optional delay between each animation.
      */
     const animatePattern = (pattern, delay = 100) => {
       // Stop resizing when animation plays
@@ -408,18 +407,17 @@ class Board extends H5P.EventDispatcher {
       }
     };
 
-    patterns.forEach(pattern => {
+    patterns.forEach((pattern) => {
       animatePattern(pattern, delay);
     });
   }
 
   /**
    * Answer call to return the current state.
-   *
-   * @return {object[]} Current state.
+   * @returns {object[]} Current state.
    */
   getCurrentState() {
-    return this.buttons.map(button => ({
+    return this.buttons.map((button) => ({
       label: button.getLabel(),
       flipped: button.isActivated()
     }));

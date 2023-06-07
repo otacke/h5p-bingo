@@ -1,11 +1,11 @@
 /** Class representing a button on a board */
 class Button extends H5P.EventDispatcher {
   /**
-   * @constructor
+   * @class
    * @param {number} id Button's ID.
    * @param {string} imagePath Path to image URL.
-   * @param {object} [options={}] Options.
-   * @param {number} [options.mode=words] Mode, numbers or words
+   * @param {object} [options] Options.
+   * @param {number} [options.mode] Mode, numbers or words
    */
   constructor(id, imagePath, options = {}) {
     super();
@@ -44,7 +44,7 @@ class Button extends H5P.EventDispatcher {
 
   /**
    * Get the button's DOM element.
-   * @return {object} Button's DOM element.
+   * @returns {object} Button's DOM element.
    */
   getDOM() {
     return this.button;
@@ -80,7 +80,7 @@ class Button extends H5P.EventDispatcher {
 
   /**
    * Determine if button is blocked.
-   * @return {boolean} True, if button is activated, else false.
+   * @returns {boolean} True, if button is activated, else false.
    */
   isBlocked() {
     return this.button.classList.contains('h5p-button-blocked');
@@ -99,7 +99,7 @@ class Button extends H5P.EventDispatcher {
 
   /**
    * Determine if button is activated.
-   * @return {boolean} True, if button is activated, else false.
+   * @returns {boolean} True, if button is activated, else false.
    */
   isActivated() {
     return this.button.classList.contains('h5p-button-activated');
@@ -107,7 +107,7 @@ class Button extends H5P.EventDispatcher {
 
   /**
    * Toggle button's flipped state.
-   * @param {boolean} [blocked] - Optional override.
+   * @param {boolean} [flipped] - Optional override.
    */
   toggleFlipped(flipped) {
     if (this.isBlocked ()) {
@@ -119,7 +119,7 @@ class Button extends H5P.EventDispatcher {
 
   /**
    * Determine if button is flipped.
-   * @return {boolean} True, if button is flipped, else false.
+   * @returns {boolean} True, if button is flipped, else false.
    */
   isFlipped() {
     return this.button.classList.contains('h5p-button-flipped');
@@ -135,7 +135,7 @@ class Button extends H5P.EventDispatcher {
 
   /**
    * Determine if there was a bingo..
-   * @return {boolean} True, if there was a bingo.
+   * @returns {boolean} True, if there was a bingo.
    */
   isBingo() {
     return this.button.classList.contains('h5p-button-bingo');
@@ -151,7 +151,7 @@ class Button extends H5P.EventDispatcher {
 
   /**
    * Get button label.
-   * @return {string} Button label.
+   * @returns {string} Button label.
    */
   getLabel() {
     return this.buttonLabel.innerHTML;
@@ -159,7 +159,7 @@ class Button extends H5P.EventDispatcher {
 
   /**
    * Get button label width.
-   * @return {number} Button label width.
+   * @returns {number} Button label width.
    */
   getLabelWidth() {
     return this.buttonLabel.offsetWidth;
@@ -167,7 +167,7 @@ class Button extends H5P.EventDispatcher {
 
   /**
    * Get button label height.
-   * @return {number} Button label height.
+   * @returns {number} Button label height.
    */
   getLabelHeight() {
     return this.buttonLabel.offsetHeight;
@@ -175,7 +175,7 @@ class Button extends H5P.EventDispatcher {
 
   /**
    * Get button width.
-   * @return {number} Button width.
+   * @returns {number} Button width.
    */
   getWidth() {
     const computedStyle = window.getComputedStyle(this.button, null);
@@ -186,7 +186,7 @@ class Button extends H5P.EventDispatcher {
 
   /**
    * Get button offset width.
-   * @return {number} Button offset width.
+   * @returns {number} Button offset width.
    */
   getOffsetWidth() {
     return this.button.offsetWidth;
@@ -220,14 +220,12 @@ class Button extends H5P.EventDispatcher {
 
   /**
    * Animate button.
-   * @param {number} [args.duration=400] Duration in ms.
+   * @param {number} [duration] Duration in ms.
    */
   animate(duration = 400) {
-    const that = this;
-
     this.button.classList.add('h5p-button-spinning');
     setTimeout(() => {
-      that.button.classList.remove('h5p-button-spinning');
+      this.button.classList.remove('h5p-button-spinning');
       this.toggleBingo(true);
     }, duration);
   }

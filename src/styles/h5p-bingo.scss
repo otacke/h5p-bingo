@@ -1,0 +1,169 @@
+$color_1: #ffffff;
+$color_2: white;
+$font-family_1: 'H5PFontAwesome4', sans-serif;
+$background-color_1: #2b2b2b;
+$background-color_2: #efefef;
+$background-color_3: rgb(136, 29, 40);
+$border-color_1: #efefef;
+$border-color_2: rgb(255, 88, 105);
+
+.h5p-bingo {
+	.h5p-bingo-board {
+		background: #46b5a1;
+		box-sizing: border-box;
+		display: flex;
+		flex-direction: row;
+		line-height: 1.3em;
+		padding: 1em;
+		position: relative;
+
+		.h5p-bingo-toggle-sound-button {
+			background: #000000;
+			border: .1em solid transparent;
+			border-radius: 50%;
+			color: $color_1;
+			font-size: 1.1em;
+			height: 2em;
+			position: absolute;
+			right: -.5em;
+			top: -.5em;
+			width: 2em;
+
+      &:not(.muted) {
+				&::before {
+					content: '\f028';
+					font-family: $font-family_1;
+					left: 50%;
+					position: absolute;
+					top: 50%;
+					transform: translate(-50%, -50%);
+				}
+			}
+
+      &:hover {
+				background-color: $background-color_1;
+				cursor: pointer;
+			}
+		}
+		.h5p-bingo-toggle-sound-button.muted {
+			&::before {
+				content: '\f026';
+				font-family: $font-family_1;
+				left: 50%;
+				position: absolute;
+				top: 50%;
+				transform: translate(-50%, -50%);
+			}
+		}
+	}
+
+  .h5p-bingo-column {
+		align-items: center;
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+		min-width: 0;
+	}
+
+  .h5p-bingo-button {
+		align-items: center;
+		background: white;
+		border: 0.1em solid white;
+		border-radius: 0.5em;
+		box-shadow: 10px 10px 22px 0px rgba(0,0,0,0.12);
+		display: flex;
+		flex: 1;
+		justify-content: center;
+		margin: 5% 0;
+		overflow: hidden;
+		position: relative;
+		text-align: center;
+		transition: transform 0.8s;
+		user-select: none;
+		white-space: nowrap;
+		width: calc(90% - 0.2em);
+
+    &:not(.h5p-button-blocked) {
+			&:hover {
+				background-color: $background-color_2;
+				cursor: pointer;
+			}
+
+      &:not(.h5p-button-activated) {
+				&:hover {
+					border-color: $border-color_1;
+				}
+			}
+		}
+
+    &:after {
+			content: "";
+			display: block;
+			padding-bottom: 100%;
+		}
+	}
+
+  .h5p-bingo-button.numbers {
+		border: 0.5em solid white;
+		border-radius: 50%;
+		box-sizing: border-box;
+		font-size: 2.5em;
+		font-weight: bold;
+	}
+
+  .h5p-bingo-button.words {
+		border: 1.2em solid white;
+		box-sizing: border-box;
+		font-size: 1em;
+	}
+
+  .h5p-bingo-button-label {
+		opacity: 1;
+		transition: opacity 0.1s ease 0.2s, display 0.1s ease 0.2s;
+	}
+
+  .h5p-bingo-button-image {
+		background: url('../images/starbadge.svg') center/100% no-repeat;
+		height: 100%;
+		left: 0;
+		opacity: 1;
+		position: absolute;
+		top: 0;
+		transition: opacity 0.1s ease 0.2s, display 0.1s ease 0.2s;
+		width: 100%;
+	}
+
+  .h5p-button-flipped {
+		transform: rotateY(-180deg);
+		-webkit-transform: rotateY(-180deg);
+		-moz-transform: rotateY(-180deg);
+		-ms-transform: scale(0,1.1);
+	}
+
+  .h5p-button-activated.numbers {
+		border-color: $border-color_2;
+		border-style: groove;
+	}
+
+  .h5p-button-activated.words {
+		border-color: $border-color_2;
+		border-style: groove;
+	}
+
+  .h5p-button-spinning {
+		transform: rotateY(-720deg);
+		-webkit-transform: rotateY(-720deg);
+		-moz-transform: rotateY(-720deg);
+		-ms-transform: scale(0,1.1);
+	}
+
+  .h5p-button-bingo {
+		border-color: $border-color_2;
+		background-color: $background-color_3;
+		color: $color_2;
+	}
+
+  .h5p-button-transparent {
+		opacity: 0;
+	}
+}

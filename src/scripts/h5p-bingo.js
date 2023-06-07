@@ -4,7 +4,7 @@ import Util from './h5p-bingo-util';
 /** Class representing a bingo game */
 export default class Bingo extends H5P.Question {
   /**
-   * @constructor
+   * @class
    * @param {object} params Parameters from semantics.
    * @param {number} contentId Content Id.
    * @param {object} contentData Content data.
@@ -62,7 +62,8 @@ export default class Bingo extends H5P.Question {
   /**
    * Register audio.
    * @param {string} id Id.
-   * @param {object} H5P audio parameters.
+   * @param {object} sound Audio parameters.
+   * @returns {boolean} False, if registering not possible
    */
   registerAudio(id, sound) {
     if (typeof id !== 'string' || !Array.isArray(sound) || !sound.length || typeof sound[0].path !== 'string' || !H5P.SoundJS.initializeDefaultPlugins()) {
@@ -71,11 +72,14 @@ export default class Bingo extends H5P.Question {
 
     H5P.SoundJS.registerSound(H5P.getPath(sound[0].path, this.contentId), id);
     this.audios[id] = { params: { interrupt: H5P.SoundJS.INTERRUPT_ANY } };
+
+    return true;
   }
 
   /**
    * Register audios.
-   * @param {object} Audio settings.
+   * @param {object} sounds Audio settings.
+   * @returns {boolean} False, if registering not possible
    */
   registerAudios(sounds) {
     if (typeof sounds !== 'object' || !H5P.SoundJS.initializeDefaultPlugins()) {
@@ -87,6 +91,8 @@ export default class Bingo extends H5P.Question {
     for (let sound in sounds) {
       this.registerAudio(sound, sounds[sound]);
     }
+
+    return true;
   }
 
   /**
@@ -125,7 +131,7 @@ export default class Bingo extends H5P.Question {
   /**
    * Build all winning patterns for a Bingo sheet.
    * @param {number} size Sheet size.
-   * @return {object[]} Arrays containing patterns.
+   * @returns {object[]} Arrays containing patterns.
    */
   buildWinningPatterns(size) {
     const patterns = [];
@@ -151,6 +157,7 @@ export default class Bingo extends H5P.Question {
 
   /**
    * Check if game has been won.
+   * @param {object} [params] Parameters.
    */
   checkWon(params = {}) {
     const winners = this.board.getMatches(this.winningPatterns);
@@ -277,7 +284,7 @@ export default class Bingo extends H5P.Question {
 
   /**
    * Compute maximum board width.
-   * @return {number} Maximum board width in pixels.
+   * @returns {number} Maximum board width in pixels.
    */
   computeMaxBoardWidth() {
     if (!this.board) {
@@ -314,7 +321,7 @@ export default class Bingo extends H5P.Question {
 
   /**
    * Check if some kind of answer was given -- not applicable.
-   * @return {boolean} True, if answer was given.
+   * @returns {boolean} True, if answer was given.
    * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-1}
    */
   getAnswerGiven() {
@@ -323,7 +330,7 @@ export default class Bingo extends H5P.Question {
 
   /**
    * Get latest score -- not applicable.
-   * @return {number} Latest score.
+   * @returns {number} Latest score.
    * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-2}
    */
   getScore() {
@@ -332,7 +339,7 @@ export default class Bingo extends H5P.Question {
 
   /**
    * Get maximum possible score -- not applicable.
-   * @return {number} Score necessary for mastering.
+   * @returns {number} Score necessary for mastering.
    * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-3}
    */
   getMaxScore() {
@@ -361,7 +368,7 @@ export default class Bingo extends H5P.Question {
 
   /**
    * Get xAPI data.
-   * @return {Object} xAPI statement.
+   * @returns {object} xAPI statement.
    * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-6}
    */
   // Removed until "choice" processor of reporting can handle an empty correct responses pattern correctly
@@ -371,7 +378,7 @@ export default class Bingo extends H5P.Question {
 
   /**
    * Build xAPI answer event.
-   * @return {H5P.XAPIEvent} XAPI answer event.
+   * @returns {H5P.XAPIEvent} XAPI answer event.
    */
   getXAPIAnswerEvent() {
     const xAPIEvent = this.createBingoXAPIEvent('completed');
@@ -387,7 +394,7 @@ export default class Bingo extends H5P.Question {
   /**
    * Create an xAPI event for Bingo.
    * @param {string} verb Short id of the verb we want to trigger.
-   * @return {H5P.XAPIEvent} Event template.
+   * @returns {H5P.XAPIEvent} Event template.
    */
   createBingoXAPIEvent(verb) {
     const xAPIEvent = this.createXAPIEventTemplate(verb);
@@ -399,7 +406,7 @@ export default class Bingo extends H5P.Question {
 
   /**
    * Get the xAPI definition for the xAPI object.
-   * @return {object} XAPI definition.
+   * @returns {object} XAPI definition.
    */
   getxAPIDefinition() {
     const definition = {};
@@ -416,7 +423,7 @@ export default class Bingo extends H5P.Question {
     definition.choices = this.board.getXAPIChoices();
     // There's no right or wrong, but reporting expects a pattern; all correct is better
     definition.correctResponsesPattern = [
-      Array.apply(null, {length: this.params.size * this.params.size})
+      Array.apply(null, { length: this.params.size * this.params.size })
         .map(Number.call, Number)
         .join('[,]')
     ];
@@ -426,7 +433,7 @@ export default class Bingo extends H5P.Question {
 
   /**
    * Detect winning/completion state.
-   * @return {boolean} True, if Bingo.
+   * @returns {boolean} True, if Bingo.
    */
   hasBingo() {
     return this.bingoState;
@@ -434,7 +441,7 @@ export default class Bingo extends H5P.Question {
 
   /**
    * Get tasks title.
-   * @return {string} Title.
+   * @returns {string} Title.
    */
   getTitle() {
     let raw;
@@ -448,7 +455,7 @@ export default class Bingo extends H5P.Question {
 
   /**
    * Get tasks description.
-   * @return {string} Description.
+   * @returns {string} Description.
    */
   getDescription() {
     return this.params.taskDescription || Bingo.DEFAULT_DESCRIPTION;
@@ -456,7 +463,7 @@ export default class Bingo extends H5P.Question {
 
   /**
    * Answer call to return the current state.
-   * @return {object[]} Current state.
+   * @returns {object[]} Current state.
    */
   getCurrentState() {
     return {
