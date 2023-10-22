@@ -38,7 +38,7 @@
       ]
     },
     {
-      "label": "Board size"
+      "label": "Lentelės dydis"
     },
     {
       "label": "Vaizdas",
@@ -46,11 +46,11 @@
       "fields": [
         {
           "label": "Paveiksliukas",
-          "description": "Joker image for the buttons."
+          "description": "Joker paveikslėlis mygtukams."
         },
         {
           "label": "Fono spalva",
-          "description": "Background color for the board."
+          "description": "Lentelės fono spalva."
         }
       ]
     },
@@ -60,7 +60,7 @@
       "fields": [
         {
           "label": "Pasirinktas/nepasirinktas laukas",
-          "description": "Garsas, skambantis, kai laukas pasirinktas arba nepasirinktas."
+          "description": "Garso signalas įjungtas, kai laukas pasirinktas arba nepasirinktas."
         },
         {
           "label": "Užbaigta eilutė arba stulpelis",
@@ -73,19 +73,19 @@
       "description": "Šios parinktys leis jums valdyti, kaip veikia užduotis.",
       "fields": [
         {
-          "label": "Įjungti „Bandyti dar kartą“"
+          "label": "Įjungti „Kartoti“"
         },
         {
-          "label": "Shuffle on retry",
-          "description": "If checked, the words/phrases/numbers will be shuffled on retry."
+          "label": "Maišyti kartojant",
+          "description": "Jei pažymėta, žodžiai / frazės / skaičiai bus maišomi bandant dar kartą."
         },
         {
-          "label": "Set joker",
-          "description": "Will place an unturnable joker in the center of the board if its size is odd."
+          "label": "Nustatykite joker",
+          "description": "Padės neapverčiamą joker lentelės centre, jei jo dydis yra nelyginis."
         },
         {
-          "label": "Height limit mode",
-          "description": "Decide if you want to limit the board height to fit the visible area. Automatic detection may not be perfect depending on your website's setup, e.g. if it has sticky top navigation bars. Good custom values are hard to set manually.",
+          "label": "Aukščio ribojimo režimas",
+          "description": "Nuspręskite, ar norite apriboti lentelės aukštį, kad tilptų matoma sritis. Automatinis aptikimas gali būti netobulas, priklausomai nuo jūsų svetainės sąrankos, pvz. jei viršuje yra lipnios naršymo juostos. Geras suderintas vertes sunku nustatyti rankiniu būdu.",
           "options": [
             {
               "label": "Nėra limito"
@@ -99,26 +99,26 @@
           ]
         },
         {
-          "label": "Height limit",
-          "description": "Maximum height of the board in pixels."
+          "label": "Aukščio riba",
+          "description": "Maksimalus lentelės aukštis pikseliais."
         }
       ]
     },
     {
-      "label": "Tekstas mygtukui „Bandyti dar kartą“.",
-      "default": "Bandyti dar kartą"
+      "label": "Tekstas mygtukui „Kartoti“.",
+      "default": "Kartoti"
     },
     {
-      "label": "Assistive technology description for \"Retry\" button",
+      "label": "Pagalbinės technologijos aprašymas mygtukui „Kartoti“.",
       "default": "Bandyti atlikti užduotį dar kartą. Iš naujo nustatyti visus atsakymus ir pradėti užduotį iš naujo."
     },
     {
-      "label": "Assistive technology description for \"Mute\" button",
-      "default": "Mute audio, currently unmuted"
+      "label": "Pagalbinės technologijos aprašymas mygtukui „Nutildyti“.",
+      "default": "Nutildyti garsą, šiuo metu įjungtas"
     },
     {
-      "label": "Assistive technology description for \"Unmute\" button",
-      "default": "Unmute audio, currently muted"
+      "label": "Pagalbinės technologijos aprašymas mygtukui „Įjungti garsą“.",
+      "default": "Įjungti garsą, šiuo metu nutildytas"
     }
   ]
 }
