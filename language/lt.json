@@ -50,7 +50,7 @@
         },
         {
           "label": "Fono spalva",
-          "description": "Lentelės fono spalva."
+          "description": "Lentos fono spalva."
         }
       ]
     },
@@ -100,7 +100,7 @@
         },
         {
           "label": "Aukščio riba",
-          "description": "Maksimalus lentelės aukštis pikseliais."
+          "description": "Maksimalus lentos aukštis pikseliais."
         }
       ]
     },
@@ -109,15 +109,15 @@
       "default": "Kartoti"
     },
     {
-      "label": "Pagalbinės technologijos aprašymas mygtukui „Kartoti“.",
+      "label": "Pagalbinės technologijos aprašymas mygtukui „Bandyti dar kartą“",
       "default": "Bandyti atlikti užduotį dar kartą. Iš naujo nustatyti visus atsakymus ir pradėti užduotį iš naujo."
     },
     {
-      "label": "Pagalbinės technologijos aprašymas mygtukui „Nutildyti“.",
+      "label": "Pagalbinės technologijos aprašymas mygtukui „Nutildyti“",
       "default": "Nutildyti garsą, šiuo metu įjungtas"
     },
     {
-      "label": "Pagalbinės technologijos aprašymas mygtukui „Įjungti garsą“.",
+      "label": "Pagalbinės technologijos aprašymas mygtukui „Įjungti garsą“",
       "default": "Įjungti garsą, šiuo metu nutildytas"
     }
   ]
