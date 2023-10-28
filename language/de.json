@@ -73,7 +73,7 @@
       "description": "Hier kannst Du einstellen, wie sich die Aufgabe verhält.",
       "fields": [
         {
-          "label": "\"Wiederholen\" erlauben"
+          "label": "\"Wiederholen\" zulassen"
         },
         {
           "label": "Beim Wiederholen neu mischen",
@@ -105,7 +105,7 @@
       ]
     },
     {
-      "label": "Text für den \"Wiederholen\"-Knopf",
+      "label": "Beschriftung des \"Wiederholen\"-Buttons",
       "default": "Wiederholen"
     },
     {
@@ -113,11 +113,11 @@
       "default": "Die Aufgabe wiederholen. Alle Eingaben werden zurückgesetzt und die Aufgabe wird erneut gestartet."
     },
     {
-      "label": "Beschreibung des \"Stummschalten\"-Buttons (für Hilfsmittel zur Barrierefreiheit)",
+      "label": "Beschreibung des \"Stummschalten\"-Buttons (für Vorlesewerkzeuge)",
       "default": "Stummschalten, derzeit nicht laut geschaltet"
     },
     {
-      "label": "Beschreibung des \"Lautschalten\"-Buttons (für Hilfsmittel zur Barrierefreiheit)",
+      "label": "Beschreibung des \"Lautschalten\"-Buttons (für Vorlesewerkzeuge)",
       "default": "Laut schalten, derzeit stumm geschaltet"
     }
   ]
