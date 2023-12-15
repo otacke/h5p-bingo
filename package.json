@@ -3,7 +3,6 @@
   "version": "0.3.2",
   "description": "Game for boring conferences or meetings ;-)",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "stylelint './src/**/*.scss' && eslint './src/**/*.js'",
     "build": "webpack --mode=production",
     "watch": "webpack --watch --mode=development"
