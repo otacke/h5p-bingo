@@ -1,5 +1,5 @@
-import Board from '@components/h5p-bingo-board';
-import Util from '@services/util';
+import Board from '@components/h5p-bingo-board.js';
+import Util from '@services/util.js';
 
 /** Class representing a bingo game */
 export default class Bingo extends H5P.Question {

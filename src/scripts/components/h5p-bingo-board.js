@@ -1,4 +1,4 @@
-import Button from '@components/h5p-bingo-button';
+import Button from '@components/h5p-bingo-button.js';
 
 /** Class representing a bingo board */
 class Board extends H5P.EventDispatcher {
