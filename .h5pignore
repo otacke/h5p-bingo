@@ -19,3 +19,4 @@ CONTRIBUTING.md
 package.json
 worknotes
 LICENSE
+eslint.config.js
