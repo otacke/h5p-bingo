@@ -1,6 +1,6 @@
 {
   "name": "h5p-bingo",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Game for boring conferences or meetings ;-)",
   "scripts": {
     "lint": "stylelint './src/**/*.scss' && eslint './src/**/*.js'",
