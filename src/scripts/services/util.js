@@ -65,7 +65,7 @@ class Util {
 
     topWindow = topWindow || {
       innerHeight: screenSize.height,
-      innerWidth: screenSize.width
+      innerWidth: screenSize.width,
     };
 
     // Smallest value of viewport and container wins
@@ -73,8 +73,8 @@ class Util {
       height: Math.min(topWindow.innerHeight, screenSize.height),
       width: Math.min(
         topWindow.innerWidth, screenSize.width, container.offsetWidth ||
-        Infinity
-      )
+        Infinity,
+      ),
     };
   }
 
@@ -83,11 +83,21 @@ class Util {
    * @returns {boolean} True, if user is running iOS.
    */
   static isIOS() {
-    return (
-      ['iPad Simulator', 'iPhone Simulator', 'iPod Simulator', 'iPad', 'iPhone',
-        'iPod'].includes(navigator.platform) ||
-      (navigator.userAgent.includes('Mac') && 'ontouchend' in document)
-    );
+  // Modern approach using userAgentData API (when available)
+    if (navigator.userAgentData && navigator.userAgentData.platform) {
+      return ['iOS', 'iPadOS'].includes(navigator.userAgentData.platform);
+    }
+
+    // Fallback to user agent string parsing
+    const userAgent = navigator.userAgent.toLowerCase();
+
+    // Check for iOS devices in user agent
+    const isIOSDevice = /iphone|ipad|ipod/.test(userAgent);
+
+    // Check for iPad on iOS 13+ (reports as Mac in user agent)
+    const isPadOnIOS13Plus = userAgent.includes('mac') && 'ontouchend' in document;
+
+    return isIOSDevice || isPadOnIOS13Plus;
   }
 
   /**
@@ -95,6 +105,7 @@ class Util {
    * @returns {string} 'portrait' or 'landscape'.
    */
   static getOrientation() {
+    // Modern approach using Screen Orientation API
     if (screen.orientation && screen.orientation.type) {
       if (screen.orientation.type.includes('portrait')) {
         return 'portrait';
@@ -104,21 +115,19 @@ class Util {
       }
     }
 
-    // Unreliable, as not clear what device's natural orientation is
-    if (typeof window.orientation === 'number') {
-      if (window.orientation === 0 || window.orientation === 180) {
-        return 'portrait';
-      }
-      else if (
-        window.orientation === 90 ||
-        window.orientation === -90 ||
-        window.orientation === 270
-      ) {
-        return 'landscape';
-      }
+    // Fallback: Compare viewport dimensions
+    const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+
+    if (viewportHeight > viewportWidth) {
+      return 'portrait';
+    }
+    else if (viewportWidth > viewportHeight) {
+      return 'landscape';
     }
 
-    return 'landscape'; // Assume default
+    // Final fallback: assume landscape as default
+    return 'landscape';
   }
 
   /**

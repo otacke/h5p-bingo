@@ -1,5 +1,5 @@
 /** Class representing a button on a board */
-class Button extends H5P.EventDispatcher {
+export default class Button extends H5P.EventDispatcher {
   /**
    * @class
    * @param {number} id Button's ID.
@@ -232,5 +232,3 @@ class Button extends H5P.EventDispatcher {
     }, duration);
   }
 }
-
-export default Button;

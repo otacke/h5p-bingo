@@ -1,6 +1,9 @@
 import Board from '@components/h5p-bingo-board.js';
 import Util from '@services/util.js';
 
+/** @constant {number} CHECK_TIMEOUT_MS Time to wait after resize before checking for bingo */
+const CHECK_TIMEOUT_MS = 50;
+
 /** Class representing a bingo game */
 export default class Bingo extends H5P.Question {
   /**
@@ -19,19 +22,19 @@ export default class Bingo extends H5P.Question {
         enableRetry: true,
         shuffleOnRetry: true,
         joker: false,
-        heightLimitMode: 'none'
+        heightLimitMode: 'none',
       },
       sound: {
         soundSelected: [],
-        soundCompleted: []
+        soundCompleted: [],
       },
       visuals: {
-        backgroundColor: ''
+        backgroundColor: '',
       },
       tryAgain: 'Retry',
       a11yTryAgain: 'Retry the task. Reset all responses and start the task over again.',
       a11yMute: 'Mute audio, currently unmuted',
-      a11yUnmute: 'Unmute audio, currently muted'
+      a11yUnmute: 'Unmute audio, currently muted',
     }, params);
 
     this.contentId = contentId;
@@ -217,7 +220,7 @@ export default class Bingo extends H5P.Question {
             alt: media.params.alt,
             title: media.params.title,
             expandImage: media.params.expandImage,
-            minimizeImage: media.params.minimizeImage
+            minimizeImage: media.params.minimizeImage,
           });
         }
       }
@@ -263,8 +266,8 @@ export default class Bingo extends H5P.Question {
       },
       a11y: {
         mute: this.params.a11yMute,
-        unmute: this.params.a11yUnmute
-      }
+        unmute: this.params.a11yUnmute,
+      },
     }, this.contentId, this.contentData?.previousState?.board || [] );
 
     this.setContent(this.board.getDOM());
@@ -283,7 +286,7 @@ export default class Bingo extends H5P.Question {
     ) {
       setTimeout(() => {
         this.checkWon({ silent: true });
-      }, 50);
+      }, CHECK_TIMEOUT_MS);
     }
 
     this.on('resize', () => {
@@ -335,7 +338,7 @@ export default class Bingo extends H5P.Question {
     this.addButton('try-again', this.params.tryAgain, () => {
       this.resetTask();
     }, false, {
-      'aria-label': this.params.a11yTryAgain
+      'aria-label': this.params.a11yTryAgain,
     }, {});
   }
 
@@ -405,7 +408,7 @@ export default class Bingo extends H5P.Question {
     const xAPIEvent = this.createBingoXAPIEvent('completed');
 
     xAPIEvent.setScoredResult(
-      this.getScore(), this.getMaxScore(), this, true, this.hasBingo()
+      this.getScore(), this.getMaxScore(), this, true, this.hasBingo(),
     );
     xAPIEvent.data.statement.result.response = this.board
       .getActivatedButtonsIDs()
@@ -448,7 +451,7 @@ export default class Bingo extends H5P.Question {
     definition.correctResponsesPattern = [
       Array.apply(null, { length: this.params.size * this.params.size })
         .map(Number.call, Number)
-        .join('[,]')
+        .join('[,]'),
     ];
 
     return definition;
@@ -491,7 +494,7 @@ export default class Bingo extends H5P.Question {
   getCurrentState() {
     return {
       isAnswerGiven: this.isAnswerGiven,
-      board: this.board.getCurrentState()
+      board: this.board.getCurrentState(),
     };
   }
 }

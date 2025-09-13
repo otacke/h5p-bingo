@@ -1,7 +1,16 @@
 import Button from '@components/h5p-bingo-button.js';
 
+/** @constant {number} NUMBER_GENERATOR_RANGE_FACTOR Factor for number generator range. */
+const NUMBER_GENERATOR_RANGE_FACTOR = 3;
+
+/** @constant {number} WIDTH_HEIGHT_RATIO Desired width/height ratio of the board. */
+const WIDTH_HEIGHT_RATIO = 2;
+
+/** @constant {number} FONT_SHRINK_FACTOR Shrink factor. */
+const FONT_SHRINK_FACTOR = 0.9;
+
 /** Class representing a bingo board */
-class Board extends H5P.EventDispatcher {
+export default class Board extends H5P.EventDispatcher {
   /**
    * @class
    * @param {object} params Parameters from semantics.
@@ -109,7 +118,7 @@ class Board extends H5P.EventDispatcher {
     else {
       // Use numbers
       if (this.params.mode === 'numbers') {
-        for (let i = 1; i <= 3 * this.params.size * this.params.size; i++) {
+        for (let i = 1; i <= NUMBER_GENERATOR_RANGE_FACTOR * this.params.size * this.params.size; i++) {
           words.push(i.toString());
         }
       }
@@ -137,8 +146,8 @@ class Board extends H5P.EventDispatcher {
    * @returns {string} Sentence with <br />s.
    */
   addHTMLLineBreaks(words = '', lengthMax) {
-    // Try to have a width/height ratio of 2:1
-    lengthMax = lengthMax || Math.ceil(Math.sqrt(words.length) * 2);
+    // Try to have a width/height ratio of WIDTH_HEIGHT_RATIO (2:1).
+    lengthMax = lengthMax || Math.ceil(Math.sqrt(words.length) * WIDTH_HEIGHT_RATIO);
     words = words.split(' ');
 
     let out = [];
@@ -166,14 +175,14 @@ class Board extends H5P.EventDispatcher {
   resizeButtons({
     startFontSize = this.fontSizeBase,
     fontSizeMin = -Infinity,
-    fontSizeMax = Infinity
+    fontSizeMax = Infinity,
   } = {}) {
     if (this.preventResize === true) {
       return;
     }
 
     const fontSize = Math.min(
-      Math.max(startFontSize, fontSizeMin), fontSizeMax
+      Math.max(startFontSize, fontSizeMin), fontSizeMax,
     );
 
     // Determine button with widest label as future reference
@@ -193,7 +202,7 @@ class Board extends H5P.EventDispatcher {
     }
 
     // Set values
-    this.board.style.fontSize = fontSize + 'px';
+    this.board.style.fontSize = `${fontSize  }px`;
 
     const buttonWidth = this.buttons[this.widestLabelId].getWidth();
 
@@ -211,7 +220,7 @@ class Board extends H5P.EventDispatcher {
         this.buttons[this.highestLabelId].getLabelHeight();
 
       if (longestLabelWidth > buttonWidth || highestLabelHeight > buttonWidth) {
-        this.resizeButtons({ startFontSize: startFontSize * 0.9 });
+        this.resizeButtons({ startFontSize: startFontSize * FONT_SHRINK_FACTOR });
       }
     }
   }
@@ -286,12 +295,14 @@ class Board extends H5P.EventDispatcher {
    * @param {boolean} enabled If true, joker should be set.
    */
   setJoker(enabled) {
+    // eslint-disable-next-line no-magic-numbers
     if (enabled !== true || this.params.size % 2 === 0) {
       return;
     }
 
     // Make center button a joker
     const button = this.buttons[
+      // eslint-disable-next-line no-magic-numbers
       Math.floor(this.params.size / 2) * (this.params.size + 1)
     ];
     button.toggleFlipped(true);
@@ -345,8 +356,8 @@ class Board extends H5P.EventDispatcher {
     return this.buttons.map((button, index) => ({
       'id': index,
       'description': {
-        'en-US': button.getLabel()
-      }
+        'en-US': button.getLabel(),
+      },
     }));
   }
 
@@ -432,9 +443,7 @@ class Board extends H5P.EventDispatcher {
   getCurrentState() {
     return this.buttons.map((button) => ({
       label: button.getLabel(),
-      flipped: button.isActivated()
+      flipped: button.isActivated(),
     }));
   }
 }
-
-export default Board;
